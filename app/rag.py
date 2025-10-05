@@ -245,19 +245,21 @@ and provide your evaluation in parsable JSON without using code blocks:
             )
             raise Exception(error_msg)
 
-        user_query_prompt = rewrite_query(user_query)
-        user_query_rewritten, user_prompt_tokens, user_completion_tokens, user_total_tokens = llm(user_query_prompt)
+        # Rewrite user query from LLM
+        user_query_prompt = self.rewrite_query(user_query)
+        user_query_llm, user_prompt_tokens, user_completion_tokens, user_total_tokens = self.llm(prompt=user_query_prompt,  model='gpt-4o')
+        print("User query rewritten: ", user_query_llm)
         
         # Encode query to vector
-        v_q = self.model.encode(user_query_rewritten)
+        v_q = self.model.encode(user_query_llm)
         print("Vector encoding done")
         
         # Search Elasticsearch
-        search_results = self.elastic_search('title_vector', user_query_rewritten, v_q)
+        search_results = self.elastic_search('title_vector', user_query_llm, v_q)
         print("Search results from elastic: ", search_results)
         
         # Build prompt with context
-        prompt = self.build_prompt(user_query_rewritten, search_results)
+        prompt = self.build_prompt(user_query_llm, search_results)
         print("Prompt: ", prompt)
         
         # Get answer from LLM with token tracking
@@ -272,7 +274,7 @@ and provide your evaluation in parsable JSON without using code blocks:
         
         # Evaluate relevance
         relevance, explanation, eval_prompt_tokens, eval_completion_tokens, eval_total_tokens = \
-            self.evaluate_relevance(user_query_rewritten, answer)
+            self.evaluate_relevance(user_query_llm, answer)
         
         # Calculate total cost including evaluation
         total_eval_cost = self.calculate_openai_cost('gpt-4o', eval_prompt_tokens, eval_completion_tokens)
