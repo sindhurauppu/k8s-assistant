@@ -1,4 +1,4 @@
-# 🧠 KubeQuery RAG Application
+# KubeQuery RAG Application
 
 A **Retrieval-Augmented Generation (RAG)** system that answers Kubernetes-related questions using official documentation from the [Kubernetes GitHub repository](https://github.com/kubernetes/website).  
 It combines **hybrid retrieval (keyword + vector)** search using **Elasticsearch**, response generation with **OpenAI GPT-4o**, evaluation of retrieval and LLM performance, an interactive **Streamlit UI**, and **Grafana monitoring** — all fully containerized with **Docker Compose**.
@@ -49,7 +49,7 @@ To ensure optimal retrieval quality, multiple methods were evaluated:
 | Retrieval Method | Hit Rate | MRR  |
 |------------------|----------|------|
 | Keyword (BM25) | 0.9375 | 0.8643 |
-| Vector (Minsearch) | 0.7765 | 0.5909 |
+| Minsearch | 0.7765 | 0.5909 |
 | Hybrid (Keyword + KNN) | **0.9756** | **0.9772** |
 | Hybrid + Re-ranking | 0.9534 | 0.8778 |
 
