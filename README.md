@@ -50,6 +50,7 @@ To ensure optimal retrieval quality, multiple methods were evaluated:
 |------------------|----------|------|
 | Keyword (BM25) | 0.9375 | 0.8643 |
 | Minsearch | 0.7765 | 0.5909 |
+| FAISS Vector Search | 0.95127 | 0.88624|
 | Hybrid (Keyword + KNN) | **0.9756** | **0.9772** |
 | Hybrid + Re-ranking | 0.9534 | 0.8778 |
 
@@ -98,10 +99,8 @@ The application includes a **Streamlit UI** for interactive Q&A:
 
 Automated ingestion handled by `ingest.py` during container startup:
 
-1. Clones or loads the local Kubernetes documentation dataset.  
-2. Cleans and transforms `.md` files into JSON format.  
-3. Initializes Elasticsearch indices (BM25 + KNN).  
-4. Prepares the PostgreSQL database with metadata tables.  
+1. Initializes Elasticsearch indices (BM25 + KNN).  
+2. Prepares the PostgreSQL database with metadata tables.  
 
 Executed automatically when containers spin up — no manual steps required.
 
@@ -142,9 +141,12 @@ POSTGRES_DB=ragsystem
 
 ### Run locally:
 ```bash
-git clone https://github.com/yourusername/kubernetes-rag.git
-cd kubernetes-rag
+git clone https://github.com/sindhurauppu/k8s-assistant.git
+cd app
+cp .env.example .env
+Update OPENAI_API_KEY and POSTGRES password in .env
 docker-compose up --build
+Wait until ingest container is completed and streamlit, grafana containers start.
 ```
 
 ---
@@ -165,24 +167,12 @@ This ensures the system can be reproduced end-to-end by any user.
 
 | Category | Technique | Status |
 |-----------|------------|--------|
-| **Hybrid Search** | Keyword (BM25) + KNN vector retrieval | ✅ Implemented |
-| **Document Re-ranking** | Post-retrieval similarity reranking | ✅ Evaluated |
-| **LLM Evaluation** | Cosine similarity + LLM-as-a-Judge | ✅ Implemented |
-| **User Feedback Loop** | Captured in PostgreSQL, visualized in Grafana | ✅ Implemented |
-| **Automated Ingestion** | Python ingestion pipeline (`ingest.py`) | ✅ Implemented |
-| **Monitoring & Analytics** | Grafana + PostgreSQL dashboards | ✅ Implemented |
-| **Query Rewriting** | None used (baseline only) | ⚙️ Future enhancement |
+| **Hybrid Search** | Keyword (BM25) + KNN vector retrieval
+| **Document Re-ranking** | Post-retrieval similarity reranking
+| **Query Rewriting** | OpenAI GPT-4o used
 
 ---
 
-## 📚 Future Work
-
-- Introduce **query rewriting** using GPT-4o mini to improve retrieval precision.  
-- Add **factual consistency scoring** for generated responses.  
-- Expand dataset beyond `/kubectl` and `/glossary`.  
-- Integrate **Prometheus** for deeper system metrics.
-
----
 
 ## 🧩 Architecture Overview
 
