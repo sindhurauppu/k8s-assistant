@@ -1,0 +1,352 @@
+[
+  {
+    "title": "kubectl Quick Reference",
+    "text": "```bash\n# All images running in a cluster\nkubectl get pods -A -o=custom-columns='DATA:spec.containers[*].image'\n\n# All images running in namespace: default, grouped by Pod\nkubectl get pods --namespace default --output=custom-columns=\"NAME:.metadata.name,IMAGE:.spec.containers[*].image\"\n\n # All images excluding \"registry.k8s.io/coredns:1.6.2\"\nkubectl get pods -A -o=custom-columns='DATA:spec.containers[?(@.image!=\"registry.k8s.io/coredns:1.6.2\")].image'\n\n# All fields under metadata regardless of name\nkubectl get pods -A -o=custom-columns='DATA:metadata.*'\n```\n\nMore examples in the kubectl [reference documentation](/docs/reference/kubectl/#custom-columns).",
+    "source_file": "quick-reference.md"
+  },
+  {
+    "title": "JSONPath Support",
+    "text": "```shell\nkubectl get pods -o json\nkubectl get pods -o=jsonpath='{@}'\nkubectl get pods -o=jsonpath='{.items[0]}'\nkubectl get pods -o=jsonpath='{.items[0].metadata.name}'\nkubectl get pods -o=jsonpath=\"{.items[*]['metadata.name', 'status.capacity']}\"\nkubectl get pods -o=jsonpath='{range .items[*]}{.metadata.name}{\"\\t\"}{.status.startTime}{\"\\n\"}{end}'\nkubectl get pods -o=jsonpath='{.items[0].metadata.labels.kubernetes\\.io/hostname}'\n```\n\nOr, with a \"my_pod\" and \"my_namespace\" (adjust these names to your environment):\n\n```shell\nkubectl get pod/my_pod -n my_namespace -o=jsonpath='{@}'\nkubectl get pod/my_pod -n my_namespace -o=jsonpath='{.metadata.name}'\nkubectl get pod/my_pod -n my_namespace -o=jsonpath='{.status}'\n```\n\n{{< note >}}\nOn Windows, you must _double_ quote any JSONPath template that contains spaces (not single quote as shown above for bash). This in turn means that you must use a single quote or escaped double quote around any literals in the template. For example:\n\n```cmd\nkubectl get pods -o=jsonpath=\"{range .items[*]}{.metadata.name}{'\\t'}{.status.startTime}{'\\n'}{end}\"\nkubectl get pods -o=jsonpath=\"{range .items[*]}{.metadata.name}{\\\"\\t\\\"}{.status.startTime}{\\\"\\n\\\"}{end}\"\n```\n{{< /note >}}",
+    "source_file": "jsonpath.md"
+  },
+  {
+    "title": "kubectl Commands",
+    "text": "",
+    "source_file": "kubectl-cmds.md"
+  },
+  {
+    "title": "kubectl",
+    "text": "kubectl controls the Kubernetes cluster manager.\n\nFind more information in [Command line tool](/docs/reference/kubectl/) (`kubectl`).\n\n```shell\nkubectl [flags]\n```",
+    "source_file": "kubectl.md"
+  },
+  {
+    "title": "Introduction to kubectl",
+    "text": "",
+    "source_file": "introduction.md"
+  },
+  {
+    "title": "Kubectl user preferences (kuberc)",
+    "text": "",
+    "source_file": "kuberc.md"
+  },
+  {
+    "title": "kubectl",
+    "text": "kubectl controls the Kubernetes cluster manager.\n\n Find more information at: https://kubernetes.io/docs/reference/kubectl/\n\n```\nkubectl [flags]\n```",
+    "source_file": "kubectl.md"
+  },
+  {
+    "title": "kubectl reference",
+    "text": "",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl set subject",
+    "text": "Update the user, group, or service account in a role binding or cluster role binding.\n\n```\nkubectl set subject (-f FILENAME | TYPE NAME) [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```\n\n```\n  # Update a cluster role binding for serviceaccount1\n  kubectl set subject clusterrolebinding admin --serviceaccount=namespace:serviceaccount1\n  \n  # Update a role binding for user1, user2, and group1\n  kubectl set subject rolebinding admin --user=user1 --user=user2 --group=group1\n  \n  # Print the result (in YAML format) of updating rolebinding subjects from a local, without hitting the server\n  kubectl create rolebinding admin --role=admin --user=admin -o yaml --dry-run=client | kubectl set subject --local -f - --user=foo -o yaml\n```",
+    "source_file": "kubectl_set_subject.md"
+  },
+  {
+    "title": "kubectl set selector",
+    "text": "Set the selector on a resource. Note that the new selector will overwrite the old selector if the resource had one prior to the invocation of 'set selector'.\n\n A selector must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters. If --resource-version is specified, then updates will use this resource version, otherwise the existing resource-version will be used. Note: currently selectors can only be set on Service objects.\n\n```\nkubectl set selector (-f FILENAME | TYPE NAME) EXPRESSIONS [--resource-version=version]\n```\n\n```\n  # Set the labels and selector before creating a deployment/service pair\n  kubectl create service clusterip my-svc --clusterip=\"None\" -o yaml --dry-run=client | kubectl set selector --local -f - 'environment=qa' -o yaml | kubectl create -f -\n  kubectl create deployment my-dep -o yaml --dry-run=client | kubectl label --local -f - environment=qa -o yaml | kubectl create -f -\n```",
+    "source_file": "kubectl_set_selector.md"
+  },
+  {
+    "title": "kubectl set env",
+    "text": "Update environment variables on a pod template.\n\n List environment variable definitions in one or more pods, pod templates. Add, update, or remove container environment variable definitions in one or more pod templates (within replication controllers or deployment configurations). View or modify the environment variable definitions on all containers in the specified pods or pod templates, or just those that match a wildcard.\n\n If \"--env -\" is passed, environment variables can be read from STDIN using the standard env syntax.\n\n Possible resources include (case insensitive):\n\n        pod (po), replicationcontroller (rc), deployment (deploy), daemonset (ds), statefulset (sts), cronjob (cj), replicaset (rs)\n\n```\nkubectl set env RESOURCE/NAME KEY_1=VAL_1 ... KEY_N=VAL_N\n```\n\n```\n  # Update deployment 'registry' with a new environment variable\n  kubectl set env deployment/registry STORAGE_DIR=/local\n  \n  # List the environment variables defined on a deployments 'sample-build'\n  kubectl set env deployment/sample-build --list\n  \n  # List the environment variables defined on all pods\n  kubectl set env pods --all --list\n  \n  # Output modified deployment in YAML, and does not alter the object on the server\n  kubectl set env deployment/sample-build STORAGE_DIR=/data -o yaml\n  \n  # Update all containers in all replication controllers in the project to have ENV=prod\n  kubectl set env rc --all ENV=prod\n  \n  # Import environment from a secret\n  kubectl set env --from=secret/mysecret deployment/myapp\n  \n  # Import environment from a config map with a prefix\n  kubectl set env --from=configmap/myconfigmap --prefix=MYSQL_ deployment/myapp\n  \n  # Import specific keys from a config map\n  kubectl set env --keys=my-example-key --from=configmap/myconfigmap deployment/myapp\n  \n  # Remove the environment variable ENV from container 'c1' in all deployment configs\n  kubectl set env deployments --all --containers=\"c1\" ENV-\n  \n  # Remove the environment variable ENV from a deployment definition on disk and\n  # update the deployment config on the server\n  kubectl set env -f deploy.json ENV-\n  \n  # Set some of the local shell environment into a deployment config on the server\n  env | grep RAILS_ | kubectl set env -e - deployment/registry\n```",
+    "source_file": "kubectl_set_env.md"
+  },
+  {
+    "title": "kubectl set serviceaccount",
+    "text": "Update the service account of pod template resources.\n\n Possible resources (case insensitive) can be:\n\n replicationcontroller (rc), deployment (deploy), daemonset (ds), job, replicaset (rs), statefulset\n\n```\nkubectl set serviceaccount (-f FILENAME | TYPE NAME) SERVICE_ACCOUNT\n```\n\n```\n  # Set deployment nginx-deployment's service account to serviceaccount1\n  kubectl set serviceaccount deployment nginx-deployment serviceaccount1\n  \n  # Print the result (in YAML format) of updated nginx deployment with the service account from local file, without hitting the API server\n  kubectl set sa -f nginx-deployment.yaml serviceaccount1 --local --dry-run=client -o yaml\n```",
+    "source_file": "kubectl_set_serviceaccount.md"
+  },
+  {
+    "title": "kubectl set resources",
+    "text": "Specify compute resource requirements (CPU, memory) for any resource that defines a pod template.  If a pod is successfully scheduled, it is guaranteed the amount of resource requested, but may burst up to its specified limits.\n\n For each compute resource, if a limit is specified and a request is omitted, the request will default to the limit.\n\n Possible resources include (case insensitive): Use \"kubectl api-resources\" for a complete list of supported resources..\n\n```\nkubectl set resources (-f FILENAME | TYPE NAME)  ([--limits=LIMITS & --requests=REQUESTS]\n```\n\n```\n  # Set a deployments nginx container cpu limits to \"200m\" and memory to \"512Mi\"\n  kubectl set resources deployment nginx -c=nginx --limits=cpu=200m,memory=512Mi\n  \n  # Set the resource request and limits for all containers in nginx\n  kubectl set resources deployment nginx --limits=cpu=200m,memory=512Mi --requests=cpu=100m,memory=256Mi\n  \n  # Remove the resource requests for resources on containers in nginx\n  kubectl set resources deployment nginx --limits=cpu=0,memory=0 --requests=cpu=0,memory=0\n  \n  # Print the result (in yaml format) of updating nginx container limits from a local, without hitting the server\n  kubectl set resources -f path/to/file.yaml --limits=cpu=200m,memory=512Mi --local -o yaml\n```",
+    "source_file": "kubectl_set_resources.md"
+  },
+  {
+    "title": "kubectl set image",
+    "text": "Update existing container image(s) of resources.\n\n Possible resources include (case insensitive):\n\n        pod (po), replicationcontroller (rc), deployment (deploy), daemonset (ds), statefulset (sts), cronjob (cj), replicaset (rs)\n\n```\nkubectl set image (-f FILENAME | TYPE NAME) CONTAINER_NAME_1=CONTAINER_IMAGE_1 ... CONTAINER_NAME_N=CONTAINER_IMAGE_N\n```\n\n```\n  # Set a deployment's nginx container image to 'nginx:1.9.1', and its busybox container image to 'busybox'\n  kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1\n  \n  # Update all deployments' and rc's nginx container's image to 'nginx:1.9.1'\n  kubectl set image deployments,rc nginx=nginx:1.9.1 --all\n  \n  # Update image of all containers of daemonset abc to 'nginx:1.9.1'\n  kubectl set image daemonset abc *=nginx:1.9.1\n  \n  # Print result (in yaml format) of updating nginx container image from local file, without hitting the server\n  kubectl set image -f path/to/file.yaml nginx=nginx:1.9.1 --local -o yaml\n```",
+    "source_file": "kubectl_set_image.md"
+  },
+  {
+    "title": "kubectl set",
+    "text": "Configure application resources.\n\n These commands help you make changes to existing application resources.\n\n```\nkubectl set SUBCOMMAND\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl run",
+    "text": "Create and run a particular image in a pod.\n\n```\nkubectl run NAME --image=image [--env=\"key=value\"] [--port=port] [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND] [args...]\n```\n\n```\n  # Start a nginx pod\n  kubectl run nginx --image=nginx\n  \n  # Start a hazelcast pod and let the container expose port 5701\n  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701\n  \n  # Start a hazelcast pod and set environment variables \"DNS_DOMAIN=cluster\" and \"POD_NAMESPACE=default\" in the container\n  kubectl run hazelcast --image=hazelcast/hazelcast --env=\"DNS_DOMAIN=cluster\" --env=\"POD_NAMESPACE=default\"\n  \n  # Start a hazelcast pod and set labels \"app=hazelcast\" and \"env=prod\" in the container\n  kubectl run hazelcast --image=hazelcast/hazelcast --labels=\"app=hazelcast,env=prod\"\n  \n  # Dry run; print the corresponding API objects without creating them\n  kubectl run nginx --image=nginx --dry-run=client\n  \n  # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON\n  kubectl run nginx --image=nginx --overrides='{ \"apiVersion\": \"v1\", \"spec\": { ... } }'\n  \n  # Start a busybox pod and keep it in the foreground, don't restart it if it exits\n  kubectl run -i -t busybox --image=busybox --restart=Never\n  \n  # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command\n  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>\n  \n  # Start the nginx pod using a different command and custom arguments\n  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl api-resources",
+    "text": "Print the supported API resources on the server.\n\n```\nkubectl api-resources [flags]\n```\n\n```\n  # Print the supported API resources\n  kubectl api-resources\n  \n  # Print the supported API resources with more information\n  kubectl api-resources -o wide\n  \n  # Print the supported API resources sorted by a column\n  kubectl api-resources --sort-by=name\n  \n  # Print the supported namespaced resources\n  kubectl api-resources --namespaced=true\n  \n  # Print the supported non-namespaced resources\n  kubectl api-resources --namespaced=false\n  \n  # Print the supported API resources with a specific APIGroup\n  kubectl api-resources --api-group=rbac.authorization.k8s.io\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl annotate",
+    "text": "Update the annotations on one or more resources.\n\n All Kubernetes objects support the ability to store additional data with the object as annotations. Annotations are key/value pairs that can be larger than labels and include arbitrary string values such as structured JSON. Tools and system extensions may use annotations to store their own data.\n\n Attempting to set an annotation that already exists will fail unless --overwrite is set. If --resource-version is specified and does not match the current resource version on the server the command will fail.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl annotate [--overwrite] (-f FILENAME | TYPE NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--resource-version=version]\n```\n\n```\n  # Update pod 'foo' with the annotation 'description' and the value 'my frontend'\n  # If the same annotation is set multiple times, only the last value will be applied\n  kubectl annotate pods foo description='my frontend'\n  \n  # Update a pod identified by type and name in \"pod.json\"\n  kubectl annotate -f pod.json description='my frontend'\n  \n  # Update pod 'foo' with the annotation 'description' and the value 'my frontend running nginx', overwriting any existing value\n  kubectl annotate --overwrite pods foo description='my frontend running nginx'\n  \n  # Update all pods in the namespace\n  kubectl annotate pods --all description='my frontend running nginx'\n  \n  # Update pod 'foo' only if the resource is unchanged from version 1\n  kubectl annotate pods foo description='my frontend running nginx' --resource-version=1\n  \n  # Update pod 'foo' by removing an annotation named 'description' if it exists\n  # Does not require the --overwrite flag\n  kubectl annotate pods foo description-\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl cluster-info dump",
+    "text": "Dump cluster information out suitable for debugging and diagnosing cluster problems.  By default, dumps everything to stdout. You can optionally specify a directory with --output-directory.  If you specify a directory, Kubernetes will build a set of files in that directory.  By default, only dumps things in the current namespace and 'kube-system' namespace, but you can switch to a different namespace with the --namespaces flag, or specify --all-namespaces to dump all namespaces.\n\n The command also dumps the logs of all of the pods in the cluster; these logs are dumped into different directories based on namespace and pod name.\n\n```\nkubectl cluster-info dump [flags]\n```\n\n```\n  # Dump current cluster state to stdout\n  kubectl cluster-info dump\n  \n  # Dump current cluster state to /path/to/cluster-state\n  kubectl cluster-info dump --output-directory=/path/to/cluster-state\n  \n  # Dump all namespaces to stdout\n  kubectl cluster-info dump --all-namespaces\n  \n  # Dump a set of namespaces to /path/to/cluster-state\n  kubectl cluster-info dump --namespaces default,kube-system --output-directory=/path/to/cluster-state\n```",
+    "source_file": "kubectl_cluster-info_dump.md"
+  },
+  {
+    "title": "kubectl cluster-info",
+    "text": "Display addresses of the control plane and services with label kubernetes.io/cluster-service=true. To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.\n\n```\nkubectl cluster-info [flags]\n```\n\n```\n  # Print the address of the control plane and cluster services\n  kubectl cluster-info\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl explain",
+    "text": "Describe fields and structure of various resources.\n\n This command describes the fields associated with each supported API resource. Fields are identified via a simple JSONPath identifier:\n\n        &lt;type&gt;.&lt;fieldName&gt;[.&lt;fieldName&gt;]\n        \n Information about each field is retrieved from the server in OpenAPI format.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl explain TYPE [--recursive=FALSE|TRUE] [--api-version=api-version-group] [-o|--output=plaintext|plaintext-openapiv2]\n```\n\n```\n  # Get the documentation of the resource and its fields\n  kubectl explain pods\n  \n  # Get all the fields in the resource\n  kubectl explain pods --recursive\n  \n  # Get the explanation for deployment in supported api versions\n  kubectl explain deployments --api-version=apps/v1\n  \n  # Get the documentation of a specific field of a resource\n  kubectl explain pods.spec.containers\n  \n  # Get the documentation of resources in different format\n  kubectl explain deployment --output=plaintext-openapiv2\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl describe",
+    "text": "Show details of a specific resource or group of resources.\n\n Print a detailed description of the selected resources, including related resources such as events or controllers. You may select a single object by name, all objects of that type, provide a name prefix, or label selector. For example:\n\n        $ kubectl describe TYPE NAME_PREFIX\n        \n will first check for an exact match on TYPE and NAME_PREFIX. If no such resource exists, it will output details for every resource that has a name prefixed with NAME_PREFIX.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl describe (-f FILENAME | TYPE [NAME_PREFIX | -l label] | TYPE/NAME)\n```\n\n```\n  # Describe a node\n  kubectl describe nodes kubernetes-node-emt8.c.myproject.internal\n  \n  # Describe a pod\n  kubectl describe pods/nginx\n  \n  # Describe a pod identified by type and name in \"pod.json\"\n  kubectl describe -f pod.json\n  \n  # Describe all pods\n  kubectl describe pods\n  \n  # Describe pods by label name=myLabel\n  kubectl describe pods -l name=myLabel\n  \n  # Describe all pods managed by the 'frontend' replication controller\n  # (rc-created pods get the name of the rc as a prefix in the pod name)\n  kubectl describe pods frontend\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl edit",
+    "text": "Edit a resource from the default editor.\n\n The edit command allows you to directly edit any API resource you can retrieve via the command-line tools. It will open the editor defined by your KUBE_EDITOR, or EDITOR environment variables, or fall back to 'vi' for Linux or 'notepad' for Windows. When attempting to open the editor, it will first attempt to use the shell that has been defined in the 'SHELL' environment variable. If this is not defined, the default shell will be used, which is '/bin/bash' for Linux or 'cmd' for Windows.\n\n You can edit multiple objects, although changes are applied one at a time. The command accepts file names as well as command-line arguments, although the files you point to must be previously saved versions of resources.\n\n Editing is done with the API version used to fetch the resource. To edit using a specific API version, fully-qualify the resource, version, and group.\n\n The default format is YAML. To edit in JSON, specify \"-o json\".\n\n The flag --windows-line-endings can be used to force Windows line endings, otherwise the default for your operating system will be used.\n\n In the event an error occurs while updating, a temporary file will be created on disk that contains your unapplied changes. The most common error when updating a resource is another editor changing the resource on the server. When this occurs, you will have to apply your changes to the newer version of the resource, or update your temporary saved copy to include the latest resource version.\n\n```\nkubectl edit (RESOURCE/NAME | -f FILENAME)\n```\n\n```\n  # Edit the service named 'registry'\n  kubectl edit svc/registry\n  \n  # Use an alternative editor\n  KUBE_EDITOR=\"nano\" kubectl edit svc/registry\n  \n  # Edit the job 'myjob' in JSON using the v1 API format\n  kubectl edit job.v1.batch/myjob -o json\n  \n  # Edit the deployment 'mydeployment' in YAML and save the modified config in its annotation\n  kubectl edit deployment/mydeployment -o yaml --save-config\n  \n  # Edit the 'status' subresource for the 'mydeployment' deployment\n  kubectl edit deployment mydeployment --subresource='status'\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl logs",
+    "text": "Print the logs for a container in a pod or specified resource. If the pod has only one container, the container name is optional.\n\n```\nkubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]\n```\n\n```\n  # Return snapshot logs from pod nginx with only one container\n  kubectl logs nginx\n  \n  # Return snapshot logs from pod nginx, prefixing each line with the source pod and container name\n  kubectl logs nginx --prefix\n  \n  # Return snapshot logs from pod nginx, limiting output to 500 bytes\n  kubectl logs nginx --limit-bytes=500\n  \n  # Return snapshot logs from pod nginx, waiting up to 20 seconds for it to start running.\n  kubectl logs nginx --pod-running-timeout=20s\n  \n  # Return snapshot logs from pod nginx with multi containers\n  kubectl logs nginx --all-containers=true\n  \n  # Return snapshot logs from all pods in the deployment nginx\n  kubectl logs deployment/nginx --all-pods=true\n  \n  # Return snapshot logs from all containers in pods defined by label app=nginx\n  kubectl logs -l app=nginx --all-containers=true\n  \n  # Return snapshot logs from all pods defined by label app=nginx, limiting concurrent log requests to 10 pods\n  kubectl logs -l app=nginx --max-log-requests=10\n  \n  # Return snapshot of previous terminated ruby container logs from pod web-1\n  kubectl logs -p -c ruby web-1\n  \n  # Begin streaming the logs from pod nginx, continuing even if errors occur\n  kubectl logs nginx -f --ignore-errors=true\n  \n  # Begin streaming the logs of the ruby container in pod web-1\n  kubectl logs -f -c ruby web-1\n  \n  # Begin streaming the logs from all containers in pods defined by label app=nginx\n  kubectl logs -f -l app=nginx --all-containers=true\n  \n  # Display only the most recent 20 lines of output in pod nginx\n  kubectl logs --tail=20 nginx\n  \n  # Show all logs from pod nginx written in the last hour\n  kubectl logs --since=1h nginx\n  \n  # Show all logs with timestamps from pod nginx starting from August 30, 2024, at 06:00:00 UTC\n  kubectl logs nginx --since-time=2024-08-30T06:00:00Z --timestamps=true\n  \n  # Show logs from a kubelet with an expired serving certificate\n  kubectl logs --insecure-skip-tls-verify-backend nginx\n  \n  # Return snapshot logs from first container of a job named hello\n  kubectl logs job/hello\n  \n  # Return snapshot logs from container nginx-1 of a deployment named nginx\n  kubectl logs deployment/nginx -c nginx-1\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl create namespace",
+    "text": "Create a namespace with the specified name.\n\n```\nkubectl create namespace NAME [--dry-run=server|client|none]\n```\n\n```\n  # Create a new namespace named my-namespace\n  kubectl create namespace my-namespace\n```",
+    "source_file": "kubectl_create_namespace.md"
+  },
+  {
+    "title": "kubectl create token",
+    "text": "Request a service account token.\n\n```\nkubectl create token SERVICE_ACCOUNT_NAME\n```\n\n```\n  # Request a token to authenticate to the kube-apiserver as the service account \"myapp\" in the current namespace\n  kubectl create token myapp\n  \n  # Request a token for a service account in a custom namespace\n  kubectl create token myapp --namespace myns\n  \n  # Request a token with a custom expiration\n  kubectl create token myapp --duration 10m\n  \n  # Request a token with a custom audience\n  kubectl create token myapp --audience https://example.com\n  \n  # Request a token bound to an instance of a Secret object\n  kubectl create token myapp --bound-object-kind Secret --bound-object-name mysecret\n  \n  # Request a token bound to an instance of a Secret object with a specific UID\n  kubectl create token myapp --bound-object-kind Secret --bound-object-name mysecret --bound-object-uid 0d4691ed-659b-4935-a832-355f77ee47cc\n```",
+    "source_file": "kubectl_create_token.md"
+  },
+  {
+    "title": "kubectl create ingress",
+    "text": "Create an ingress with the specified name.\n\n```\nkubectl create ingress NAME --rule=host/path=service:port[,tls[=secret]] \n```\n\n```\n  # Create a single ingress called 'simple' that directs requests to foo.com/bar to svc\n  # svc1:8080 with a TLS secret \"my-cert\"\n  kubectl create ingress simple --rule=\"foo.com/bar=svc1:8080,tls=my-cert\"\n  \n  # Create a catch all ingress of \"/path\" pointing to service svc:port and Ingress Class as \"otheringress\"\n  kubectl create ingress catch-all --class=otheringress --rule=\"/path=svc:port\"\n  \n  # Create an ingress with two annotations: ingress.annotation1 and ingress.annotations2\n  kubectl create ingress annotated --class=default --rule=\"foo.com/bar=svc:port\" \\\n  --annotation ingress.annotation1=foo \\\n  --annotation ingress.annotation2=bla\n  \n  # Create an ingress with the same host and multiple paths\n  kubectl create ingress multipath --class=default \\\n  --rule=\"foo.com/=svc:port\" \\\n  --rule=\"foo.com/admin/=svcadmin:portadmin\"\n  \n  # Create an ingress with multiple hosts and the pathType as Prefix\n  kubectl create ingress ingress1 --class=default \\\n  --rule=\"foo.com/path*=svc:8080\" \\\n  --rule=\"bar.com/admin*=svc2:http\"\n  \n  # Create an ingress with TLS enabled using the default ingress certificate and different path types\n  kubectl create ingress ingtls --class=default \\\n  --rule=\"foo.com/=svc:https,tls\" \\\n  --rule=\"foo.com/path/subpath*=othersvc:8080\"\n  \n  # Create an ingress with TLS enabled using a specific secret and pathType as Prefix\n  kubectl create ingress ingsecret --class=default \\\n  --rule=\"foo.com/*=svc:8080,tls=secret1\"\n  \n  # Create an ingress with a default backend\n  kubectl create ingress ingdefault --class=default \\\n  --default-backend=defaultsvc:http \\\n  --rule=\"foo.com/*=svc:8080,tls=secret1\"\n```",
+    "source_file": "kubectl_create_ingress.md"
+  },
+  {
+    "title": "kubectl create deployment",
+    "text": "Create a deployment with the specified name.\n\n```\nkubectl create deployment NAME --image=image -- [COMMAND] [args...]\n```\n\n```\n  # Create a deployment named my-dep that runs the busybox image\n  kubectl create deployment my-dep --image=busybox\n  \n  # Create a deployment with a command\n  kubectl create deployment my-dep --image=busybox -- date\n  \n  # Create a deployment named my-dep that runs the nginx image with 3 replicas\n  kubectl create deployment my-dep --image=nginx --replicas=3\n  \n  # Create a deployment named my-dep that runs the busybox image and expose port 5701\n  kubectl create deployment my-dep --image=busybox --port=5701\n  \n  # Create a deployment named my-dep that runs multiple containers\n  kubectl create deployment my-dep --image=busybox:latest --image=ubuntu:latest --image=nginx\n```",
+    "source_file": "kubectl_create_deployment.md"
+  },
+  {
+    "title": "kubectl create service loadbalancer",
+    "text": "Create a LoadBalancer service with the specified name.\n\n```\nkubectl create service loadbalancer NAME [--tcp=port:targetPort] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new LoadBalancer service named my-lbs\n  kubectl create service loadbalancer my-lbs --tcp=5678:8080\n```",
+    "source_file": "kubectl_create_service_loadbalancer.md"
+  },
+  {
+    "title": "kubectl create service externalname",
+    "text": "Create an ExternalName service with the specified name.\n\n ExternalName service references to an external DNS address instead of only pods, which will allow application authors to reference services that exist off platform, on other clusters, or locally.\n\n```\nkubectl create service externalname NAME --external-name external.name [--dry-run=server|client|none]\n```\n\n```\n  # Create a new ExternalName service named my-ns\n  kubectl create service externalname my-ns --external-name bar.com\n```",
+    "source_file": "kubectl_create_service_externalname.md"
+  },
+  {
+    "title": "kubectl create secret",
+    "text": "Create a secret with specified type.\n\n A docker-registry type secret is for accessing a container registry.\n\n A generic type secret indicate an Opaque secret type.\n\n A tls type secret holds TLS certificate and its associated key.\n\n```\nkubectl create secret (docker-registry | generic | tls)\n```",
+    "source_file": "kubectl_create_secret.md"
+  },
+  {
+    "title": "kubectl create priorityclass",
+    "text": "Create a priority class with the specified name, value, globalDefault and description.\n\n```\nkubectl create priorityclass NAME --value=VALUE --global-default=BOOL [--dry-run=server|client|none]\n```\n\n```\n  # Create a priority class named high-priority\n  kubectl create priorityclass high-priority --value=1000 --description=\"high priority\"\n  \n  # Create a priority class named default-priority that is considered as the global default priority\n  kubectl create priorityclass default-priority --value=1000 --global-default=true --description=\"default priority\"\n  \n  # Create a priority class named high-priority that cannot preempt pods with lower priority\n  kubectl create priorityclass high-priority --value=1000 --description=\"high priority\" --preemption-policy=\"Never\"\n```",
+    "source_file": "kubectl_create_priorityclass.md"
+  },
+  {
+    "title": "kubectl create poddisruptionbudget",
+    "text": "Create a pod disruption budget with the specified name, selector, and desired minimum available pods.\n\n```\nkubectl create poddisruptionbudget NAME --selector=SELECTOR --min-available=N [--dry-run=server|client|none]\n```\n\n```\n  # Create a pod disruption budget named my-pdb that will select all pods with the app=rails label\n  # and require at least one of them being available at any point in time\n  kubectl create poddisruptionbudget my-pdb --selector=app=rails --min-available=1\n  \n  # Create a pod disruption budget named my-pdb that will select all pods with the app=nginx label\n  # and require at least half of the pods selected to be available at any point in time\n  kubectl create pdb my-pdb --selector=app=nginx --min-available=50%\n```",
+    "source_file": "kubectl_create_poddisruptionbudget.md"
+  },
+  {
+    "title": "kubectl create configmap",
+    "text": "Create a config map based on a file, directory, or specified literal value.\n\n A single config map may package one or more key/value pairs.\n\n When creating a config map based on a file, the key will default to the basename of the file, and the value will default to the file content.  If the basename is an invalid key, you may specify an alternate key.\n\n When creating a config map based on a directory, each file whose basename is a valid key in the directory will be packaged into the config map.  Any directory entries except regular files are ignored (e.g. subdirectories, symlinks, devices, pipes, etc).\n\n```\nkubectl create configmap NAME [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new config map named my-config based on folder bar\n  kubectl create configmap my-config --from-file=path/to/bar\n  \n  # Create a new config map named my-config with specified keys instead of file basenames on disk\n  kubectl create configmap my-config --from-file=key1=/path/to/bar/file1.txt --from-file=key2=/path/to/bar/file2.txt\n  \n  # Create a new config map named my-config with key1=config1 and key2=config2\n  kubectl create configmap my-config --from-literal=key1=config1 --from-literal=key2=config2\n  \n  # Create a new config map named my-config from the key=value pairs in the file\n  kubectl create configmap my-config --from-file=path/to/bar\n  \n  # Create a new config map named my-config from an env file\n  kubectl create configmap my-config --from-env-file=path/to/foo.env --from-env-file=path/to/bar.env\n```",
+    "source_file": "kubectl_create_configmap.md"
+  },
+  {
+    "title": "kubectl create service",
+    "text": "Create a service using a specified subcommand.\n\n```\nkubectl create service [flags]\n```",
+    "source_file": "kubectl_create_service.md"
+  },
+  {
+    "title": "kubectl create clusterrolebinding",
+    "text": "Create a cluster role binding for a particular cluster role.\n\n```\nkubectl create clusterrolebinding NAME --clusterrole=NAME [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```\n\n```\n  # Create a cluster role binding for user1, user2, and group1 using the cluster-admin cluster role\n  kubectl create clusterrolebinding cluster-admin --clusterrole=cluster-admin --user=user1 --user=user2 --group=group1\n```",
+    "source_file": "kubectl_create_clusterrolebinding.md"
+  },
+  {
+    "title": "kubectl create secret generic",
+    "text": "Create a secret based on a file, directory, or specified literal value.\n\n A single secret may package one or more key/value pairs.\n\n When creating a secret based on a file, the key will default to the basename of the file, and the value will default to the file content. If the basename is an invalid key or you wish to chose your own, you may specify an alternate key.\n\n When creating a secret based on a directory, each file whose basename is a valid key in the directory will be packaged into the secret. Any directory entries except regular files are ignored (e.g. subdirectories, symlinks, devices, pipes, etc).\n\n```\nkubectl create secret generic NAME [--type=string] [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new secret named my-secret with keys for each file in folder bar\n  kubectl create secret generic my-secret --from-file=path/to/bar\n  \n  # Create a new secret named my-secret with specified keys instead of names on disk\n  kubectl create secret generic my-secret --from-file=ssh-privatekey=path/to/id_rsa --from-file=ssh-publickey=path/to/id_rsa.pub\n  \n  # Create a new secret named my-secret with key1=supersecret and key2=topsecret\n  kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret\n  \n  # Create a new secret named my-secret using a combination of a file and a literal\n  kubectl create secret generic my-secret --from-file=ssh-privatekey=path/to/id_rsa --from-literal=passphrase=topsecret\n  \n  # Create a new secret named my-secret from env files\n  kubectl create secret generic my-secret --from-env-file=path/to/foo.env --from-env-file=path/to/bar.env\n```",
+    "source_file": "kubectl_create_secret_generic.md"
+  },
+  {
+    "title": "kubectl create quota",
+    "text": "Create a resource quota with the specified name, hard limits, and optional scopes.\n\n```\nkubectl create quota NAME [--hard=key1=value1,key2=value2] [--scopes=Scope1,Scope2] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new resource quota named my-quota\n  kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10\n  \n  # Create a new resource quota named best-effort\n  kubectl create quota best-effort --hard=pods=100 --scopes=BestEffort\n```",
+    "source_file": "kubectl_create_quota.md"
+  },
+  {
+    "title": "kubectl create secret tls",
+    "text": "Create a TLS secret from the given public/private key pair.\n\n The public/private key pair must exist beforehand. The public key certificate must be .PEM encoded and match the given private key.\n\n```\nkubectl create secret tls NAME --cert=path/to/cert/file --key=path/to/key/file [--dry-run=server|client|none]\n```\n\n```\n  # Create a new TLS secret named tls-secret with the given key pair\n  kubectl create secret tls tls-secret --cert=path/to/tls.crt --key=path/to/tls.key\n```",
+    "source_file": "kubectl_create_secret_tls.md"
+  },
+  {
+    "title": "kubectl create cronjob",
+    "text": "Create a cron job with the specified name.\n\n```\nkubectl create cronjob NAME --image=image --schedule='0/5 * * * ?' -- [COMMAND] [args...] [flags]\n```\n\n```\n  # Create a cron job\n  kubectl create cronjob my-job --image=busybox --schedule=\"*/1 * * * *\"\n  \n  # Create a cron job with a command\n  kubectl create cronjob my-job --image=busybox --schedule=\"*/1 * * * *\" -- date\n```",
+    "source_file": "kubectl_create_cronjob.md"
+  },
+  {
+    "title": "kubectl create job",
+    "text": "Create a job with the specified name.\n\n```\nkubectl create job NAME --image=image [--from=cronjob/name] -- [COMMAND] [args...]\n```\n\n```\n  # Create a job\n  kubectl create job my-job --image=busybox\n  \n  # Create a job with a command\n  kubectl create job my-job --image=busybox -- date\n  \n  # Create a job from a cron job named \"a-cronjob\"\n  kubectl create job test-job --from=cronjob/a-cronjob\n```",
+    "source_file": "kubectl_create_job.md"
+  },
+  {
+    "title": "kubectl create service clusterip",
+    "text": "Create a ClusterIP service with the specified name.\n\n```\nkubectl create service clusterip NAME [--tcp=<port>:<targetPort>] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new ClusterIP service named my-cs\n  kubectl create service clusterip my-cs --tcp=5678:8080\n  \n  # Create a new ClusterIP service named my-cs (in headless mode)\n  kubectl create service clusterip my-cs --clusterip=\"None\"\n```",
+    "source_file": "kubectl_create_service_clusterip.md"
+  },
+  {
+    "title": "kubectl create role",
+    "text": "Create a role with single rule.\n\n```\nkubectl create role NAME --verb=verb --resource=resource.group/subresource [--resource-name=resourcename] [--dry-run=server|client|none]\n```\n\n```\n  # Create a role named \"pod-reader\" that allows user to perform \"get\", \"watch\" and \"list\" on pods\n  kubectl create role pod-reader --verb=get --verb=list --verb=watch --resource=pods\n  \n  # Create a role named \"pod-reader\" with ResourceName specified\n  kubectl create role pod-reader --verb=get --resource=pods --resource-name=readablepod --resource-name=anotherpod\n  \n  # Create a role named \"foo\" with API Group specified\n  kubectl create role foo --verb=get,list,watch --resource=rs.apps\n  \n  # Create a role named \"foo\" with SubResource specified\n  kubectl create role foo --verb=get,list,watch --resource=pods,pods/status\n```",
+    "source_file": "kubectl_create_role.md"
+  },
+  {
+    "title": "kubectl create rolebinding",
+    "text": "Create a role binding for a particular role or cluster role.\n\n```\nkubectl create rolebinding NAME --clusterrole=NAME|--role=NAME [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```\n\n```\n  # Create a role binding for user1, user2, and group1 using the admin cluster role\n  kubectl create rolebinding admin --clusterrole=admin --user=user1 --user=user2 --group=group1\n  \n  # Create a role binding for service account monitoring:sa-dev using the admin role\n  kubectl create rolebinding admin-binding --role=admin --serviceaccount=monitoring:sa-dev\n```",
+    "source_file": "kubectl_create_rolebinding.md"
+  },
+  {
+    "title": "kubectl create secret docker-registry",
+    "text": "Create a new secret for use with Docker registries.\n        \n        Dockercfg secrets are used to authenticate against Docker registries.\n        \n        When using the Docker command line to push images, you can authenticate to a given registry by running:\n        '$ docker login DOCKER_REGISTRY_SERVER --username=DOCKER_USER --password=DOCKER_PASSWORD --email=DOCKER_EMAIL'.\n        \n That produces a ~/.dockercfg file that is used by subsequent 'docker push' and 'docker pull' commands to authenticate to the registry. The email address is optional.\n\n        When creating applications, you may have a Docker registry that requires authentication.  In order for the\n        nodes to pull images on your behalf, they must have the credentials.  You can provide this information\n        by creating a dockercfg secret and attaching it to your service account.\n\n```\nkubectl create secret docker-registry NAME --docker-username=user --docker-password=password --docker-email=email [--docker-server=string] [--from-file=[key=]source] [--dry-run=server|client|none]\n```\n\n```\n  # If you do not already have a .dockercfg file, create a dockercfg secret directly\n  kubectl create secret docker-registry my-secret --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL\n  \n  # Create a new secret named my-secret from ~/.docker/config.json\n  kubectl create secret docker-registry my-secret --from-file=path/to/.docker/config.json\n```",
+    "source_file": "kubectl_create_secret_docker-registry.md"
+  },
+  {
+    "title": "kubectl create service nodeport",
+    "text": "Create a NodePort service with the specified name.\n\n```\nkubectl create service nodeport NAME [--tcp=port:targetPort] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new NodePort service named my-ns\n  kubectl create service nodeport my-ns --tcp=5678:8080\n```",
+    "source_file": "kubectl_create_service_nodeport.md"
+  },
+  {
+    "title": "kubectl create serviceaccount",
+    "text": "Create a service account with the specified name.\n\n```\nkubectl create serviceaccount NAME [--dry-run=server|client|none]\n```\n\n```\n  # Create a new service account named my-service-account\n  kubectl create serviceaccount my-service-account\n```",
+    "source_file": "kubectl_create_serviceaccount.md"
+  },
+  {
+    "title": "kubectl create clusterrole",
+    "text": "Create a cluster role.\n\n```\nkubectl create clusterrole NAME --verb=verb --resource=resource.group [--resource-name=resourcename] [--dry-run=server|client|none]\n```\n\n```\n  # Create a cluster role named \"pod-reader\" that allows user to perform \"get\", \"watch\" and \"list\" on pods\n  kubectl create clusterrole pod-reader --verb=get,list,watch --resource=pods\n  \n  # Create a cluster role named \"pod-reader\" with ResourceName specified\n  kubectl create clusterrole pod-reader --verb=get --resource=pods --resource-name=readablepod --resource-name=anotherpod\n  \n  # Create a cluster role named \"foo\" with API Group specified\n  kubectl create clusterrole foo --verb=get,list,watch --resource=rs.apps\n  \n  # Create a cluster role named \"foo\" with SubResource specified\n  kubectl create clusterrole foo --verb=get,list,watch --resource=pods,pods/status\n  \n  # Create a cluster role name \"foo\" with NonResourceURL specified\n  kubectl create clusterrole \"foo\" --verb=get --non-resource-url=/logs/*\n  \n  # Create a cluster role name \"monitoring\" with AggregationRule specified\n  kubectl create clusterrole monitoring --aggregation-rule=\"rbac.example.com/aggregate-to-monitoring=true\"\n```",
+    "source_file": "kubectl_create_clusterrole.md"
+  },
+  {
+    "title": "kubectl create",
+    "text": "Create a resource from a file or from stdin.\n\n JSON and YAML formats are accepted.\n\n```\nkubectl create -f FILENAME\n```\n\n```\n  # Create a pod using the data in pod.json\n  kubectl create -f ./pod.json\n  \n  # Create a pod based on the JSON passed into stdin\n  cat pod.json | kubectl create -f -\n  \n  # Edit the data in registry.yaml in JSON then create the resource using the edited data\n  kubectl create -f registry.yaml --edit -o json\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl api-versions",
+    "text": "Print the supported API versions on the server, in the form of \"group/version\".\n\n```\nkubectl api-versions\n```\n\n```\n  # Print the supported API versions\n  kubectl api-versions\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl exec",
+    "text": "Execute a command in a container.\n\n```\nkubectl exec (POD | TYPE/NAME) [-c CONTAINER] [flags] -- COMMAND [args...]\n```\n\n```\n  # Get output from running the 'date' command from pod mypod, using the first container by default\n  kubectl exec mypod -- date\n  \n  # Get output from running the 'date' command in ruby-container from pod mypod\n  kubectl exec mypod -c ruby-container -- date\n  \n  # Switch to raw terminal mode; sends stdin to 'bash' in ruby-container from pod mypod\n  # and sends stdout/stderr from 'bash' back to the client\n  kubectl exec mypod -c ruby-container -i -t -- bash -il\n  \n  # List contents of /usr from the first container of pod mypod and sort by modification time\n  # If the command you want to execute in the pod has any flags in common (e.g. -i),\n  # you must use two dashes (--) to separate your command's flags/arguments\n  # Also note, do not surround your command and its flags/arguments with quotes\n  # unless that is how you would execute it normally (i.e., do ls -t /usr, not \"ls -t /usr\")\n  kubectl exec mypod -i -t -- ls -t /usr\n  \n  # Get output from running 'date' command from the first pod of the deployment mydeployment, using the first container by default\n  kubectl exec deploy/mydeployment -- date\n  \n  # Get output from running 'date' command from the first pod of the service myservice, using the first container by default\n  kubectl exec svc/myservice -- date\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl label",
+    "text": "Update the labels on a resource.\n\n  *  A label key and value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters each.\n  *  Optionally, the key can begin with a DNS subdomain prefix and a single '/', like example.com/my-app.\n  *  If --overwrite is true, then existing labels can be overwritten, otherwise attempting to overwrite a label will result in an error.\n  *  If --resource-version is specified, then updates will use this resource version, otherwise the existing resource-version will be used.\n\n```\nkubectl label [--overwrite] (-f FILENAME | TYPE NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--resource-version=version]\n```\n\n```\n  # Update pod 'foo' with the label 'unhealthy' and the value 'true'\n  kubectl label pods foo unhealthy=true\n  \n  # Update pod 'foo' with the label 'status' and the value 'unhealthy', overwriting any existing value\n  kubectl label --overwrite pods foo status=unhealthy\n  \n  # Update all pods in the namespace\n  kubectl label pods --all status=unhealthy\n  \n  # Update a pod identified by the type and name in \"pod.json\"\n  kubectl label -f pod.json status=unhealthy\n  \n  # Update pod 'foo' only if the resource is unchanged from version 1\n  kubectl label pods foo status=unhealthy --resource-version=1\n  \n  # Update pod 'foo' by removing a label named 'bar' if it exists\n  # Does not require the --overwrite flag\n  kubectl label pods foo bar-\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl get",
+    "text": "Display one or many resources.\n\n Prints a table of the most important information about the specified resources. You can filter the list using a label selector and the --selector flag. If the desired resource type is namespaced you will only see results in the current namespace if you don't specify any namespace.\n\n By specifying the output as 'template' and providing a Go template as the value of the --template flag, you can filter the attributes of the fetched resources.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl get [(-o|--output=)json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-as-json|jsonpath-file|custom-columns|custom-columns-file|wide] (TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags]\n```\n\n```\n  # List all pods in ps output format\n  kubectl get pods\n  \n  # List all pods in ps output format with more information (such as node name)\n  kubectl get pods -o wide\n  \n  # List a single replication controller with specified NAME in ps output format\n  kubectl get replicationcontroller web\n  \n  # List deployments in JSON output format, in the \"v1\" version of the \"apps\" API group\n  kubectl get deployments.v1.apps -o json\n  \n  # List a single pod in JSON output format\n  kubectl get -o json pod web-pod-13je7\n  \n  # List a pod identified by type and name specified in \"pod.yaml\" in JSON output format\n  kubectl get -f pod.yaml -o json\n  \n  # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml\n  kubectl get -k dir/\n  \n  # Return only the phase value of the specified pod\n  kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}\n  \n  # List resource information in custom columns\n  kubectl get pod test-pod -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image\n  \n  # List all replication controllers and services together in ps output format\n  kubectl get rc,services\n  \n  # List one or more resources by their type and names\n  kubectl get rc/web service/frontend pods/web-pod-13je7\n  \n  # List the 'status' subresource for a single pod\n  kubectl get pod web-pod-13je7 --subresource status\n  \n  # List all deployments in namespace 'backend'\n  kubectl get deployments.apps --namespace backend\n  \n  # List all pods existing in all namespaces\n  kubectl get pods --all-namespaces\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl delete",
+    "text": "Delete resources by file names, stdin, resources and names, or by resources and label selector.\n\n JSON and YAML formats are accepted. Only one type of argument may be specified: file names, resources and names, or resources and label selector.\n\n Some resources, such as pods, support graceful deletion. These resources define a default period before they are forcibly terminated (the grace period) but you may override that value with the --grace-period flag, or pass --now to set a grace-period of 1. Because these resources often represent entities in the cluster, deletion may not be acknowledged immediately. If the node hosting a pod is down or cannot reach the API server, termination may take significantly longer than the grace period. To force delete a resource, you must specify the --force flag. Note: only a subset of resources support graceful deletion. In absence of the support, the --grace-period flag is ignored.\n\n IMPORTANT: Force deleting pods does not wait for confirmation that the pod's processes have been terminated, which can leave those processes running until the node detects the deletion and completes graceful deletion. If your processes use shared storage or talk to a remote API and depend on the name of the pod to identify themselves, force deleting those pods may result in multiple processes running on different machines using the same identification which may lead to data corruption or inconsistency. Only force delete pods when you are sure the pod is terminated, or if your application can tolerate multiple copies of the same pod running at once. Also, if you force delete pods, the scheduler may place new pods on those nodes before the node has released those resources and causing those pods to be evicted immediately.\n\n Note that the delete command does NOT do resource version checks, so if someone submits an update to a resource right when you submit a delete, their update will be lost along with the rest of the resource.\n\n After a CustomResourceDefinition is deleted, invalidation of discovery cache may take up to 6 hours. If you don't want to wait, you might want to run \"kubectl api-resources\" to refresh the discovery cache.\n\n```\nkubectl delete ([-f FILENAME] | [-k DIRECTORY] | TYPE [(NAME | -l label | --all)])\n```\n\n```\n  # Delete a pod using the type and name specified in pod.json\n  kubectl delete -f ./pod.json\n  \n  # Delete resources from a directory containing kustomization.yaml - e.g. dir/kustomization.yaml\n  kubectl delete -k dir\n  \n  # Delete resources from all files that end with '.json'\n  kubectl delete -f '*.json'\n  \n  # Delete a pod based on the type and name in the JSON passed into stdin\n  cat pod.json | kubectl delete -f -\n  \n  # Delete pods and services with same names \"baz\" and \"foo\"\n  kubectl delete pod,service baz foo\n  \n  # Delete pods and services with label name=myLabel\n  kubectl delete pods,services -l name=myLabel\n  \n  # Delete a pod with minimal delay\n  kubectl delete pod foo --now\n  \n  # Force delete a pod on a dead node\n  kubectl delete pod foo --force\n  \n  # Delete all pods\n  kubectl delete pods --all\n  \n  # Delete all pods only if the user confirms the deletion\n  kubectl delete pods --all --interactive\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl top pod",
+    "text": "Display resource (CPU/memory) usage of pods.\n\n The 'top pod' command allows you to see the resource consumption of pods.\n\n Due to the metrics pipeline delay, they may be unavailable for a few minutes since pod creation.\n\n```\nkubectl top pod [NAME | -l label]\n```\n\n```\n  # Show metrics for all pods in the default namespace\n  kubectl top pod\n  \n  # Show metrics for all pods in the given namespace\n  kubectl top pod --namespace=NAMESPACE\n  \n  # Show metrics for a given pod and its containers\n  kubectl top pod POD_NAME --containers\n  \n  # Show metrics for the pods defined by label name=myLabel\n  kubectl top pod -l name=myLabel\n```",
+    "source_file": "kubectl_top_pod.md"
+  },
+  {
+    "title": "kubectl top node",
+    "text": "Display resource (CPU/memory) usage of nodes.\n\n The top-node command allows you to see the resource consumption of nodes.\n\n```\nkubectl top node [NAME | -l label]\n```\n\n```\n  # Show metrics for all nodes\n  kubectl top node\n  \n  # Show metrics for a given node\n  kubectl top node NODE_NAME\n```",
+    "source_file": "kubectl_top_node.md"
+  },
+  {
+    "title": "kubectl top",
+    "text": "Display resource (CPU/memory) usage.\n\n This command provides a view of recent resource consumption for nodes and pods. It fetches metrics from the Metrics Server, which aggregates this data from the kubelet on each node. The Metrics Server must be installed and running in the cluster for this command to work.\n\n The metrics shown are specifically optimized for Kubernetes autoscaling decisions, such as those made by the Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA). Because of this, the values may not match those from standard OS tools like 'top', as the metrics are designed to provide a stable signal for autoscalers rather than for pinpoint accuracy.\n\n When to use this command:\n\n  *  For on-the-fly spot-checks of resource usage (e.g. identify which pods are consuming the most resources at a glance, or get a quick sense of the load on your nodes)\n  *  Understand current resource consumption patterns\n  *  Validate the behavior of your HPA or VPA configurations by seeing the metrics they use for scaling decisions.\n\n It is not intended to be a replacement for full-featured monitoring solutions. Its primary design goal is to provide a low-overhead signal for autoscalers, not to be a perfectly accurate monitoring tool. For high-accuracy reporting, historical analysis, dashboarding, or alerting, you should use a dedicated monitoring solution.\n\n```\nkubectl top [flags]\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl scale",
+    "text": "Set a new size for a deployment, replica set, replication controller, or stateful set.\n\n Scale also allows users to specify one or more preconditions for the scale action.\n\n If --current-replicas or --resource-version is specified, it is validated before the scale is attempted, and it is guaranteed that the precondition holds true when the scale is sent to the server.\n\n```\nkubectl scale [--resource-version=version] [--current-replicas=count] --replicas=COUNT (-f FILENAME | TYPE NAME)\n```\n\n```\n  # Scale a replica set named 'foo' to 3\n  kubectl scale --replicas=3 rs/foo\n  \n  # Scale a resource identified by type and name specified in \"foo.yaml\" to 3\n  kubectl scale --replicas=3 -f foo.yaml\n  \n  # If the deployment named mysql's current size is 2, scale mysql to 3\n  kubectl scale --current-replicas=2 --replicas=3 deployment/mysql\n  \n  # Scale multiple replication controllers\n  kubectl scale --replicas=5 rc/example1 rc/example2 rc/example3\n  \n  # Scale stateful set named 'web' to 3\n  kubectl scale --replicas=3 statefulset/web\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl taint",
+    "text": "Update the taints on one or more nodes.\n\n  *  A taint consists of a key, value, and effect. As an argument here, it is expressed as key=value:effect.\n  *  The key must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters.\n  *  Optionally, the key can begin with a DNS subdomain prefix and a single '/', like example.com/my-app.\n  *  The value is optional. If given, it must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters.\n  *  The effect must be NoSchedule, PreferNoSchedule or NoExecute.\n  *  Currently taint can only apply to node.\n\n```\nkubectl taint NODE NAME KEY_1=VAL_1:TAINT_EFFECT_1 ... KEY_N=VAL_N:TAINT_EFFECT_N\n```\n\n```\n  # Update node 'foo' with a taint with key 'dedicated' and value 'special-user' and effect 'NoSchedule'\n  # If a taint with that key and effect already exists, its value is replaced as specified\n  kubectl taint nodes foo dedicated=special-user:NoSchedule\n  \n  # Remove from node 'foo' the taint with key 'dedicated' and effect 'NoSchedule' if one exists\n  kubectl taint nodes foo dedicated:NoSchedule-\n  \n  # Remove from node 'foo' all the taints with key 'dedicated'\n  kubectl taint nodes foo dedicated-\n  \n  # Add a taint with key 'dedicated' on nodes having label myLabel=X\n  kubectl taint node -l myLabel=X  dedicated=foo:PreferNoSchedule\n  \n  # Add to node 'foo' a taint with key 'bar' and no value\n  kubectl taint nodes foo bar:NoSchedule\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl rollout undo",
+    "text": "Roll back to a previous rollout.\n\n```\nkubectl rollout undo (TYPE NAME | TYPE/NAME) [flags]\n```\n\n```\n  # Roll back to the previous deployment\n  kubectl rollout undo deployment/abc\n  \n  # Roll back to daemonset revision 3\n  kubectl rollout undo daemonset/abc --to-revision=3\n  \n  # Roll back to the previous deployment with dry-run\n  kubectl rollout undo --dry-run=server deployment/abc\n```",
+    "source_file": "kubectl_rollout_undo.md"
+  },
+  {
+    "title": "kubectl rollout resume",
+    "text": "Resume a paused resource.\n\n Paused resources will not be reconciled by a controller. By resuming a resource, we allow it to be reconciled again. Currently only deployments support being resumed.\n\n```\nkubectl rollout resume RESOURCE\n```\n\n```\n  # Resume an already paused deployment\n  kubectl rollout resume deployment/nginx\n```",
+    "source_file": "kubectl_rollout_resume.md"
+  },
+  {
+    "title": "kubectl rollout restart",
+    "text": "Restart a resource.\n\n        Resource rollout will be restarted.\n\n```\nkubectl rollout restart RESOURCE\n```\n\n```\n  # Restart all deployments in the test-namespace namespace\n  kubectl rollout restart deployment -n test-namespace\n  \n  # Restart a deployment\n  kubectl rollout restart deployment/nginx\n  \n  # Restart a daemon set\n  kubectl rollout restart daemonset/abc\n  \n  # Restart deployments with the app=nginx label\n  kubectl rollout restart deployment --selector=app=nginx\n```",
+    "source_file": "kubectl_rollout_restart.md"
+  },
+  {
+    "title": "kubectl rollout status",
+    "text": "Show the status of the rollout.\n\n By default 'rollout status' will watch the status of the latest rollout until it's done. If you don't want to wait for the rollout to finish then you can use --watch=false. Note that if a new rollout starts in-between, then 'rollout status' will continue watching the latest revision. If you want to pin to a specific revision and abort if it is rolled over by another revision, use --revision=N where N is the revision you need to watch for.\n\n```\nkubectl rollout status (TYPE NAME | TYPE/NAME) [flags]\n```\n\n```\n  # Watch the rollout status of a deployment\n  kubectl rollout status deployment/nginx\n```",
+    "source_file": "kubectl_rollout_status.md"
+  },
+  {
+    "title": "kubectl rollout pause",
+    "text": "Mark the provided resource as paused.\n\n Paused resources will not be reconciled by a controller. Use \"kubectl rollout resume\" to resume a paused resource. Currently only deployments support being paused.\n\n```\nkubectl rollout pause RESOURCE\n```\n\n```\n  # Mark the nginx deployment as paused\n  # Any current state of the deployment will continue its function; new updates\n  # to the deployment will not have an effect as long as the deployment is paused\n  kubectl rollout pause deployment/nginx\n```",
+    "source_file": "kubectl_rollout_pause.md"
+  },
+  {
+    "title": "kubectl rollout",
+    "text": "Manage the rollout of one or many resources.\n        \n Valid resource types include:\n\n  *  deployments\n  *  daemonsets\n  *  statefulsets\n\n```\nkubectl rollout SUBCOMMAND\n```\n\n```\n  # Rollback to the previous deployment\n  kubectl rollout undo deployment/abc\n  \n  # Check the rollout status of a daemonset\n  kubectl rollout status daemonset/foo\n  \n  # Restart a deployment\n  kubectl rollout restart deployment/abc\n  \n  # Restart deployments with the 'app=nginx' label\n  kubectl rollout restart deployment --selector=app=nginx\n```",
+    "source_file": "_index.md"
+  },
+  {
+    "title": "kubectl rollout history",
+    "text": "View previous rollout revisions and configurations.\n\n```\nkubectl rollout history (TYPE NAME | TYPE/NAME) [flags]\n```\n\n```\n  # View the rollout history of a deployment\n  kubectl rollout history deployment/abc\n  \n  # View the details of daemonset revision 3\n  kubectl rollout history daemonset/abc --revision=3\n```",
+    "source_file": "kubectl_rollout_history.md"
+  },
+  {
+    "title": "kubectl apply set-last-applied",
+    "text": "Set the latest last-applied-configuration annotations by setting it to match the contents of a file. This results in the last-applied-configuration being updated as though 'kubectl apply -f&lt;file&gt; ' was run, without updating any other parts of the object.\n\n```\nkubectl apply set-last-applied -f FILENAME\n```\n\n```\n  # Set the last-applied-configuration of a resource to match the contents of a file\n  kubectl apply set-last-applied -f deploy.yaml\n  \n  # Execute set-last-applied against each configuration file in a directory\n  kubectl apply set-last-applied -f path/\n  \n  # Set the last-applied-configuration of a resource to match the contents of a file; will create the annotation if it does not already exist\n  kubectl apply set-last-applied -f deploy.yaml --create-annotation=true\n```",
+    "source_file": "kubectl_apply_set-last-applied.md"
+  },
+  {
+    "title": "kubectl apply edit-last-applied",
+    "text": "Edit the latest last-applied-configuration annotations of resources from the default editor.\n\n The edit-last-applied command allows you to directly edit any API resource you can retrieve via the command-line tools. It will open the editor defined by your KUBE_EDITOR, or EDITOR environment variables, or fall back to 'vi' for Linux or 'notepad' for Windows. You can edit multiple objects, although changes are applied one at a time. The command accepts file names as well as command-line arguments, although the files you point to must be previously saved versions of resources.\n\n The default format is YAML. To edit in JSON, specify \"-o json\".\n\n The flag --windows-line-endings can be used to force Windows line endings, otherwise the default for your operating system will be used.\n\n In the event an error occurs while updating, a temporary file will be created on disk that contains your unapplied changes. The most common error when updating a resource is another editor changing the resource on the server. When this occurs, you will have to apply your changes to the newer version of the resource, or update your temporary saved copy to include the latest resource version.\n\n```\nkubectl apply edit-last-applied (RESOURCE/NAME | -f FILENAME)\n```\n\n```\n  # Edit the last-applied-configuration annotations by type/name in YAML\n  kubectl apply edit-last-applied deployment/nginx\n  \n  # Edit the last-applied-configuration annotations by file in JSON\n  kubectl apply edit-last-applied -f deploy.yaml -o json\n```",
+    "source_file": "kubectl_apply_edit-last-applied.md"
+  },
+  {
+    "title": "kubectl apply view-last-applied",
+    "text": "View the latest last-applied-configuration annotations by type/name or file.\n\n The default output will be printed to stdout in YAML format. You can use the -o option to change the output format.\n\n```\nkubectl apply view-last-applied (TYPE [NAME | -l label] | TYPE/NAME | -f FILENAME)\n```\n\n```\n  # View the last-applied-configuration annotations by type/name in YAML\n  kubectl apply view-last-applied deployment/nginx\n  \n  # View the last-applied-configuration annotations by file in JSON\n  kubectl apply view-last-applied -f deploy.yaml -o json\n```",
+    "source_file": "kubectl_apply_view-last-applied.md"
+  },
+  {
+    "title": "kubectl apply",
+    "text": "Apply a configuration to a resource by file name or stdin. The resource name must be specified. This resource will be created if it doesn't exist yet. To use 'apply', always create the resource initially with either 'apply' or 'create --save-config'.\n\n JSON and YAML formats are accepted.\n\n Alpha Disclaimer: the --prune functionality is not yet complete. Do not use unless you are aware of what the current state is. See https://issues.k8s.io/34274.\n\n```\nkubectl apply (-f FILENAME | -k DIRECTORY)\n```\n\n```\n  # Apply the configuration in pod.json to a pod\n  kubectl apply -f ./pod.json\n  \n  # Apply resources from a directory containing kustomization.yaml - e.g. dir/kustomization.yaml\n  kubectl apply -k dir/\n  \n  # Apply the JSON passed into stdin to a pod\n  cat pod.json | kubectl apply -f -\n  \n  # Apply the configuration from all files that end with '.json'\n  kubectl apply -f '*.json'\n  \n  # Note: --prune is still in Alpha\n  # Apply the configuration in manifest.yaml that matches label app=nginx and delete all other resources that are not in the file and match label app=nginx\n  kubectl apply --prune -f manifest.yaml -l app=nginx\n  \n  # Apply the configuration in manifest.yaml and delete all the other config maps that are not in the file\n  kubectl apply --prune -f manifest.yaml --all --prune-allowlist=core/v1/ConfigMap\n```",
+    "source_file": "_index.md"
+  }
+]

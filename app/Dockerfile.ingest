@@ -1,0 +1,18 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Set environment variables to avoid OpenMP conflicts
+ENV OMP_NUM_THREADS=1
+ENV OPENBLAS_NUM_THREADS=1
+ENV MKL_NUM_THREADS=1
+
+# Install dependencies
+COPY requirements-ingest.txt .
+RUN pip install --no-cache-dir -r requirements-ingest.txt
+
+# Copy the ingestion script
+COPY index-documents.py .
+
+# Run the ingestion script
+CMD ["python", "index-documents.py"]

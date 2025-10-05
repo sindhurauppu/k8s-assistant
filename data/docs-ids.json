@@ -1,0 +1,1376 @@
+[
+  {
+    "title": "Label",
+    "text": "Tags objects with identifying attributes that are meaningful and relevant to users.\n\n<!--more--> \n\nLabels are key/value pairs that are attached to objects such as . They are used to organize and to select subsets of objects.",
+    "source_file": "label.md",
+    "id": "b021df6a"
+  },
+  {
+    "title": "Probe",
+    "text": "A check that the  periodically performs against a container that is \nrunning in a pod, that will define container's state and health and informing container's lifecycle.\n\n<!--more-->\n \nTo learn more, read [container probes](/docs/concepts/workloads/pods/pod-lifecycle/#container-probes).",
+    "source_file": "probe.md",
+    "id": "76d16796"
+  },
+  {
+    "title": "LimitRange",
+    "text": "Constraints resource consumption per  or ,\nspecified for a particular .\n\n<!--more--> \n\nA [LimitRange](/docs/concepts/policy/limit-range/) either limits the quantity of \nthat can be created (for a particular resource type),\nor the amount of \nthat may be requested/consumed by individual containers or Pods within a namespace.",
+    "source_file": "limitrange.md",
+    "id": "0ad333e2"
+  },
+  {
+    "title": "Dynamic Resource Allocation",
+    "text": "A Kubernetes feature that lets you request and share resources among Pods.\nThese resources are often attached\n like hardware\naccelerators.\n\n<!--more-->\n\nWith DRA, device drivers and cluster admins define device _classes_ that are\navailable to _claim_ in workloads. Kubernetes allocates matching devices to\nspecific claims and places the corresponding Pods on nodes that can access the\nallocated devices.",
+    "source_file": "dra.md",
+    "id": "6a399164"
+  },
+  {
+    "title": "Platform Developer",
+    "text": "A person who customizes the Kubernetes platform to fit the needs of their project.\n\n<!--more--> \n\nA platform developer may, for example, use [Custom Resources](/docs/concepts/extend-kubernetes/api-extension/custom-resources/) or\n[Extend the Kubernetes API with the aggregation layer](/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)\nto add functionality to their instance of Kubernetes, specifically for their application.\nSome Platform Developers are also  and\ndevelop extensions which are contributed to the Kubernetes community.\nOthers develop closed-source commercial or site-specific extensions.",
+    "source_file": "platform-developer.md",
+    "id": "dc1d4e05"
+  },
+  {
+    "title": "Reviewer",
+    "text": "A person who reviews code for quality and correctness on some part of the project.\n\n<!--more--> \n\nReviewers are knowledgeable about both the codebase and software engineering principles. Reviewer status is scoped to a part of the codebase.",
+    "source_file": "reviewer.md",
+    "id": "8e58cd87"
+  },
+  {
+    "title": "CustomResourceDefinition",
+    "text": "A kind of  that defines a new custom API to add\nto your Kubernetes API server, without building a complete custom server.\n\n<!--more-->\n\nCustomResourceDefinitions let you extend the Kubernetes API for your environment if the built-in\n can't meet your needs.",
+    "source_file": "customresourcedefinition.md",
+    "id": "99bc4b85"
+  },
+  {
+    "title": "Upstream (disambiguation)",
+    "text": "May refer to: core Kubernetes or the source repo from which a repo was forked.\n\n<!--more--> \n\n* In the **Kubernetes Community**: Conversations often use *upstream* to mean the core Kubernetes codebase, which the general ecosystem, other code, or third-party tools rely upon. For example, [community members](#term-member) may suggest that a feature is moved upstream so that it is in the core codebase instead of in a plugin or third-party tool.\n* In **GitHub** or **git**: The convention is to refer to a source repo as *upstream*, whereas the forked repo is considered *downstream*.",
+    "source_file": "upstream.md",
+    "id": "e21cb987"
+  },
+  {
+    "title": "Service Catalog",
+    "text": "A former extension API that enabled applications running in Kubernetes clusters to easily use external managed software offerings, such as a datastore service offered by a cloud provider.\n\n<!--more--> \n\nIt provided a way to list, provision, and bind with external  without needing detailed knowledge about how those services would be created or managed.",
+    "source_file": "service-catalog.md",
+    "id": "0bcfa281"
+  },
+  {
+    "title": "Admission Controller",
+    "text": "A piece of code that intercepts requests to the Kubernetes API server prior to persistence of the object.\n\n<!--more-->\n\nAdmission controllers are configurable for the Kubernetes API server and may be \"validating\", \"mutating\", or\nboth. Any admission controller may reject the request. Mutating controllers may modify the objects they admit;\nvalidating controllers may not.\n\n* [Admission controllers in the Kubernetes documentation](/docs/reference/access-authn-authz/admission-controllers/)",
+    "source_file": "admission-controller.md",
+    "id": "0becb50d"
+  },
+  {
+    "title": "Cluster Operations",
+    "text": "The work involved in managing a Kubernetes cluster: managing\nday-to-day operations, and co-ordinating upgrades.\n\n<!--more-->\n\n Examples of cluster operations work include: deploying new Nodes to\nscale the cluster; performing software upgrades; implementing security\ncontrols; adding or removing storage; configuring cluster networking;\nmanaging cluster-wide observability; and responding to events.",
+    "source_file": "cluster-operations.md",
+    "id": "3786473d"
+  },
+  {
+    "title": "Persistent Volume Claim",
+    "text": "Claims storage  defined in a\n, so that the storage can be mounted as\na volume in a .\n\n<!--more--> \n\nSpecifies the amount of storage, how the storage will be accessed (read-only, read-write and/or exclusive) and how it is reclaimed (retained, recycled or deleted). Details of the storage itself are described in the PersistentVolume object.",
+    "source_file": "persistent-volume-claim.md",
+    "id": "34171d17"
+  },
+  {
+    "title": "Contributor",
+    "text": "Someone who donates code, documentation, or their time to help the Kubernetes project or community.\n\n<!--more--> \n\nContributions include pull requests (PRs), issues, feedback,  participation, or organizing community events.",
+    "source_file": "contributor.md",
+    "id": "23d21ad4"
+  },
+  {
+    "title": "Endpoints",
+    "text": "An endpoint of a  is one of the  (or external servers) that implements the Service.\n\n<!--more-->\nFor Services with ,\nthe EndpointSlice controller will automatically create one or more {{<\nglossary_tooltip text=\"EndpointSlices\" term_id=\"endpoint-slice\" >}} giving the\nIP addresses of the selected endpoint Pods.\n\nEndpointSlices can also be created manually to indicate the endpoints of\nServices that have no selector specified.",
+    "source_file": "endpoint.md",
+    "id": "b8724da7"
+  },
+  {
+    "title": "Immutable Infrastructure",
+    "text": "Immutable Infrastructure refers to computer infrastructure (virtual machines, containers, network appliances) that cannot be changed once deployed.\n\n<!--more-->\n\nImmutability can be enforced by an automated process that overwrites unauthorized changes or through a system that won\u2019t allow changes in the first place.\n are a good example of immutable infrastructure because persistent changes to containers\ncan only be made by creating a new version of the container or recreating the existing container from its image.\n\nBy preventing or identifying unauthorized changes, immutable infrastructures make it easier to identify and mitigate security risks. \nOperating such a system becomes a lot more straightforward because administrators can make assumptions about it.\nAfter all, they know no one made mistakes or changes they forgot to communicate.\nImmutable infrastructure goes hand-in-hand with infrastructure as code where all automation needed\nto create infrastructure is stored in version control (such as Git).\nThis combination of immutability and version control means that there is a durable audit log of every authorized change to a system.",
+    "source_file": "immutable-infrastructure.md",
+    "id": "8e9db3d1"
+  },
+  {
+    "title": "ConfigMap",
+    "text": "An API object used to store non-confidential data in key-value pairs.\n can consume ConfigMaps as\nenvironment variables, command-line arguments, or as configuration files in a\n.\n\n<!--more--> \n\nA ConfigMap allows you to decouple environment-specific configuration from your , so that your applications are easily portable.",
+    "source_file": "configmap.md",
+    "id": "a941f8ad"
+  },
+  {
+    "title": "Extensions",
+    "text": "Extensions are software components that extend and deeply integrate with Kubernetes to support new types of hardware.\n\n<!--more-->\n\nMany cluster administrators use a hosted or distribution instance of Kubernetes. These clusters\ncome with extensions pre-installed. As a result, most Kubernetes users will not need to install\n[extensions](/docs/concepts/extend-kubernetes/) and even fewer users will need to author new ones.",
+    "source_file": "extensions.md",
+    "id": "5e2f5f3c"
+  },
+  {
+    "title": "etcd",
+    "text": "Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.\n\n<!--more-->\n\nIf your Kubernetes cluster uses etcd as its backing store, make sure you have a\n[back up](/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster) plan\nfor the data.\n\nYou can find in-depth information about etcd in the official [documentation](https://etcd.io/docs/).",
+    "source_file": "etcd.md",
+    "id": "a226e9fb"
+  },
+  {
+    "title": "HostAliases",
+    "text": "A HostAliases is a mapping between the IP address and hostname to be injected into a 's hosts file.\n\n<!--more-->\n\n[HostAliases](/docs/reference/generated/kubernetes-api//#hostalias-v1-core) is an optional list of hostnames and IP addresses that will be injected into the Pod's hosts file if specified. This is only valid for non-hostNetwork Pods.",
+    "source_file": "host-aliases.md",
+    "id": "f47b1769"
+  },
+  {
+    "title": "Container network interface (CNI)",
+    "text": "Container network interface (CNI) plugins are a type of Network plugin that adheres to the appc/CNI specification.\n\n<!--more-->\n\n* For information on Kubernetes and CNI, see [**Network Plugins**](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/).",
+    "source_file": "cni.md",
+    "id": "b2ceaf1b"
+  },
+  {
+    "title": "Sidecar Container",
+    "text": "One or more  that are typically started before any app containers run.\n\n<!--more--> \n\nSidecar containers are like regular app containers, but with a different purpose: the sidecar provides a Pod-local service to the main app container.\nUnlike , sidecar containers\ncontinue running after Pod startup.\n\nRead [Sidecar containers](/docs/concepts/workloads/pods/sidecar-containers/) for more information.",
+    "source_file": "sidecar-container.md",
+    "id": "ae45514e"
+  },
+  {
+    "title": "DeviceClass",
+    "text": "A category of  in the\n cluster that can be used with dynamic resource allocation (DRA).\n\n<!--more-->\n\nAdministrators or device owners use DeviceClasses to define a set of devices\nthat can be claimed and used in workloads. Devices are claimed by creating\n\nthat filter for specific device parameters in a DeviceClass.\n\nFor more information, see\n[Dynamic Resource Allocation](/docs/concepts/scheduling-eviction/dynamic-resource-allocation/#deviceclass)",
+    "source_file": "deviceclass.md",
+    "id": "3d398179"
+  },
+  {
+    "title": "API server",
+    "text": "The API server is a component of the Kubernetes\n that exposes the Kubernetes API.\nThe API server is the front end for the Kubernetes control plane.\n\n<!--more-->\n\nThe main implementation of a Kubernetes API server is [kube-apiserver](/docs/reference/generated/kube-apiserver/).\nkube-apiserver is designed to scale horizontally&mdash;that is, it scales by deploying more instances.\nYou can run several instances of kube-apiserver and balance traffic between those instances.",
+    "source_file": "kube-apiserver.md",
+    "id": "263d5008"
+  },
+  {
+    "title": "Volume",
+    "text": "A directory containing data, accessible to the  in a .\n\n<!--more-->\n\nA Kubernetes volume lives as long as the Pod that encloses it. Consequently, a volume outlives any containers that run within the Pod, and data in the volume is preserved across container restarts.\n\nSee [storage](/docs/concepts/storage/) for more information.",
+    "source_file": "volume.md",
+    "id": "bd7a9717"
+  },
+  {
+    "title": "ResourceClaim",
+    "text": "Describes the resources that a workload needs, such as\n. ResourceClaims are\nused in\n[dynamic resource allocation (DRA)](/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)\nto provide Pods with access to a specific resource.\n\n<!--more-->\n\nResourceClaims can be created by workload operators or generated by Kubernetes\nbased on a\n.",
+    "source_file": "resourceclaim.md",
+    "id": "d5f30667"
+  },
+  {
+    "title": "Node-pressure eviction",
+    "text": "Node-pressure eviction is the process by which the  proactively terminates\npods to reclaim \non nodes.\n\n<!--more-->\n\nThe kubelet monitors resources like CPU, memory, disk space, and filesystem \ninodes on your cluster's nodes. When one or more of these resources reach\nspecific consumption levels, the kubelet can proactively fail one or more pods\non the node to reclaim resources and prevent starvation. \n\nNode-pressure eviction is not the same as [API-initiated eviction](/docs/concepts/scheduling-eviction/api-eviction/).",
+    "source_file": "node-pressure-eviction.md",
+    "id": "fecb13f1"
+  },
+  {
+    "title": "Preemption",
+    "text": "Preemption logic in Kubernetes helps a pending  to find a suitable  by evicting low priority Pods existing on that Node.\n\n<!--more-->\n\nIf a Pod cannot be scheduled, the scheduler tries to [preempt](/docs/concepts/scheduling-eviction/pod-priority-preemption/#preemption) lower priority Pods to make scheduling of the pending Pod possible.",
+    "source_file": "preemption.md",
+    "id": "b7144de2"
+  },
+  {
+    "title": "Container",
+    "text": "A lightweight and portable executable image that contains software and all of its dependencies.\n\n<!--more--> \n\nContainers decouple applications from underlying host infrastructure to make deployment easier in different cloud or OS environments, and for easier scaling.\nThe applications that run inside containers are called containerized applications. The process of bundling these applications and their dependencies into a container image is called containerization.",
+    "source_file": "container.md",
+    "id": "0e7278cd"
+  },
+  {
+    "title": "Cluster",
+    "text": "A set of worker machines, called ,\nthat run containerized applications. Every cluster has at least one worker node.\n\n<!--more-->\nThe worker node(s) host the  that are\nthe components of the application workload. The\n manages the worker\nnodes and the Pods in the cluster. In production environments, the control plane usually\nruns across multiple computers and a cluster usually runs multiple nodes, providing\nfault-tolerance and high availability.",
+    "source_file": "cluster.md",
+    "id": "249694a4"
+  },
+  {
+    "title": "Aggregation Layer",
+    "text": "The aggregation layer lets you install additional Kubernetes-style APIs in your cluster.\n\n<!--more-->\n\nWhen you've configured the  to [support additional APIs](/docs/tasks/extend-kubernetes/configure-aggregation-layer/), you can add `APIService` objects to \"claim\" a URL path in the Kubernetes API.",
+    "source_file": "aggregation-layer.md",
+    "id": "ee043734"
+  },
+  {
+    "title": "Master",
+    "text": "Legacy term, used as synonym for  hosting the .\n\n<!--more-->\nThe term is still being used by some provisioning tools, such as , and managed services, to   with `kubernetes.io/role` and control placement of  .",
+    "source_file": "master.md",
+    "id": "f03bde11"
+  },
+  {
+    "title": "Code Contributor",
+    "text": "A person who develops and contributes code to the Kubernetes open source codebase.\n\n<!--more--> \n\nThey are also an active  who participates in one or more .",
+    "source_file": "code-contributor.md",
+    "id": "5f8b6080"
+  },
+  {
+    "title": "kube-controller-manager",
+    "text": "Control plane component that runs  processes.\n\n<!--more-->\n\nLogically, each  is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process.",
+    "source_file": "kube-controller-manager.md",
+    "id": "63c0a62f"
+  },
+  {
+    "title": "CRI-O",
+    "text": "A tool that lets you use OCI container runtimes with Kubernetes CRI.\n\n<!--more-->\n\nCRI-O is an implementation of the \nto enable using \nruntimes that are compatible with the Open Container Initiative (OCI)\n[runtime spec](https://www.github.com/opencontainers/runtime-spec).\n\nDeploying CRI-O allows Kubernetes to use any OCI-compliant runtime as the container\nruntime for running , and to fetch\nOCI container images from remote registries.",
+    "source_file": "cri-o.md",
+    "id": "b06f5d40"
+  },
+  {
+    "title": "Secret",
+    "text": "Stores sensitive information, such as passwords, OAuth tokens, and SSH keys.\n\n<!--more-->\n\nSecrets give you more control over how sensitive information is used and reduces\nthe risk of accidental exposure. Secret values are encoded as base64 strings and\nare stored unencrypted by default, but can be configured to be\n[encrypted at rest](/docs/tasks/administer-cluster/encrypt-data/#ensure-all-secrets-are-encrypted).\n\nA  can reference the Secret in\na variety of ways, such as in a volume mount or as an environment variable.\nSecrets are designed for confidential data and\n[ConfigMaps](/docs/tasks/configure-pod-container/configure-pod-configmap/) are\ndesigned for non-confidential data.",
+    "source_file": "secret.md",
+    "id": "1e6947ac"
+  },
+  {
+    "title": "Downward API",
+    "text": "Kubernetes' mechanism to expose Pod and container field values to code running in a container.\n<!--more-->\nIt is sometimes useful for a container to have information about itself, without\nneeding to make changes to the container code that directly couple it to Kubernetes.\n\nThe Kubernetes downward API allows containers to consume information about themselves\nor their context in a Kubernetes cluster. Applications in containers can have\naccess to that information, without the application needing to act as a client of\nthe Kubernetes API.\n\nThere are two ways to expose Pod and container fields to a running container:\n\n- using [environment variables](/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)\n- using [a `downwardAPI` volume](/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)\n\nTogether, these two ways of exposing Pod and container fields are called the _downward API_.",
+    "source_file": "downward-api.md",
+    "id": "b3a7464b"
+  },
+  {
+    "title": "Cloud Native Computing Foundation (CNCF)",
+    "text": "The Cloud Native Computing Foundation (CNCF) builds sustainable ecosystems and\n fosters a community around [projects](https://www.cncf.io/projects/) that\n orchestrate containers as part of a microservices architecture.\n\nKubernetes is a CNCF project.\n\n<!--more-->\n\nThe CNCF is a sub-foundation of [the Linux Foundation](https://www.linuxfoundation.org/).\nIts mission is to make cloud native computing ubiquitous.",
+    "source_file": "cncf.md",
+    "id": "4c9a5c67"
+  },
+  {
+    "title": "Application Architect",
+    "text": "A person responsible for the high-level design of an application.\n\n<!--more--> \n\nAn architect ensures that an app's implementation allows it to interact with its surrounding components in a scalable, maintainable way. Surrounding components include databases, logging infrastructure, and other microservices.",
+    "source_file": "application-architect.md",
+    "id": "7f69215e"
+  },
+  {
+    "title": "kOps (Kubernetes Operations)",
+    "text": "`kOps` will not only help you create, destroy, upgrade and maintain production-grade, highly available, Kubernetes cluster, but it will also provision the necessary cloud infrastructure.\n\n<!--more--> \n\n\nAWS (Amazon Web Services) is currently officially supported, with DigitalOcean, GCE and OpenStack in beta support, and Azure in alpha.\n\n\n`kOps` is an automated provisioning system:\n  * Fully automated installation\n  * Uses DNS to identify clusters\n  * Self-healing: everything runs in Auto-Scaling Groups\n  * Multiple OS support (Amazon Linux, Debian, Flatcar, RHEL, Rocky and Ubuntu)\n  * High-Availability support\n  * Can directly provision, or generate terraform manifests",
+    "source_file": "kops.md",
+    "id": "1c93756c"
+  },
+  {
+    "title": "Container Environment Variables",
+    "text": "Container environment variables are name=value pairs that provide useful information into containers running in a \n\n<!--more-->\n\nContainer environment variables provide information that is required by the running containerized applications along with information about important related details to the . For example, file system details, information about the container itself, and other cluster resources such as service endpoints.",
+    "source_file": "container-env-variables.md",
+    "id": "c4e93a4e"
+  },
+  {
+    "title": "Downstream (disambiguation)",
+    "text": "May refer to: code in the Kubernetes ecosystem that depends upon the core Kubernetes codebase or a forked repo.\n\n<!--more--> \n\n* In the **Kubernetes Community**: Conversations often use *downstream* to mean the ecosystem, code, or third-party tools that rely on the core Kubernetes codebase. For example, a new feature in Kubernetes may be adopted by applications *downstream* to improve their functionality.\n* In **GitHub** or **git**: The convention is to refer to a forked repo as *downstream*, whereas the source repo is considered *upstream*.",
+    "source_file": "downstream.md",
+    "id": "9d828e3a"
+  },
+  {
+    "title": "Network Policy",
+    "text": "A specification of how groups of Pods are allowed to communicate with each other and with other network endpoints.\n\n<!--more--> \n\nNetworkPolicies help you declaratively configure which Pods are allowed to connect to each other, which namespaces are allowed to communicate,\nand more specifically which port numbers to enforce each policy on. NetworkPolicy objects use \nto select Pods and define rules which specify what traffic is allowed to the selected Pods.\n\nNetworkPolicies are implemented by a supported network plugin provided by a network provider.\nBe aware that creating a NetworkPolicy object without a controller to implement it will have no effect.",
+    "source_file": "network-policy.md",
+    "id": "bc2fdfa2"
+  },
+  {
+    "title": "Pod Priority",
+    "text": "Pod Priority indicates the importance of a  relative to other Pods.\n\n<!--more-->\n\n[Pod Priority](/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority) gives the ability to set scheduling priority of a Pod to be higher and lower than other Pods \u2014 an important feature for production clusters workload.",
+    "source_file": "pod-priority.md",
+    "id": "6a3918c8"
+  },
+  {
+    "title": "Mixed Version Proxy (MVP)",
+    "text": "Feature to let a kube-apiserver proxy a resource request to a different peer API server.\n\n<!--more-->\n\nWhen a cluster has multiple API servers running different versions of Kubernetes, this\nfeature enables \nrequests to be served by the correct API server.\n\nMVP is disabled by default and can be activated by enabling\nthe [feature gate](/docs/reference/command-line-tools-reference/feature-gates/) named `UnknownVersionInteroperabilityProxy` when \nthe  is started.",
+    "source_file": "mixed-version-proxy.md",
+    "id": "56e11537"
+  },
+  {
+    "title": "Image",
+    "text": "Stored instance of a  that holds a set of software needed to run an application.\n\n<!--more-->\n\nA way of packaging software that allows it to be stored in a container registry, pulled to a local system, and run as an application. Meta data is included in the image that can indicate what executable to run, who built it, and other information.",
+    "source_file": "image.md",
+    "id": "be53a054"
+  },
+  {
+    "title": "Disruption",
+    "text": "Disruptions are events that lead to one or more\n going out of service.\nA disruption has consequences for workload management ,\nsuch as , that rely on the affected\nPods.\n\n<!--more-->\n\nIf you, as cluster operator, destroy a Pod that belongs to an application,\nKubernetes terms that a _voluntary disruption_. If a Pod goes offline\nbecause of a Node failure, or an outage affecting a wider failure zone,\nKubernetes terms that an _involuntary disruption_.\n\nSee [Disruptions](/docs/concepts/workloads/pods/disruptions/) for more information.",
+    "source_file": "disruption.md",
+    "id": "f98c6e23"
+  },
+  {
+    "title": "Device Plugin",
+    "text": "Device plugins run on worker\n and provide\n with access to\ninfrastructure ,\nsuch as local hardware, that require vendor-specific initialization or setup\nsteps.\n\n<!--more-->\n\nDevice plugins advertise resources to the\n, so that workload\nPods can access hardware features that relate to the Node where that Pod is running.\nYou can deploy a device plugin as a ,\nor install the device plugin software directly on each target Node.\n\nSee\n[Device Plugins](/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/)\nfor more information.",
+    "source_file": "device-plugin.md",
+    "id": "a68d46fa"
+  },
+  {
+    "title": "Shuffle-sharding",
+    "text": "A technique for assigning requests to queues that provides better isolation than hashing modulo the number of queues.\n\n<!--more--> \n\nWe are often concerned with insulating different flows of requests\nfrom each other, so that a high-intensity flow does not crowd out low-intensity flows.\nA simple way to put requests into queues is to hash some\ncharacteristics of the request, modulo the number of queues, to get\nthe index of the queue to use. The hash function uses as input\ncharacteristics of the request that align with flows. For example, in\nthe Internet this is often the 5-tuple of source and destination\naddress, protocol, and source and destination port.\n\nThat simple hash-based scheme has the property that any high-intensity flow\nwill crowd out all the low-intensity flows that hash to the same queue.\nProviding good insulation for a large number of flows requires a large\nnumber of queues, which is problematic. Shuffle-sharding is a more\nnimble technique that can do a better job of insulating the low-intensity\nflows from the high-intensity flows. The terminology of shuffle-sharding uses\nthe metaphor of dealing a hand from a deck of cards; each queue is a\nmetaphorical card. The shuffle-sharding technique starts with hashing\nthe flow-identifying characteristics of the request, to produce a hash\nvalue with dozens or more of bits. Then the hash value is used as a\nsource of entropy to shuffle the deck and deal a hand of cards\n(queues). All the dealt queues are examined, and the request is put\ninto one of the examined queues with the shortest length. With a\nmodest hand size, it does not cost much to examine all the dealt cards\nand a given low-intensity flow has a good chance to dodge the effects of a\ngiven high-intensity flow. With a large hand size it is expensive to examine\nthe dealt queues and more difficult for the low-intensity flows to dodge the\ncollective effects of a set of high-intensity flows. Thus, the hand size\nshould be chosen judiciously.",
+    "source_file": "shuffle-sharding.md",
+    "id": "f206f583"
+  },
+  {
+    "title": "Toleration",
+    "text": "A core object consisting of three required properties: key, value, and effect. Tolerations enable the scheduling of pods on nodes or node groups that have matching .\n\n<!--more-->\n\nTolerations and  work together to ensure that pods are not scheduled onto inappropriate nodes. One or more tolerations are applied to a . A toleration indicates that the  is allowed (but not required) to be scheduled on nodes or node groups with matching .",
+    "source_file": "toleration.md",
+    "id": "e6f4d685"
+  },
+  {
+    "title": "UID",
+    "text": "A Kubernetes systems-generated string to uniquely identify objects.\n\n<!--more--> \n\nEvery object created over the whole lifetime of a Kubernetes cluster has a distinct UID. It is intended to distinguish between historical occurrences of similar entities.",
+    "source_file": "uid.md",
+    "id": "e7d22294"
+  },
+  {
+    "title": "Pod Disruption",
+    "text": "[Pod disruption](/docs/concepts/workloads/pods/disruptions/) is the process by which \nPods on Nodes are terminated either voluntarily or involuntarily. \n\n<!--more--> \n\nVoluntary disruptions are started intentionally by application owners or cluster \nadministrators. Involuntary disruptions are unintentional and can be triggered by \nunavoidable issues like Nodes running out of ,\nor by accidental deletions.",
+    "source_file": "pod-disruption.md",
+    "id": "3ea414e1"
+  },
+  {
+    "title": "Horizontal Pod Autoscaler",
+    "text": "An  that automatically scales the number of  replicas,\nbased on targeted  utilization or custom metric targets.\n\n<!--more--> \n\nHorizontalPodAutoscaler (HPA) is typically used with , or . It cannot be applied to objects that cannot be scaled, for example .",
+    "source_file": "horizontal-pod-autoscaler.md",
+    "id": "5b2c1651"
+  },
+  {
+    "title": "Cloud Provider",
+    "text": "A business or other organization that offers a cloud computing platform.\n\n<!--more-->\n\nCloud providers, sometimes called Cloud Service Providers (CSPs), offer\ncloud computing platforms or services.\n\nMany cloud providers offer managed infrastructure (also called\nInfrastructure as a Service or IaaS).\nWith managed infrastructure the cloud provider is responsible for\nservers, storage, and networking while you manage layers on top of that\nsuch as running a Kubernetes cluster.\n\nYou can also find Kubernetes as a managed service; sometimes called\nPlatform as a Service, or PaaS. With managed Kubernetes, your\ncloud provider is responsible for the Kubernetes control plane as well\nas the  and the\ninfrastructure they rely on: networking, storage, and possibly other\nelements such as load balancers.",
+    "source_file": "cloud-provider.md",
+    "id": "d8613296"
+  },
+  {
+    "title": "Kubernetes API",
+    "text": "The application that serves Kubernetes functionality through a RESTful interface and stores the state of the cluster.\n\n<!--more--> \n\nKubernetes resources and \"records of intent\" are all stored as API objects, and modified via RESTful calls to the API. The API allows configuration to be managed in a declarative way. Users can interact with the Kubernetes API directly, or via tools like `kubectl`. The core Kubernetes API is flexible and can also be extended to support custom resources.",
+    "source_file": "kubernetes-api.md",
+    "id": "da0a2841"
+  },
+  {
+    "title": "Cluster Operator",
+    "text": "A person who configures, controls, and monitors clusters.\n\n<!--more--> \n\nTheir primary responsibility is keeping a cluster up and running, which may involve periodic maintenance activities or upgrades.<br>\n\n\nCluster operators are different from the [Operator pattern](/docs/concepts/extend-kubernetes/operator/) that extends the Kubernetes API.",
+    "source_file": "cluster-operator.md",
+    "id": "9aaf2d0a"
+  },
+  {
+    "title": "Control Plane",
+    "text": "The container orchestration layer that exposes the API and interfaces to define, deploy, and manage the lifecycle of containers.\n\n <!--more--> \n \n This layer is composed by many different components, such as (but not restricted to):\n\n * \n * \n * \n * \n * \n\n These components can be run as traditional operating system services (daemons) or as containers. The hosts running these components were historically called .",
+    "source_file": "control-plane.md",
+    "id": "7fd622e2"
+  },
+  {
+    "title": "kube-proxy",
+    "text": "kube-proxy is a network proxy that runs on each\n in your cluster,\nimplementing part of the Kubernetes\n concept.\n\n<!--more-->\n\n[kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/)\nmaintains network rules on nodes. These network rules allow network\ncommunication to your Pods from network sessions inside or outside of\nyour cluster.\n\nkube-proxy uses the operating system packet filtering layer if there is one\nand it's available. Otherwise, kube-proxy forwards the traffic itself.",
+    "source_file": "kube-proxy.md",
+    "id": "ea11065c"
+  },
+  {
+    "title": "JSON Web Token (JWT)",
+    "text": "A means of representing claims to be transferred between two parties.\n\n<!--more-->\n\nJWTs can be digitally signed and encrypted. Kubernetes uses JWTs as\nauthentication tokens to verify the identity of entities that want to perform\nactions in a cluster.",
+    "source_file": "jwt.md",
+    "id": "87b6269f"
+  },
+  {
+    "title": "Kubectl",
+    "text": "Command line tool for communicating with a Kubernetes cluster's\n,\nusing the Kubernetes API.\n\n<!--more--> \n\nYou can use `kubectl` to create, inspect, update, and delete Kubernetes objects.\n\n<!-- localization note: OK to omit the rest of this entry -->\nIn English, `kubectl` is (officially) pronounced /kju\u02d0b/ /k\u0259n\u02c8t\u0279\u0259\u028al/ (like \"cube control\").",
+    "source_file": "kubectl.md",
+    "id": "6f49e891"
+  },
+  {
+    "title": "Pod Lifecycle",
+    "text": "The sequence of states through which a Pod passes during its lifetime.\n\n<!--more--> \n\nThe [Pod Lifecycle](/docs/concepts/workloads/pods/pod-lifecycle/) is defined by the states or phases of a Pod. There are five possible Pod phases: Pending, Running, Succeeded, Failed, and Unknown. A high-level description of the Pod state is summarized in the [PodStatus](/docs/reference/generated/kubernetes-api//#podstatus-v1-core) `phase` field.",
+    "source_file": "pod-lifecycle.md",
+    "id": "7641016e"
+  },
+  {
+    "title": "CronJob",
+    "text": "Manages a [Job](/docs/concepts/workloads/controllers/job/) that runs on a periodic schedule.\n\n<!--more-->\n\nSimilar to a line in a *crontab* file, a CronJob object specifies a schedule using the [cron](https://en.wikipedia.org/wiki/Cron) format.",
+    "source_file": "cronjob.md",
+    "id": "63912595"
+  },
+  {
+    "title": "Quantity",
+    "text": "A whole-number representation of small or large numbers using [SI](https://en.wikipedia.org/wiki/International_System_of_Units) suffixes.\n\n<!--more-->\n\nQuantities are representations of small or large numbers using a compact,\nwhole-number notation with SI suffixes.  Fractional numbers are represented\nusing milli units, while large numbers can be represented using kilo,\nmega, or giga units.\n\nFor instance, the number `1.5` is represented as `1500m`, while the number `1000`\ncan be represented as `1k`, and `1000000` as `1M`. You can also specify\n[binary-notation](https://en.wikipedia.org/wiki/Binary_prefix) suffixes; the number 2048 can be written as `2Ki`.\n\nThe accepted decimal (power-of-10) units are `m` (milli), `k` (kilo,\nintentionally lowercase), `M` (mega), `G` (giga), `T` (tera), `P` (peta),\n`E` (exa).\n\nThe accepted binary (power-of-2) units are `Ki` (kibi), `Mi` (mebi), `Gi` (gibi),\n`Ti` (tebi), `Pi` (pebi), `Ei` (exbi).",
+    "source_file": "quantity.md",
+    "id": "694e8d1f"
+  },
+  {
+    "title": "Application Developer",
+    "text": "A person who writes an application that runs in a Kubernetes cluster.\n\n<!--more--> \n\nAn application developer focuses on one part of an application. The scale of their focus may vary significantly in size.",
+    "source_file": "application-developer.md",
+    "id": "a83c0397"
+  },
+  {
+    "title": "Dockershim",
+    "text": "The dockershim is a component of Kubernetes version 1.23 and earlier. It allows the \nto communicate with .\n\n<!--more-->\n\nStarting with version 1.24, dockershim has been removed from Kubernetes. For more information, see [Dockershim FAQ](/dockershim).",
+    "source_file": "dockershim.md",
+    "id": "63e6413d"
+  },
+  {
+    "title": "sysctl",
+    "text": "`sysctl` is a semi-standardized interface for reading or changing the\n attributes of the running Unix kernel.\n\n<!--more-->\n\nOn Unix-like systems, `sysctl` is both the name of the tool that administrators\nuse to view and modify these settings, and also the system call that the tool\nuses.\n\n runtimes and\nnetwork plugins may rely on `sysctl` values being set a certain way.",
+    "source_file": "sysctl.md",
+    "id": "a2c88367"
+  },
+  {
+    "title": "Node",
+    "text": "A node is a worker machine in Kubernetes.\n\n<!--more-->\n\nA worker node may be a VM or physical machine, depending on the cluster. It has local daemons or services necessary to run  and is managed by the control plane. The daemons on a node include , , and a container runtime implementing the  such as .\n\nIn early Kubernetes versions, Nodes were called \"Minions\".",
+    "source_file": "node.md",
+    "id": "6c3a6944"
+  },
+  {
+    "title": "Watch",
+    "text": "A verb that is used to track changes to an object in Kubernetes as a stream.\nIt is used for the efficient detection of changes.\n\n<!--more-->\n\nA verb that is used to track changes to an object in Kubernetes as a stream. Watches allow\nefficient detection of changes; for example, a\n that needs to know whenever a\nConfigMap has changed can use a watch rather than polling.\n\nSee [Efficient Detection of Changes in API Concepts](/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) for more information.",
+    "source_file": "watch.md",
+    "id": "f2065865"
+  },
+  {
+    "title": "ReplicationController",
+    "text": "A workload management \nthat manages a replicated application, ensuring that\na specific number of instances of a  are running.\n\n<!--more-->\n\nThe control plane ensures that the defined number of Pods are running, even if some\nPods fail, if you delete Pods manually, or if too many are started by mistake.\n\n\nReplicationController is deprecated. See\n, which is similar.",
+    "source_file": "replication-controller.md",
+    "id": "00d3fcb5"
+  },
+  {
+    "title": "PriorityClass",
+    "text": "A PriorityClass is a named class for the scheduling priority that should be assigned to a Pod\nin that class.\n\n<!--more-->\n\nA [PriorityClass](/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption)\nis a non-namespaced object mapping a name to an integer priority, used for a Pod. The name is\nspecified in the `metadata.name` field, and the priority value in the `value` field. Priorities range from\n-2147483648 to 1000000000 inclusive. Higher values indicate higher priority.",
+    "source_file": "priority-class.md",
+    "id": "69653f1f"
+  },
+  {
+    "title": "FlexVolume",
+    "text": "FlexVolume is a deprecated interface for creating out-of-tree volume plugins. The  is a newer interface that addresses several problems with FlexVolume.\n\n<!--more--> \n\nFlexVolumes enable users to write their own drivers and add support for their volumes in Kubernetes. FlexVolume driver binaries and dependencies must be installed on host machines. This requires root access. The Storage SIG suggests implementing a  driver if possible since it addresses the limitations with FlexVolumes.\n\n* [FlexVolume in the Kubernetes documentation](/docs/concepts/storage/volumes/#flexvolume)\n* [More information on FlexVolumes](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-storage/flexvolume.md)\n* [Volume Plugin FAQ for Storage Vendors](https://github.com/kubernetes/community/blob/master/sig-storage/volume-plugin-faq.md)",
+    "source_file": "flexvolume.md",
+    "id": "045efe41"
+  },
+  {
+    "title": "DaemonSet",
+    "text": "Ensures a copy of a  is running across a set of nodes in a .\n\n<!--more--> \n\nUsed to deploy system daemons such as log collectors and monitoring agents that typically must run on every .",
+    "source_file": "daemonset.md",
+    "id": "0d4eb61d"
+  },
+  {
+    "title": "Developer (disambiguation)",
+    "text": "May refer to&#58; , , or .\n\n<!--more--> \n\nThis overloaded term may have different meanings depending on the context",
+    "source_file": "developer.md",
+    "id": "16492b66"
+  },
+  {
+    "title": "Feature gate",
+    "text": "Feature gates are a set of keys (opaque string values) that you can use to control which\nKubernetes features are enabled in your cluster.\n\n<!--more-->\n\nYou can turn these features on or off using the `--feature-gates` command line flag on each Kubernetes component.\nEach Kubernetes component lets you enable or disable a set of feature gates that are relevant to that component.\nThe Kubernetes documentation lists all current \n[feature gates](/docs/reference/command-line-tools-reference/feature-gates/) and what they control.",
+    "source_file": "feature-gates.md",
+    "id": "1472974b"
+  },
+  {
+    "title": "Operator pattern",
+    "text": "The [operator pattern](/docs/concepts/extend-kubernetes/operator/) is a system\ndesign that links a  to one or more custom\nresources.\n\n<!--more-->\n\nYou can extend Kubernetes by adding controllers to your cluster, beyond the built-in\ncontrollers that come as part of Kubernetes itself.\n\nIf a running application acts as a controller and has API access to carry out tasks\nagainst a custom resource that's defined in the control plane, that's an example of\nthe Operator pattern.",
+    "source_file": "operator-pattern.md",
+    "id": "6833d8d1"
+  },
+  {
+    "title": "Drain",
+    "text": "The process of safely evicting  from a  to prepare it for maintenance or removal from a .\n\n<!--more-->\n\nThe `kubectl drain` command is used to mark a  as going out of service. \nWhen executed, it evicts all  from the . \nIf an eviction request is temporarily rejected, `kubectl drain` retries until all  are terminated or a configurable timeout is reached.",
+    "source_file": "drain.md",
+    "id": "0e37f131"
+  },
+  {
+    "title": "Name",
+    "text": "A client-provided string that refers to an object in a \nURL, such as `/api/v1/pods/some-name`.\n\n<!--more--> \n\nOnly one object of a given kind can have a given name at a time. However, if you delete the object, you can make a new object with the same name.",
+    "source_file": "name.md",
+    "id": "49ee3087"
+  },
+  {
+    "title": "EndpointSlice",
+    "text": "EndpointSlices track the IP addresses of Pods with matching  .\n\n<!--more-->\nEndpointSlices can be configured manually for  without selectors specified.",
+    "source_file": "endpoint-slice.md",
+    "id": "a900e810"
+  },
+  {
+    "title": "Namespace",
+    "text": "An abstraction used by Kubernetes to support isolation of groups of \nwithin a single .\n\n<!--more--> \n\nNamespaces are used to organize objects in a cluster and provide a way to divide cluster resources. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced resources _(for example: Pods, Deployments, Services)_ and not for cluster-wide resources _(for example: StorageClasses, Nodes, PersistentVolumes)_.",
+    "source_file": "namespace.md",
+    "id": "b3ba0fe9"
+  },
+  {
+    "title": "ResourceSlice",
+    "text": "Represents one or more infrastructure resources, such as\n, that are attached to\nnodes. Drivers create and manage ResourceSlices in the cluster. ResourceSlices\nare used for\n[dynamic resource allocation (DRA)](/docs/concepts/scheduling-eviction/dynamic-resource-allocation/).\n\n<!--more-->\n\nWhen a  is\ncreated, Kubernetes uses ResourceSlices to find nodes that have access to\nresources that can satisfy the claim. Kubernetes allocates resources to the\nResourceClaim and schedules the Pod onto a node that can access the resources.",
+    "source_file": "resourceslice.md",
+    "id": "70b67654"
+  },
+  {
+    "title": "Helm Chart",
+    "text": "A package of pre-configured Kubernetes configurations that can be managed with the Helm tool.\n\n<!--more--> \n\nCharts provide a reproducible way of creating and sharing Kubernetes applications.\nA single chart can be used to deploy something simple, like a memcached Pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.",
+    "source_file": "helm-chart.md",
+    "id": "7d3f4658"
+  },
+  {
+    "title": "QoS Class",
+    "text": "QoS Class (Quality of Service Class) provides a way for Kubernetes to classify Pods within the cluster into several classes and make decisions about scheduling and eviction.\n\n<!--more--> \nQoS Class of a Pod is set at creation time based on its \nrequests and limits settings. QoS classes are used to make decisions about Pods scheduling and eviction.\nKubernetes can assign one of the following  QoS classes to a Pod: `Guaranteed`, `Burstable` or `BestEffort`.",
+    "source_file": "qos-class.md",
+    "id": "4e4fa3af"
+  },
+  {
+    "title": "PodTemplate",
+    "text": "An API object that defines a template for creating .\nThe PodTemplate API is also embedded in API definitions for workload management, such as \n or\n.\n\n<!--more--> \n\nPod templates allow you to define common metadata (such as labels, or a template for the name of a\nnew Pod) as well as to specify a pod's desired state.\n[Workload management](/docs/concepts/workloads/controllers/) controllers use Pod templates\n(embedded into another object, such as a Deployment or StatefulSet)\nto define and manage one or more .\nWhen there can be multiple Pods based on the same template, these are called\n.\nAlthough you can create a PodTemplate object directly, you rarely need to do so.",
+    "source_file": "pod-template.md",
+    "id": "3f4dbf8b"
+  },
+  {
+    "title": "Controller",
+    "text": "In Kubernetes, controllers are control loops that watch the state of your\n, then make or request\nchanges where needed.\nEach controller tries to move the current cluster state closer to the desired\nstate.\n\n<!--more-->\n\nControllers watch the shared state of your cluster through the\n (part of the\n).\n\nSome controllers also run inside the control plane, providing control loops that\nare core to Kubernetes' operations. For example: the deployment controller, the\ndaemonset controller, the namespace controller, and the persistent volume\ncontroller (and others) all run within the\n.",
+    "source_file": "controller.md",
+    "id": "9bbf3737"
+  },
+  {
+    "title": "Resource (infrastructure)",
+    "text": "Capabilities provided to one or more  (CPU, memory, GPUs, etc), and made available for consumption by\n running on those nodes.\n\nKubernetes also uses the term _resource_ to describe an .\n\n<!--more-->\nComputers provide fundamental hardware facilities: processing power, storage memory, network, etc.\nThese resources have finite capacity, measured in a unit applicable to that resource (number of CPUs, bytes of memory, etc).\nKubernetes abstracts common [resources](/docs/concepts/configuration/manage-resources-containers/)\nfor allocation to workloads and utilizes operating system primitives (for example, Linux ) to manage consumption by ).\n\nYou can also use [dynamic resource allocation](/docs/concepts/scheduling-eviction/dynamic-resource-allocation/) to\nmanage complex resource allocations automatically.",
+    "source_file": "infrastructure-resource.md",
+    "id": "6df90e80"
+  },
+  {
+    "title": "Kubeadm",
+    "text": "A tool for quickly installing Kubernetes and setting up a secure cluster.\n\n<!--more--> \n\nYou can use kubeadm to install both the control plane and the  components.",
+    "source_file": "kubeadm.md",
+    "id": "e1e3ce5e"
+  },
+  {
+    "title": "Istio",
+    "text": "An open platform (not Kubernetes-specific) that provides a uniform way to integrate microservices, manage traffic flow, enforce policies, and aggregate telemetry data.\n\n<!--more--> \n\nAdding Istio does not require changing application code. It is a layer of infrastructure between a service and the network, which when combined with service deployments, is commonly referred to as a service mesh. Istio's control plane abstracts away the underlying cluster management platform, which may be Kubernetes, Mesosphere, etc.",
+    "source_file": "istio.md",
+    "id": "82f0dea4"
+  },
+  {
+    "title": "containerd",
+    "text": "A container runtime with an emphasis on simplicity, robustness and portability\n\n<!--more-->\n\ncontainerd is a  runtime\nthat runs as a daemon on Linux or Windows. containerd takes care of fetching and\nstoring container images, executing containers, providing network access, and more.",
+    "source_file": "containerd.md",
+    "id": "34c54dce"
+  },
+  {
+    "title": "Kubelet",
+    "text": "An agent that runs on each  in the cluster. It makes sure that  are running in a .\n\n<!--more-->\n\n\nThe [kubelet](/docs/reference/command-line-tools-reference/kubelet/) takes a set of PodSpecs that \nare provided through various mechanisms and ensures that the containers described in those \nPodSpecs are running and healthy. The kubelet doesn't manage containers which were not created by \nKubernetes.",
+    "source_file": "kubelet.md",
+    "id": "fd0bc66f"
+  },
+  {
+    "title": "Garbage Collection",
+    "text": "Garbage collection is a collective term for the various mechanisms Kubernetes uses to clean up\ncluster resources. \n\n<!--more-->\n\nKubernetes uses garbage collection to clean up resources like\n[unused containers and images](/docs/concepts/architecture/garbage-collection/#containers-images),\n[failed Pods](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection),\n[objects owned by the targeted resource](/docs/concepts/overview/working-with-objects/owners-dependents/),\n[completed Jobs](/docs/concepts/workloads/controllers/ttlafterfinished/), and resources\nthat have expired or failed.",
+    "source_file": "garbage-collection.md",
+    "id": "3cd533ca"
+  },
+  {
+    "title": "Dynamic Volume Provisioning",
+    "text": "Allows users to request automatic creation of storage  .\n\n<!--more--> \n\nDynamic provisioning eliminates the need for cluster administrators to pre-provision storage. Instead, it automatically provisions storage by user request. Dynamic volume provisioning is based on an API object, , referring to a  that provisions a  and the set of parameters to pass to the Volume Plugin.",
+    "source_file": "dynamic-volume-provisioning.md",
+    "id": "fd3f34cc"
+  },
+  {
+    "title": "cAdvisor",
+    "text": "cAdvisor (Container Advisor) provides container users an understanding of the \nusage and performance characteristics of their running .\n\n<!--more-->\n\nIt is a running daemon that collects, aggregates, processes, and exports information about running containers. Specifically, for each container it keeps resource isolation parameters, historical resource usage, histograms of complete historical resource usage and network statistics. This data is exported by container and machine-wide.",
+    "source_file": "cadvisor.md",
+    "id": "6dd9ec20"
+  },
+  {
+    "title": "Object",
+    "text": "An entity in the Kubernetes system. An object is an\n that the Kubernetes API\nuses to represent the state of your cluster.\n<!--more-->\nA Kubernetes object is typically a \u201crecord of intent\u201d\u2014once you create the object, the Kubernetes\n works constantly to ensure\nthat the item it represents actually exists.\nBy creating an object, you're effectively telling the Kubernetes system what you want that part of\nyour cluster's workload to look like; this is your cluster's desired state.",
+    "source_file": "object.md",
+    "id": "49703179"
+  },
+  {
+    "title": "Ephemeral Container",
+    "text": "A  type that you can temporarily run inside a .\n\n<!--more-->\n\nIf you want to investigate a Pod that's running with problems, you can add an ephemeral container to that Pod and carry out diagnostics.\nEphemeral containers have no  or scheduling guarantees,\nand you should not use them to run any part of the workload itself.\n\nEphemeral containers are not supported by .",
+    "source_file": "ephemeral-container.md",
+    "id": "42d83b79"
+  },
+  {
+    "title": "Volume Plugin",
+    "text": "A Volume Plugin enables integration of storage within a .\n\n<!--more--> \n\nA Volume Plugin lets you attach and mount storage volumes for use by a . Volume plugins can be _in tree_ or _out of tree_. _In tree_ plugins are part of the Kubernetes code repository and follow its release cycle. _Out of tree_ plugins are developed independently.",
+    "source_file": "volume-plugin.md",
+    "id": "5e80cac9"
+  },
+  {
+    "title": "ResourceClaimTemplate",
+    "text": "Defines a template that Kubernetes uses to create\n. \nResourceClaimTemplates are used in\n[dynamic resource allocation (DRA)](/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)\nto provide _per-Pod access to separate, similar resources_.\n\n<!--more-->\n\nWhen a ResourceClaimTemplate is referenced in a workload specification,\nKubernetes automatically creates ResourceClaim objects based on the template.\nEach ResourceClaim is bound to a specific Pod. When the Pod terminates,\nKubernetes deletes the corresponding ResourceClaim.",
+    "source_file": "resourceclaimtemplate.md",
+    "id": "0794e996"
+  },
+  {
+    "title": "Manifest",
+    "text": "Specification of a Kubernetes API object in [JSON](https://www.json.org/json-en.html)\nor [YAML](https://yaml.org/) format.\n\n<!--more-->\nA manifest specifies the desired state of an object that Kubernetes will maintain when you apply the manifest.\nFor YAML format, each file can contain multiple manifests.",
+    "source_file": "manifest.md",
+    "id": "76c3e002"
+  },
+  {
+    "title": "Finalizer",
+    "text": "Finalizers are namespaced keys that tell Kubernetes to wait until specific\nconditions are met before it fully deletes \nthat are marked for deletion.\nFinalizers alert \nto clean up resources the deleted object owned.\n\n<!--more-->\n\nWhen you tell Kubernetes to delete an object that has finalizers specified for\nit, the Kubernetes API marks the object for deletion by populating `.metadata.deletionTimestamp`,\nand returns a `202` status code (HTTP \"Accepted\"). The target object remains in a terminating state while the\ncontrol plane, or other components, take the actions defined by the finalizers.\nAfter these actions are complete, the controller removes the relevant finalizers\nfrom the target object. When the `metadata.finalizers` field is empty,\nKubernetes considers the deletion complete and deletes the object.\n\nYou can use finalizers to control \nof resources. For example, you can define a finalizer to clean up related\n or infrastructure before the controller\ndeletes the object being finalized.",
+    "source_file": "finalizer.md",
+    "id": "d98b2083"
+  },
+  {
+    "title": "cgroup (control group)",
+    "text": "A group of Linux processes with optional  isolation, accounting and limits.\n\n<!--more--> \n\ncgroup is a Linux kernel feature that limits, accounts for, and isolates the resource usage (CPU, memory, disk I/O, network) for a collection of processes.",
+    "source_file": "cgroup.md",
+    "id": "f853338c"
+  },
+  {
+    "title": "Deployment",
+    "text": "An API object that manages a replicated application, typically by running Pods with no local state.\n\n<!--more--> \n\nEach replica is represented by a , and the Pods are distributed among the \n of a cluster.\nFor workloads that do require local state, consider using a .",
+    "source_file": "deployment.md",
+    "id": "ea355214"
+  },
+  {
+    "title": "Certificate",
+    "text": "A cryptographically secure file used to validate access to the Kubernetes cluster.\n\n<!--more--> \n\nCertificates enable applications within a Kubernetes cluster to access the Kubernetes API securely. Certificates validate that clients are allowed to access the API.",
+    "source_file": "certificate.md",
+    "id": "eb0f48a1"
+  },
+  {
+    "title": "Glossary",
+    "text": "",
+    "source_file": "index.md",
+    "id": "31d109d1"
+  },
+  {
+    "title": "WG (working group)",
+    "text": "Facilitates the discussion and/or implementation of a short-lived, narrow, or decoupled project for a committee, , or cross-SIG effort.\n\n<!--more-->\n\nWorking groups are a way of organizing people to accomplish a discrete task.\n\nFor more information, see the [kubernetes/community](https://github.com/kubernetes/community) repo and the current list of [SIGs and working groups](https://github.com/kubernetes/community/blob/master/sig-list.md).",
+    "source_file": "wg.md",
+    "id": "f1f911cd"
+  },
+  {
+    "title": "Logging",
+    "text": "Logs are the list of events that are logged by  or application.\n\n<!--more--> \n\nApplication and systems logs can help you understand what is happening inside your cluster. The logs are particularly useful for debugging problems and monitoring cluster activity.",
+    "source_file": "logging.md",
+    "id": "8db7df66"
+  },
+  {
+    "title": "CLA (Contributor License Agreement)",
+    "text": "Terms under which a  grants a license to an open source project for their contributions.\n\n<!--more--> \n\nCLAs help resolve legal disputes involving contributed material and intellectual property (IP).",
+    "source_file": "cla.md",
+    "id": "0ed59e46"
+  },
+  {
+    "title": "Cluster Infrastructure",
+    "text": "The infrastructure layer provides and maintains VMs, networking, security groups and others.",
+    "source_file": "cluster-infrastructure.md",
+    "id": "b2f3b4e2"
+  },
+  {
+    "title": "Taint",
+    "text": "A core object consisting of three required properties: key, value, and effect. Taints prevent the scheduling of  on  or node groups.\n\n<!--more-->\n\nTaints and  work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node. A node should only schedule a Pod with the matching tolerations for the configured taints.",
+    "source_file": "taint.md",
+    "id": "0f13555d"
+  },
+  {
+    "title": "Managed Service",
+    "text": "A software offering maintained by a third-party provider.\n\n<!--more--> \n\nSome examples of Managed Services are AWS EC2, Azure SQL Database, and\nGCP Pub/Sub, but they can be any software offering that can be used by an application.",
+    "source_file": "managed-service.md",
+    "id": "b083d43e"
+  },
+  {
+    "title": "Static Pod",
+    "text": "A  managed directly by the \n daemon on a specific node,\n<!--more-->\n\nwithout the API server observing it.\n\nStatic Pods do not support .",
+    "source_file": "static-pod.md",
+    "id": "18b35c41"
+  },
+  {
+    "title": "StatefulSet",
+    "text": "Manages the deployment and scaling of a set of , *and provides guarantees about the ordering and uniqueness* of these Pods.\n\n<!--more--> \n\nLike a , a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of its Pods. These pods are created from the same spec, but are not interchangeable&#58; each has a persistent identifier that it maintains across any rescheduling.\n\nIf you want to use storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although individual Pods in a StatefulSet are susceptible to failure, the persistent Pod identifiers make it easier to match existing volumes to the new Pods that replace any that have failed.",
+    "source_file": "statefulset.md",
+    "id": "f202d113"
+  },
+  {
+    "title": "ResourceQuota",
+    "text": "Object that constrains aggregate resource\nconsumption, per .\n\n<!--more-->\n\nA ResourceQuota can either limits the quantity of \nthat can be created in a namespace by type, or it can set a limit on the total amount of\n\nthat may be consumed on behalf of the namespace (and the objects within it).",
+    "source_file": "resource-quota.md",
+    "id": "0b79951d"
+  },
+  {
+    "title": "user namespace",
+    "text": "A kernel feature to emulate root. Used for \"rootless containers\".\n\n<!--more-->\n\nUser namespaces are a Linux kernel feature that allows a non-root user to\nemulate superuser (\"root\") privileges,\nfor example in order to run containers without being a superuser outside the container.\n\nUser namespace is effective for mitigating damage of potential container break-out attacks.\n\nIn the context of user namespaces, the namespace is a Linux kernel feature, and not a\n in the Kubernetes sense\nof the term.\n\n<!-- TODO: https://kinvolk.io/blog/2020/12/improving-kubernetes-and-container-security-with-user-namespaces/ -->",
+    "source_file": "userns.md",
+    "id": "a1b02114"
+  },
+  {
+    "title": "Init Container",
+    "text": "One or more initialization  that must run to completion before any app containers run.\n\n<!--more--> \n\nInitialization (init) containers are like regular app containers, with one difference: init containers must run to completion before any app containers can start. Init containers run in series: each init container must run to completion before the next init container begins.\n\nUnlike , init containers do not remain running after Pod startup.\n\nFor more information, read [init containers](/docs/concepts/workloads/pods/init-containers/).",
+    "source_file": "init-container.md",
+    "id": "e02d70c6"
+  },
+  {
+    "title": "Gateway API",
+    "text": "A family of API kinds for modeling service networking in Kubernetes.\n\n<!--more--> \n\nGateway API provides a family of extensible, role-oriented, protocol-aware\nAPI kinds for modeling service networking in Kubernetes.",
+    "source_file": "gateway.md",
+    "id": "5c5ec427"
+  },
+  {
+    "title": "Event",
+    "text": "A Kubernetes  that describes state changes\nor notable occurrences in the cluster.\n\n<!--more-->\nEvents have a limited retention time and triggers and messages may evolve with time.\nEvent consumers should not rely on the timing of an event with a given reason reflecting a consistent underlying trigger,\nor the continued existence of events with that reason.\n\nEvents should be treated as informative, best-effort, supplemental data.\n\nIn Kubernetes, [auditing](/docs/tasks/debug/debug-cluster/audit/) generates a different kind of\nEvent record (API group `audit.k8s.io`).",
+    "source_file": "event.md",
+    "id": "a4ecfc70"
+  },
+  {
+    "title": "Annotation",
+    "text": "A key-value pair that is used to attach arbitrary non-identifying metadata to objects.\n\n<!--more--> \n\nThe metadata in an annotation can be small or large, structured or unstructured, and can include characters not permitted by . Clients such as tools and libraries can retrieve this metadata.",
+    "source_file": "annotation.md",
+    "id": "55f6611c"
+  },
+  {
+    "title": "API-initiated eviction",
+    "text": "API-initiated eviction is the process by which you use the [Eviction API](/docs/reference/generated/kubernetes-api//#create-eviction-pod-v1-core)\nto create an `Eviction` object that triggers graceful pod termination.\n\n<!--more-->\n\nYou can request eviction either by directly calling the Eviction API \nusing a client of the kube-apiserver, like the `kubectl drain` command. \nWhen an `Eviction` object is created, the API server terminates the Pod. \n\nAPI-initiated evictions respect your configured [`PodDisruptionBudgets`](/docs/tasks/run-application/configure-pdb/)\nand [`terminationGracePeriodSeconds`](/docs/concepts/workloads/pods/pod-lifecycle#pod-termination).\n\nAPI-initiated eviction is not the same as [node-pressure eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/).\n\n* See [API-initiated eviction](/docs/concepts/scheduling-eviction/api-eviction/) for more information.",
+    "source_file": "api-eviction.md",
+    "id": "602253aa"
+  },
+  {
+    "title": "Service",
+    "text": "A method for exposing a network application that is running as one or more\n in your cluster.\n\n<!--more-->\n\nThe set of Pods targeted by a Service is (usually) determined by a\n. If more Pods are added or removed,\nthe set of Pods matching the selector will change. The Service makes sure that network traffic\ncan be directed to the current set of Pods for the workload.\n\nKubernetes Services either use IP networking (IPv4, IPv6, or both), or reference an external name in\nthe Domain Name System (DNS).\n\nThe Service abstraction enables other mechanisms, such as Ingress and Gateway.",
+    "source_file": "service.md",
+    "id": "c2ba7e78"
+  },
+  {
+    "title": "Security Context",
+    "text": "The `securityContext` field defines privilege and access control settings for\na  or\n.\n\n<!--more-->\n\nIn a `securityContext`, you can define: the user that processes run as,\nthe group that processes run as, and privilege settings.\nYou can also configure security policies (for example: SELinux, AppArmor or seccomp).\n\nThe `PodSpec.securityContext` setting applies to all containers in a Pod.",
+    "source_file": "security-context.md",
+    "id": "1ac90aa9"
+  },
+  {
+    "title": "Eviction",
+    "text": "Eviction is the process of terminating one or more Pods on Nodes.\n\n<!--more-->\nThere are two kinds of eviction:\n* [Node-pressure eviction](/docs/concepts/scheduling-eviction/node-pressure-eviction/)\n* [API-initiated eviction](/docs/concepts/scheduling-eviction/api-eviction/)",
+    "source_file": "eviction.md",
+    "id": "ac22e8a2"
+  },
+  {
+    "title": "Minikube",
+    "text": "A tool for running Kubernetes locally.\n\n<!--more--> \n\nMinikube runs an all-in-one or a multi-node local Kubernetes cluster inside a VM on your computer.\nYou can use Minikube to\n[try Kubernetes in a learning environment](/docs/tasks/tools/#minikube).",
+    "source_file": "minikube.md",
+    "id": "43840b13"
+  },
+  {
+    "title": "Spec",
+    "text": "Defines how each object, like Pods or Services, should be configured and its desired state.\n\n<!--more-->\nAlmost every Kubernetes object includes two nested object fields that govern the object's configuration: the object spec and the object status. For objects that have a spec, you have to set this when you create the object, providing a description of the characteristics you want the  to have: its desired state.\n\nIt varies for different objects like Pods, StatefulSets, and Services, detailing settings such as containers, volumes, replicas, ports,\nand other specifications unique to each object type. This field encapsulates what state Kubernetes should maintain for the defined\nobject.",
+    "source_file": "spec.md",
+    "id": "85a2ca75"
+  },
+  {
+    "title": "Cluster Architect",
+    "text": "A person who designs infrastructure that involves one or more Kubernetes clusters.\n\n<!--more--> \n\nCluster architects are concerned with best practices for distributed systems, for example&#58; high availability and security.",
+    "source_file": "cluster-architect.md",
+    "id": "09a35c88"
+  },
+  {
+    "title": "Container Runtime",
+    "text": "A fundamental component that empowers Kubernetes to run containers effectively.\n It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.\n\n<!--more-->\n\nKubernetes supports container runtimes such as\n, ,\nand any other implementation of the [Kubernetes CRI (Container Runtime\nInterface)](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md).",
+    "source_file": "container-runtime.md",
+    "id": "9a3ee949"
+  },
+  {
+    "title": "RBAC (Role-Based Access Control)",
+    "text": "Manages authorization decisions, allowing admins to dynamically configure access policies through the .\n\n<!--more--> \n\nRBAC utilizes four kinds of Kubernetes objects:\n\nRole\n: Defines permission rules in a specific namespace.\n\nClusterRole\n: Defines permission rules cluster-wide.\n\nRoleBinding\n: Grants the permissions defined in a role to a set of users in a specific namespace.\n\nClusterRoleBinding\n: Grants the permissions defined in a role to a set of users cluster-wide.\n\nFor more information, see [RBAC](/docs/reference/access-authn-authz/rbac/).",
+    "source_file": "rbac.md",
+    "id": "b530205f"
+  },
+  {
+    "title": "Affinity",
+    "text": "In Kubernetes, _affinity_ is a set of rules that give hints to the scheduler about where to place pods.\n\n<!--more-->\nThere are two kinds of affinity:\n* [node affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)\n* [pod-to-pod affinity](/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)\n\nThe rules are defined using the Kubernetes ,\nand  specified in , \nand they can be either required or preferred, depending on how strictly you want the scheduler to enforce them.",
+    "source_file": "affinity.md",
+    "id": "ef5508a7"
+  },
+  {
+    "title": "Pod Security Policy",
+    "text": "A former Kubernetes API that enforced security restrictions during  creation and updates.\n\n<!--more--> \n\nPodSecurityPolicy was deprecated as of Kubernetes v1.21, and removed in v1.25.\nAs an alternative, use [Pod Security Admission](/docs/concepts/security/pod-security-admission/) or a 3rd party admission plugin.",
+    "source_file": "pod-security-policy.md",
+    "id": "686b0c46"
+  },
+  {
+    "title": "Pod Disruption Budget",
+    "text": "A [Pod Disruption Budget](/docs/concepts/workloads/pods/disruptions/) allows an \n application owner to create an object for a replicated application, that ensures \n a certain number or percentage of \n with an assigned label will not be voluntarily evicted at any point in time.\n\n<!--more--> \n\nInvoluntary disruptions cannot be prevented by PDBs; however they \ndo count against the budget.",
+    "source_file": "pod-disruption-budget.md",
+    "id": "fad51769"
+  },
+  {
+    "title": "ReplicaSet",
+    "text": "A ReplicaSet (aims to) maintain a set of replica Pods running at any given time.\n\n<!--more-->\n\nWorkload objects such as  make use of ReplicaSets\nto ensure that the configured number of  are\nrunning in your cluster, based on the spec of that ReplicaSet.",
+    "source_file": "replica-set.md",
+    "id": "3f402161"
+  },
+  {
+    "title": "Pod",
+    "text": "The smallest and simplest Kubernetes object. A Pod represents a set of running  on your cluster.\n\n<!--more--> \n\nA Pod is typically set up to run a single primary container. It can also run optional sidecar containers that add supplementary features like logging. Pods are commonly managed by a .",
+    "source_file": "pod.md",
+    "id": "8a0813c7"
+  },
+  {
+    "title": "Replica",
+    "text": "A copy or duplicate of a  or\na set of pods. Replicas ensure high availability, scalability, and fault tolerance\nby maintaining multiple identical instances of a pod.\n\n<!--more-->\nReplicas are commonly used in Kubernetes to achieve the desired application state and reliability.\nThey enable workload scaling and distribution across multiple nodes in a cluster.\n\nBy defining the number of replicas in a Deployment or ReplicaSet, Kubernetes ensures that\nthe specified number of instances are running, automatically adjusting the count as needed.\n\nReplica management allows for efficient load balancing, rolling updates, and\nself-healing capabilities in a Kubernetes cluster.",
+    "source_file": "replica.md",
+    "id": "f8ef73dd"
+  },
+  {
+    "title": "API resource",
+    "text": "An entity in the Kubernetes type system, corresponding to an endpoint on the .\nA resource typically represents an .\nSome resources represent an operation on other objects, such as a permission check.\n<!--more-->\nEach resource represents an HTTP endpoint (URI) on the Kubernetes API server, defining the schema for the objects or operations on that resource.",
+    "source_file": "api-resource.md",
+    "id": "0719b5ff"
+  },
+  {
+    "title": "Member",
+    "text": "A continuously active  in the K8s community.\n\n<!--more--> \n\nMembers can have issues and PRs assigned to them and participate in  through GitHub teams. Pre-submit tests are automatically run for members' PRs. A member is expected to remain an active contributor to the community.",
+    "source_file": "member.md",
+    "id": "858ba476"
+  },
+  {
+    "title": "Cloud Controller Manager",
+    "text": "A Kubernetes  component\nthat embeds cloud-specific control logic. The cloud controller manager lets you link your\ncluster into your cloud provider's API, and separates out the components that interact\nwith that cloud platform from components that only interact with your cluster.\n\n<!--more-->\n\nBy decoupling the interoperability logic between Kubernetes and the underlying cloud\ninfrastructure, the cloud-controller-manager component enables cloud providers to release\nfeatures at a different pace compared to the main Kubernetes project.",
+    "source_file": "cloud-controller-manager.md",
+    "id": "4629cd57"
+  },
+  {
+    "title": "Docker",
+    "text": "Docker (specifically, Docker Engine) is a software technology providing operating-system-level virtualization also known as .\n\n<!--more-->\n\nDocker uses the resource isolation features of the Linux kernel such as cgroups and kernel namespaces, and a union-capable file system such as OverlayFS and others to allow independent containers to run within a single Linux instance, avoiding the overhead of starting and maintaining virtual machines (VMs).",
+    "source_file": "docker.md",
+    "id": "c5fd214c"
+  },
+  {
+    "title": "Workload",
+    "text": "A workload is an application running on Kubernetes.\n\n<!--more--> \n\nVarious core objects that represent different types or parts of a workload\ninclude the DaemonSet, Deployment, Job, ReplicaSet, and StatefulSet objects.\n\nFor example, a workload that has a web server and a database might run the\ndatabase in one  and the web server\nin a .",
+    "source_file": "workload.md",
+    "id": "68eaabb9"
+  },
+  {
+    "title": "Common Expression Language",
+    "text": "A general-purpose expression language that's designed to be fast, portable, and\nsafe to execute.\n\n<!--more-->\n\nIn Kubernetes, CEL can be used to run queries and perform fine-grained\nfiltering. For example, you can use CEL expressions with\n[dynamic admission control](/docs/reference/access-authn-authz/extensible-admission-controllers/)\nto filter for specific fields in requests, and with\n[dynamic resource allocation (DRA)](/docs/concepts/scheduling-eviction/dynamic-resource-allocation)\nto select resources based on specific attributes.",
+    "source_file": "cel.md",
+    "id": "7b3b419f"
+  },
+  {
+    "title": "Data Plane",
+    "text": "The layer that provides capacity such as CPU, memory, network, and storage so that the containers can run and connect to a network.",
+    "source_file": "data-plane.md",
+    "id": "19ee64a7"
+  },
+  {
+    "title": "ServiceAccount",
+    "text": "Provides an identity for processes that run in a .\n\n<!--more--> \n\nWhen processes inside Pods access the cluster, they are authenticated by the API server as a particular service account, for example,\u00a0`default`. When you create a Pod, if you do not specify a service account, it is automatically assigned the default service account in the same .",
+    "source_file": "service-account.md",
+    "id": "5c24ffd6"
+  },
+  {
+    "title": "Job",
+    "text": "A finite or batch task that runs to completion.\n\n<!--more--> \n\nCreates one or more  objects and ensures that a specified number of them successfully terminate. As Pods successfully complete, the Job tracks the successful completions.",
+    "source_file": "job.md",
+    "id": "cf51066f"
+  },
+  {
+    "title": "Group Version Resource",
+    "text": "Means of representing specific Kubernetes APIs uniquely.\n\n<!--more-->\n\nGroup Version Resources (GVRs) specify the API group, API version, and _resource_ (name for the object kind as it appears in the URI) associated with accessing a particular id of object in Kubernetes.\nGVRs let you define and distinguish different Kubernetes objects, and to specify a way of accessing\nobjects that is stable even as APIs change.\n\nIn this usage, _resource_ refers to an HTTP resource. Because some APIs are namespaced, a GVR may\nnot refer to a specific .",
+    "source_file": "group-version-resource.md",
+    "id": "90223ebe"
+  },
+  {
+    "title": "Proxy",
+    "text": "In computing, a proxy is a server that acts as an intermediary for a remote\nservice.\n\n<!--more-->\n\nA client interacts with the proxy; the proxy copies the client's data to the\nactual server; the actual server replies to the proxy; the proxy sends the\nactual server's reply to the client.\n\n[kube-proxy](/docs/reference/command-line-tools-reference/kube-proxy/) is a\nnetwork proxy that runs on each node in your cluster, implementing part of\nthe Kubernetes  concept.\n\nYou can run kube-proxy as a plain userland proxy service. If your operating\nsystem supports it, you can instead run kube-proxy in a hybrid mode that\nachieves the same overall effect using less system resources.",
+    "source_file": "proxy.md",
+    "id": "f56ec2ab"
+  },
+  {
+    "title": "kube-scheduler",
+    "text": "Control plane component that watches for newly created\n with no assigned\n, and selects a node for them\nto run on.\n\n<!--more-->\n\nFactors taken into account for scheduling decisions include:\nindividual and collective \nrequirements, hardware/software/policy constraints, affinity and anti-affinity specifications,\ndata locality, inter-workload interference, and deadlines.",
+    "source_file": "kube-scheduler.md",
+    "id": "81e0da1d"
+  },
+  {
+    "title": "Ingress",
+    "text": "An API object that manages external access to the services in a cluster, typically HTTP.\n\n<!--more--> \n\nIngress may provide load balancing, SSL termination and name-based virtual hosting.",
+    "source_file": "ingress.md",
+    "id": "7d05c708"
+  },
+  {
+    "title": "Approver",
+    "text": "A person who can review and approve Kubernetes code contributions.\n\n<!--more--> \n\nWhile code review is focused on code quality and correctness, approval is focused on the holistic acceptance of a contribution. Holistic acceptance includes backwards/forwards compatibility, adhering to API and flag conventions, subtle performance and correctness issues, interactions with other parts of the system, and others. Approver status is scoped to a part of the codebase. Approvers were previously referred to as maintainers.",
+    "source_file": "approver.md",
+    "id": "8ac45c9b"
+  },
+  {
+    "title": "Add-ons",
+    "text": "Resources that extend the functionality of Kubernetes.\n\n<!--more-->\n[Installing addons](/docs/concepts/cluster-administration/addons/) explains more about using add-ons with your cluster, and lists some popular add-ons.",
+    "source_file": "addons.md",
+    "id": "2ed9fe33"
+  },
+  {
+    "title": "Device",
+    "text": "One or more\n\nthat are directly or indirectly attached to your\n.\n\n<!--more-->\n\nDevices might be commercial products like GPUs, or custom hardware like\n[ASIC boards](https://en.wikipedia.org/wiki/Application-specific_integrated_circuit).\nAttached devices usually require device drivers that let Kubernetes\n access the devices.",
+    "source_file": "device.md",
+    "id": "e0ac20ad"
+  },
+  {
+    "title": "Container Lifecycle Hooks",
+    "text": "The lifecycle hooks expose events in the  management lifecycle and let the user run code when the events occur.\n\n<!--more-->\n\nTwo hooks are exposed to Containers: PostStart which executes immediately after a container is created and PreStop which is blocking and is called immediately before a container is terminated.",
+    "source_file": "container-lifecycle-hooks.md",
+    "id": "73951e7d"
+  },
+  {
+    "title": "Mirror Pod",
+    "text": "A  object that a  uses\n to represent a \n\n<!--more--> \n\nWhen the kubelet finds a static pod in its configuration, it automatically tries to\ncreate a Pod object on the Kubernetes API server for it. This means that the pod\nwill be visible on the API server, but cannot be controlled from there.\n\n(For example, removing a mirror pod will not stop the kubelet daemon from running it).",
+    "source_file": "mirror-pod.md",
+    "id": "e67ee101"
+  },
+  {
+    "title": "App Container",
+    "text": "Application containers (or app containers) are the  in a  that are started after any  have completed.\n\n<!--more-->\n\nAn init container lets you separate initialization details that are important for the overall \n, and that don't need to keep running\nonce the application container has started.\nIf a pod doesn't have any init containers configured, all the containers in that pod are app containers.",
+    "source_file": "app-container.md",
+    "id": "45f2864b"
+  },
+  {
+    "title": "Duration",
+    "text": "A string value representing an amount of time.\n\n<!--more-->\n\nThe format of a (Kubernetes) duration is based on the\n[`time.Duration`](https://pkg.go.dev/time#Duration) type from the Go programming language.\n\nIn Kubernetes APIs that use durations, the value is expressed as series of a non-negative\nintegers combined with a time unit suffix. You can have more than one time quantity and\nthe duration is the sum of those time quantities.\nThe valid time units are \"ns\", \"\u00b5s\" (or \"us\"), \"ms\", \"s\", \"m\", and \"h\".\n\nFor example: `5s` represents a duration of five seconds, and `1m30s` represents a duration\nof one minute and thirty seconds.",
+    "source_file": "duration.md",
+    "id": "e02d2ae0"
+  },
+  {
+    "title": "API Group",
+    "text": "A set of related paths in Kubernetes API.\n\n<!--more-->\n\nYou can enable or disable each API group by changing the configuration of your API server. You can also disable or enable paths to specific\n. An API group makes it easier to extend the Kubernetes API.\nThe API group is specified in a REST path and in the `apiVersion` field of a serialized .\n\n* Read [API Group](/docs/concepts/overview/kubernetes-api/#api-groups-and-versioning) for more information.",
+    "source_file": "api-group.md",
+    "id": "2768dcc5"
+  },
+  {
+    "title": "Selector",
+    "text": "Allows users to filter a list of \n based on .\n\n<!--more--> \n\nSelectors are applied when querying lists of resources to filter them by labels.",
+    "source_file": "selector.md",
+    "id": "0c3cd33e"
+  },
+  {
+    "title": "CIDR",
+    "text": "CIDR (Classless Inter-Domain Routing) is a notation for describing blocks of IP addresses and is used heavily in various networking configurations.\n\n<!--more-->\n\nIn the context of Kubernetes, each  is assigned a range of IP addresses through the start address and a subnet mask using CIDR. This allows Nodes to assign each  a unique IP address. Although originally a concept for IPv4, CIDR has also been expanded to include IPv6.",
+    "source_file": "cidr.md",
+    "id": "fb34bfeb"
+  },
+  {
+    "title": "Container Runtime Interface (CRI)",
+    "text": "The main protocol for the communication between the  and Container Runtime.\n\n<!--more-->\n\nThe Kubernetes Container Runtime Interface (CRI) defines the main\n[gRPC](https://grpc.io) protocol for the communication between the\n[node components](/docs/concepts/architecture/#node-components)\n and\n.",
+    "source_file": "cri.md",
+    "id": "6a621a1c"
+  },
+  {
+    "title": "Container Storage Interface (CSI)",
+    "text": "The Container Storage Interface (CSI) defines a standard interface to expose storage systems to containers.\n\n<!--more--> \n\nCSI allows vendors to create custom storage plugins for Kubernetes without adding them to the Kubernetes repository (out-of-tree plugins). To use a CSI driver from a storage provider, you must first [deploy it to your cluster](https://kubernetes-csi.github.io/docs/deploying.html). You will then be able to create a  that uses that CSI driver.\n\n* [CSI in the Kubernetes documentation](/docs/concepts/storage/volumes/#csi)\n* [List of available CSI drivers](https://kubernetes-csi.github.io/docs/drivers.html)",
+    "source_file": "csi.md",
+    "id": "e7862e4a"
+  },
+  {
+    "title": "Applications",
+    "text": "The layer where various containerized applications run.",
+    "source_file": "applications.md",
+    "id": "1ddf333c"
+  },
+  {
+    "title": "Storage Class",
+    "text": "A StorageClass provides a way for administrators to describe different available storage types.\n\n<!--more--> \n\nStorageClasses can map to quality-of-service levels, backup policies, or to arbitrary policies determined by cluster administrators. Each StorageClass contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a  belonging to the class needs to be dynamically provisioned. Users can request a particular class using the name of a StorageClass object.",
+    "source_file": "storage-class.md",
+    "id": "8d89aed0"
+  },
+  {
+    "title": "SIG (special interest group)",
+    "text": "who collectively manage an ongoing piece or aspect of the larger Kubernetes open source project.\n\n<!--more--> \n\nMembers within a SIG have a shared interest in advancing a specific area, such as architecture, API machinery, or documentation.\nSIGs must follow the SIG [governance guidelines](https://github.com/kubernetes/community/blob/master/committee-steering/governance/sig-governance.md), but can have their own contribution policy and channels of communication.\n\nFor more information, see the [kubernetes/community](https://github.com/kubernetes/community) repo and the current list of [SIGs and Working Groups](https://github.com/kubernetes/community/blob/master/sig-list.md).",
+    "source_file": "sig.md",
+    "id": "bf5a3ef1"
+  },
+  {
+    "title": "Persistent Volume",
+    "text": "An API object that represents a piece of storage in the cluster. Representation of as a general, pluggable storage\n that can persist beyond the lifecycle of any\nindividual .\n\n<!--more--> \n\nPersistentVolumes (PVs) provide an API that abstracts details of how storage is provided from how it is consumed.\nPVs are used directly in scenarios where storage can be created ahead of time (static provisioning).\nFor scenarios that require on-demand storage (dynamic provisioning), PersistentVolumeClaims (PVCs) are used instead.",
+    "source_file": "persistent-volume.md",
+    "id": "dc169184"
+  },
+  {
+    "title": "kubectl Quick Reference",
+    "text": "```bash\n# All images running in a cluster\nkubectl get pods -A -o=custom-columns='DATA:spec.containers[*].image'\n\n# All images running in namespace: default, grouped by Pod\nkubectl get pods --namespace default --output=custom-columns=\"NAME:.metadata.name,IMAGE:.spec.containers[*].image\"\n\n # All images excluding \"registry.k8s.io/coredns:1.6.2\"\nkubectl get pods -A -o=custom-columns='DATA:spec.containers[?(@.image!=\"registry.k8s.io/coredns:1.6.2\")].image'\n\n# All fields under metadata regardless of name\nkubectl get pods -A -o=custom-columns='DATA:metadata.*'\n```\n\nMore examples in the kubectl [reference documentation](/docs/reference/kubectl/#custom-columns).",
+    "source_file": "quick-reference.md",
+    "id": "03465c70"
+  },
+  {
+    "title": "JSONPath Support",
+    "text": "```shell\nkubectl get pods -o json\nkubectl get pods -o=jsonpath='{@}'\nkubectl get pods -o=jsonpath='{.items[0]}'\nkubectl get pods -o=jsonpath='{.items[0].metadata.name}'\nkubectl get pods -o=jsonpath=\"{.items[*]['metadata.name', 'status.capacity']}\"\nkubectl get pods -o=jsonpath='{range .items[*]}{.metadata.name}{\"\\t\"}{.status.startTime}{\"\\n\"}{end}'\nkubectl get pods -o=jsonpath='{.items[0].metadata.labels.kubernetes\\.io/hostname}'\n```\n\nOr, with a \"my_pod\" and \"my_namespace\" (adjust these names to your environment):\n\n```shell\nkubectl get pod/my_pod -n my_namespace -o=jsonpath='{@}'\nkubectl get pod/my_pod -n my_namespace -o=jsonpath='{.metadata.name}'\nkubectl get pod/my_pod -n my_namespace -o=jsonpath='{.status}'\n```\n\n{{< note >}}\nOn Windows, you must _double_ quote any JSONPath template that contains spaces (not single quote as shown above for bash). This in turn means that you must use a single quote or escaped double quote around any literals in the template. For example:\n\n```cmd\nkubectl get pods -o=jsonpath=\"{range .items[*]}{.metadata.name}{'\\t'}{.status.startTime}{'\\n'}{end}\"\nkubectl get pods -o=jsonpath=\"{range .items[*]}{.metadata.name}{\\\"\\t\\\"}{.status.startTime}{\\\"\\n\\\"}{end}\"\n```\n{{< /note >}}",
+    "source_file": "jsonpath.md",
+    "id": "cdac89d1"
+  },
+  {
+    "title": "kubectl Commands",
+    "text": "",
+    "source_file": "kubectl-cmds.md",
+    "id": "aecc7cc0"
+  },
+  {
+    "title": "kubectl",
+    "text": "kubectl controls the Kubernetes cluster manager.\n\nFind more information in [Command line tool](/docs/reference/kubectl/) (`kubectl`).\n\n```shell\nkubectl [flags]\n```",
+    "source_file": "kubectl.md",
+    "id": "0f12ee5c"
+  },
+  {
+    "title": "Introduction to kubectl",
+    "text": "",
+    "source_file": "introduction.md",
+    "id": "96890108"
+  },
+  {
+    "title": "Kubectl user preferences (kuberc)",
+    "text": "",
+    "source_file": "kuberc.md",
+    "id": "8789a9d4"
+  },
+  {
+    "title": "kubectl",
+    "text": "kubectl controls the Kubernetes cluster manager.\n\n Find more information at: https://kubernetes.io/docs/reference/kubectl/\n\n```\nkubectl [flags]\n```",
+    "source_file": "kubectl.md",
+    "id": "0f12ee5c"
+  },
+  {
+    "title": "kubectl reference",
+    "text": "",
+    "source_file": "_index.md",
+    "id": "58e490dc"
+  },
+  {
+    "title": "kubectl set subject",
+    "text": "Update the user, group, or service account in a role binding or cluster role binding.\n\n```\nkubectl set subject (-f FILENAME | TYPE NAME) [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```\n\n```\n  # Update a cluster role binding for serviceaccount1\n  kubectl set subject clusterrolebinding admin --serviceaccount=namespace:serviceaccount1\n  \n  # Update a role binding for user1, user2, and group1\n  kubectl set subject rolebinding admin --user=user1 --user=user2 --group=group1\n  \n  # Print the result (in YAML format) of updating rolebinding subjects from a local, without hitting the server\n  kubectl create rolebinding admin --role=admin --user=admin -o yaml --dry-run=client | kubectl set subject --local -f - --user=foo -o yaml\n```",
+    "source_file": "kubectl_set_subject.md",
+    "id": "19ee0bd4"
+  },
+  {
+    "title": "kubectl set selector",
+    "text": "Set the selector on a resource. Note that the new selector will overwrite the old selector if the resource had one prior to the invocation of 'set selector'.\n\n A selector must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters. If --resource-version is specified, then updates will use this resource version, otherwise the existing resource-version will be used. Note: currently selectors can only be set on Service objects.\n\n```\nkubectl set selector (-f FILENAME | TYPE NAME) EXPRESSIONS [--resource-version=version]\n```\n\n```\n  # Set the labels and selector before creating a deployment/service pair\n  kubectl create service clusterip my-svc --clusterip=\"None\" -o yaml --dry-run=client | kubectl set selector --local -f - 'environment=qa' -o yaml | kubectl create -f -\n  kubectl create deployment my-dep -o yaml --dry-run=client | kubectl label --local -f - environment=qa -o yaml | kubectl create -f -\n```",
+    "source_file": "kubectl_set_selector.md",
+    "id": "ac37f03f"
+  },
+  {
+    "title": "kubectl set env",
+    "text": "Update environment variables on a pod template.\n\n List environment variable definitions in one or more pods, pod templates. Add, update, or remove container environment variable definitions in one or more pod templates (within replication controllers or deployment configurations). View or modify the environment variable definitions on all containers in the specified pods or pod templates, or just those that match a wildcard.\n\n If \"--env -\" is passed, environment variables can be read from STDIN using the standard env syntax.\n\n Possible resources include (case insensitive):\n\n        pod (po), replicationcontroller (rc), deployment (deploy), daemonset (ds), statefulset (sts), cronjob (cj), replicaset (rs)\n\n```\nkubectl set env RESOURCE/NAME KEY_1=VAL_1 ... KEY_N=VAL_N\n```\n\n```\n  # Update deployment 'registry' with a new environment variable\n  kubectl set env deployment/registry STORAGE_DIR=/local\n  \n  # List the environment variables defined on a deployments 'sample-build'\n  kubectl set env deployment/sample-build --list\n  \n  # List the environment variables defined on all pods\n  kubectl set env pods --all --list\n  \n  # Output modified deployment in YAML, and does not alter the object on the server\n  kubectl set env deployment/sample-build STORAGE_DIR=/data -o yaml\n  \n  # Update all containers in all replication controllers in the project to have ENV=prod\n  kubectl set env rc --all ENV=prod\n  \n  # Import environment from a secret\n  kubectl set env --from=secret/mysecret deployment/myapp\n  \n  # Import environment from a config map with a prefix\n  kubectl set env --from=configmap/myconfigmap --prefix=MYSQL_ deployment/myapp\n  \n  # Import specific keys from a config map\n  kubectl set env --keys=my-example-key --from=configmap/myconfigmap deployment/myapp\n  \n  # Remove the environment variable ENV from container 'c1' in all deployment configs\n  kubectl set env deployments --all --containers=\"c1\" ENV-\n  \n  # Remove the environment variable ENV from a deployment definition on disk and\n  # update the deployment config on the server\n  kubectl set env -f deploy.json ENV-\n  \n  # Set some of the local shell environment into a deployment config on the server\n  env | grep RAILS_ | kubectl set env -e - deployment/registry\n```",
+    "source_file": "kubectl_set_env.md",
+    "id": "33c47c3e"
+  },
+  {
+    "title": "kubectl set serviceaccount",
+    "text": "Update the service account of pod template resources.\n\n Possible resources (case insensitive) can be:\n\n replicationcontroller (rc), deployment (deploy), daemonset (ds), job, replicaset (rs), statefulset\n\n```\nkubectl set serviceaccount (-f FILENAME | TYPE NAME) SERVICE_ACCOUNT\n```\n\n```\n  # Set deployment nginx-deployment's service account to serviceaccount1\n  kubectl set serviceaccount deployment nginx-deployment serviceaccount1\n  \n  # Print the result (in YAML format) of updated nginx deployment with the service account from local file, without hitting the API server\n  kubectl set sa -f nginx-deployment.yaml serviceaccount1 --local --dry-run=client -o yaml\n```",
+    "source_file": "kubectl_set_serviceaccount.md",
+    "id": "6a49db46"
+  },
+  {
+    "title": "kubectl set resources",
+    "text": "Specify compute resource requirements (CPU, memory) for any resource that defines a pod template.  If a pod is successfully scheduled, it is guaranteed the amount of resource requested, but may burst up to its specified limits.\n\n For each compute resource, if a limit is specified and a request is omitted, the request will default to the limit.\n\n Possible resources include (case insensitive): Use \"kubectl api-resources\" for a complete list of supported resources..\n\n```\nkubectl set resources (-f FILENAME | TYPE NAME)  ([--limits=LIMITS & --requests=REQUESTS]\n```\n\n```\n  # Set a deployments nginx container cpu limits to \"200m\" and memory to \"512Mi\"\n  kubectl set resources deployment nginx -c=nginx --limits=cpu=200m,memory=512Mi\n  \n  # Set the resource request and limits for all containers in nginx\n  kubectl set resources deployment nginx --limits=cpu=200m,memory=512Mi --requests=cpu=100m,memory=256Mi\n  \n  # Remove the resource requests for resources on containers in nginx\n  kubectl set resources deployment nginx --limits=cpu=0,memory=0 --requests=cpu=0,memory=0\n  \n  # Print the result (in yaml format) of updating nginx container limits from a local, without hitting the server\n  kubectl set resources -f path/to/file.yaml --limits=cpu=200m,memory=512Mi --local -o yaml\n```",
+    "source_file": "kubectl_set_resources.md",
+    "id": "4ee82c41"
+  },
+  {
+    "title": "kubectl set image",
+    "text": "Update existing container image(s) of resources.\n\n Possible resources include (case insensitive):\n\n        pod (po), replicationcontroller (rc), deployment (deploy), daemonset (ds), statefulset (sts), cronjob (cj), replicaset (rs)\n\n```\nkubectl set image (-f FILENAME | TYPE NAME) CONTAINER_NAME_1=CONTAINER_IMAGE_1 ... CONTAINER_NAME_N=CONTAINER_IMAGE_N\n```\n\n```\n  # Set a deployment's nginx container image to 'nginx:1.9.1', and its busybox container image to 'busybox'\n  kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1\n  \n  # Update all deployments' and rc's nginx container's image to 'nginx:1.9.1'\n  kubectl set image deployments,rc nginx=nginx:1.9.1 --all\n  \n  # Update image of all containers of daemonset abc to 'nginx:1.9.1'\n  kubectl set image daemonset abc *=nginx:1.9.1\n  \n  # Print result (in yaml format) of updating nginx container image from local file, without hitting the server\n  kubectl set image -f path/to/file.yaml nginx=nginx:1.9.1 --local -o yaml\n```",
+    "source_file": "kubectl_set_image.md",
+    "id": "3576381d"
+  },
+  {
+    "title": "kubectl set",
+    "text": "Configure application resources.\n\n These commands help you make changes to existing application resources.\n\n```\nkubectl set SUBCOMMAND\n```",
+    "source_file": "_index.md",
+    "id": "ea602a47"
+  },
+  {
+    "title": "kubectl run",
+    "text": "Create and run a particular image in a pod.\n\n```\nkubectl run NAME --image=image [--env=\"key=value\"] [--port=port] [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND] [args...]\n```\n\n```\n  # Start a nginx pod\n  kubectl run nginx --image=nginx\n  \n  # Start a hazelcast pod and let the container expose port 5701\n  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701\n  \n  # Start a hazelcast pod and set environment variables \"DNS_DOMAIN=cluster\" and \"POD_NAMESPACE=default\" in the container\n  kubectl run hazelcast --image=hazelcast/hazelcast --env=\"DNS_DOMAIN=cluster\" --env=\"POD_NAMESPACE=default\"\n  \n  # Start a hazelcast pod and set labels \"app=hazelcast\" and \"env=prod\" in the container\n  kubectl run hazelcast --image=hazelcast/hazelcast --labels=\"app=hazelcast,env=prod\"\n  \n  # Dry run; print the corresponding API objects without creating them\n  kubectl run nginx --image=nginx --dry-run=client\n  \n  # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON\n  kubectl run nginx --image=nginx --overrides='{ \"apiVersion\": \"v1\", \"spec\": { ... } }'\n  \n  # Start a busybox pod and keep it in the foreground, don't restart it if it exits\n  kubectl run -i -t busybox --image=busybox --restart=Never\n  \n  # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command\n  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>\n  \n  # Start the nginx pod using a different command and custom arguments\n  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>\n```",
+    "source_file": "_index.md",
+    "id": "647cbc0a"
+  },
+  {
+    "title": "kubectl api-resources",
+    "text": "Print the supported API resources on the server.\n\n```\nkubectl api-resources [flags]\n```\n\n```\n  # Print the supported API resources\n  kubectl api-resources\n  \n  # Print the supported API resources with more information\n  kubectl api-resources -o wide\n  \n  # Print the supported API resources sorted by a column\n  kubectl api-resources --sort-by=name\n  \n  # Print the supported namespaced resources\n  kubectl api-resources --namespaced=true\n  \n  # Print the supported non-namespaced resources\n  kubectl api-resources --namespaced=false\n  \n  # Print the supported API resources with a specific APIGroup\n  kubectl api-resources --api-group=rbac.authorization.k8s.io\n```",
+    "source_file": "_index.md",
+    "id": "b703bead"
+  },
+  {
+    "title": "kubectl annotate",
+    "text": "Update the annotations on one or more resources.\n\n All Kubernetes objects support the ability to store additional data with the object as annotations. Annotations are key/value pairs that can be larger than labels and include arbitrary string values such as structured JSON. Tools and system extensions may use annotations to store their own data.\n\n Attempting to set an annotation that already exists will fail unless --overwrite is set. If --resource-version is specified and does not match the current resource version on the server the command will fail.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl annotate [--overwrite] (-f FILENAME | TYPE NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--resource-version=version]\n```\n\n```\n  # Update pod 'foo' with the annotation 'description' and the value 'my frontend'\n  # If the same annotation is set multiple times, only the last value will be applied\n  kubectl annotate pods foo description='my frontend'\n  \n  # Update a pod identified by type and name in \"pod.json\"\n  kubectl annotate -f pod.json description='my frontend'\n  \n  # Update pod 'foo' with the annotation 'description' and the value 'my frontend running nginx', overwriting any existing value\n  kubectl annotate --overwrite pods foo description='my frontend running nginx'\n  \n  # Update all pods in the namespace\n  kubectl annotate pods --all description='my frontend running nginx'\n  \n  # Update pod 'foo' only if the resource is unchanged from version 1\n  kubectl annotate pods foo description='my frontend running nginx' --resource-version=1\n  \n  # Update pod 'foo' by removing an annotation named 'description' if it exists\n  # Does not require the --overwrite flag\n  kubectl annotate pods foo description-\n```",
+    "source_file": "_index.md",
+    "id": "3b9fa335"
+  },
+  {
+    "title": "kubectl cluster-info dump",
+    "text": "Dump cluster information out suitable for debugging and diagnosing cluster problems.  By default, dumps everything to stdout. You can optionally specify a directory with --output-directory.  If you specify a directory, Kubernetes will build a set of files in that directory.  By default, only dumps things in the current namespace and 'kube-system' namespace, but you can switch to a different namespace with the --namespaces flag, or specify --all-namespaces to dump all namespaces.\n\n The command also dumps the logs of all of the pods in the cluster; these logs are dumped into different directories based on namespace and pod name.\n\n```\nkubectl cluster-info dump [flags]\n```\n\n```\n  # Dump current cluster state to stdout\n  kubectl cluster-info dump\n  \n  # Dump current cluster state to /path/to/cluster-state\n  kubectl cluster-info dump --output-directory=/path/to/cluster-state\n  \n  # Dump all namespaces to stdout\n  kubectl cluster-info dump --all-namespaces\n  \n  # Dump a set of namespaces to /path/to/cluster-state\n  kubectl cluster-info dump --namespaces default,kube-system --output-directory=/path/to/cluster-state\n```",
+    "source_file": "kubectl_cluster-info_dump.md",
+    "id": "9ce0785e"
+  },
+  {
+    "title": "kubectl cluster-info",
+    "text": "Display addresses of the control plane and services with label kubernetes.io/cluster-service=true. To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.\n\n```\nkubectl cluster-info [flags]\n```\n\n```\n  # Print the address of the control plane and cluster services\n  kubectl cluster-info\n```",
+    "source_file": "_index.md",
+    "id": "7e05cfcc"
+  },
+  {
+    "title": "kubectl explain",
+    "text": "Describe fields and structure of various resources.\n\n This command describes the fields associated with each supported API resource. Fields are identified via a simple JSONPath identifier:\n\n        &lt;type&gt;.&lt;fieldName&gt;[.&lt;fieldName&gt;]\n        \n Information about each field is retrieved from the server in OpenAPI format.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl explain TYPE [--recursive=FALSE|TRUE] [--api-version=api-version-group] [-o|--output=plaintext|plaintext-openapiv2]\n```\n\n```\n  # Get the documentation of the resource and its fields\n  kubectl explain pods\n  \n  # Get all the fields in the resource\n  kubectl explain pods --recursive\n  \n  # Get the explanation for deployment in supported api versions\n  kubectl explain deployments --api-version=apps/v1\n  \n  # Get the documentation of a specific field of a resource\n  kubectl explain pods.spec.containers\n  \n  # Get the documentation of resources in different format\n  kubectl explain deployment --output=plaintext-openapiv2\n```",
+    "source_file": "_index.md",
+    "id": "25a6e17a"
+  },
+  {
+    "title": "kubectl describe",
+    "text": "Show details of a specific resource or group of resources.\n\n Print a detailed description of the selected resources, including related resources such as events or controllers. You may select a single object by name, all objects of that type, provide a name prefix, or label selector. For example:\n\n        $ kubectl describe TYPE NAME_PREFIX\n        \n will first check for an exact match on TYPE and NAME_PREFIX. If no such resource exists, it will output details for every resource that has a name prefixed with NAME_PREFIX.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl describe (-f FILENAME | TYPE [NAME_PREFIX | -l label] | TYPE/NAME)\n```\n\n```\n  # Describe a node\n  kubectl describe nodes kubernetes-node-emt8.c.myproject.internal\n  \n  # Describe a pod\n  kubectl describe pods/nginx\n  \n  # Describe a pod identified by type and name in \"pod.json\"\n  kubectl describe -f pod.json\n  \n  # Describe all pods\n  kubectl describe pods\n  \n  # Describe pods by label name=myLabel\n  kubectl describe pods -l name=myLabel\n  \n  # Describe all pods managed by the 'frontend' replication controller\n  # (rc-created pods get the name of the rc as a prefix in the pod name)\n  kubectl describe pods frontend\n```",
+    "source_file": "_index.md",
+    "id": "53f41626"
+  },
+  {
+    "title": "kubectl edit",
+    "text": "Edit a resource from the default editor.\n\n The edit command allows you to directly edit any API resource you can retrieve via the command-line tools. It will open the editor defined by your KUBE_EDITOR, or EDITOR environment variables, or fall back to 'vi' for Linux or 'notepad' for Windows. When attempting to open the editor, it will first attempt to use the shell that has been defined in the 'SHELL' environment variable. If this is not defined, the default shell will be used, which is '/bin/bash' for Linux or 'cmd' for Windows.\n\n You can edit multiple objects, although changes are applied one at a time. The command accepts file names as well as command-line arguments, although the files you point to must be previously saved versions of resources.\n\n Editing is done with the API version used to fetch the resource. To edit using a specific API version, fully-qualify the resource, version, and group.\n\n The default format is YAML. To edit in JSON, specify \"-o json\".\n\n The flag --windows-line-endings can be used to force Windows line endings, otherwise the default for your operating system will be used.\n\n In the event an error occurs while updating, a temporary file will be created on disk that contains your unapplied changes. The most common error when updating a resource is another editor changing the resource on the server. When this occurs, you will have to apply your changes to the newer version of the resource, or update your temporary saved copy to include the latest resource version.\n\n```\nkubectl edit (RESOURCE/NAME | -f FILENAME)\n```\n\n```\n  # Edit the service named 'registry'\n  kubectl edit svc/registry\n  \n  # Use an alternative editor\n  KUBE_EDITOR=\"nano\" kubectl edit svc/registry\n  \n  # Edit the job 'myjob' in JSON using the v1 API format\n  kubectl edit job.v1.batch/myjob -o json\n  \n  # Edit the deployment 'mydeployment' in YAML and save the modified config in its annotation\n  kubectl edit deployment/mydeployment -o yaml --save-config\n  \n  # Edit the 'status' subresource for the 'mydeployment' deployment\n  kubectl edit deployment mydeployment --subresource='status'\n```",
+    "source_file": "_index.md",
+    "id": "890eaa78"
+  },
+  {
+    "title": "kubectl logs",
+    "text": "Print the logs for a container in a pod or specified resource. If the pod has only one container, the container name is optional.\n\n```\nkubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]\n```\n\n```\n  # Return snapshot logs from pod nginx with only one container\n  kubectl logs nginx\n  \n  # Return snapshot logs from pod nginx, prefixing each line with the source pod and container name\n  kubectl logs nginx --prefix\n  \n  # Return snapshot logs from pod nginx, limiting output to 500 bytes\n  kubectl logs nginx --limit-bytes=500\n  \n  # Return snapshot logs from pod nginx, waiting up to 20 seconds for it to start running.\n  kubectl logs nginx --pod-running-timeout=20s\n  \n  # Return snapshot logs from pod nginx with multi containers\n  kubectl logs nginx --all-containers=true\n  \n  # Return snapshot logs from all pods in the deployment nginx\n  kubectl logs deployment/nginx --all-pods=true\n  \n  # Return snapshot logs from all containers in pods defined by label app=nginx\n  kubectl logs -l app=nginx --all-containers=true\n  \n  # Return snapshot logs from all pods defined by label app=nginx, limiting concurrent log requests to 10 pods\n  kubectl logs -l app=nginx --max-log-requests=10\n  \n  # Return snapshot of previous terminated ruby container logs from pod web-1\n  kubectl logs -p -c ruby web-1\n  \n  # Begin streaming the logs from pod nginx, continuing even if errors occur\n  kubectl logs nginx -f --ignore-errors=true\n  \n  # Begin streaming the logs of the ruby container in pod web-1\n  kubectl logs -f -c ruby web-1\n  \n  # Begin streaming the logs from all containers in pods defined by label app=nginx\n  kubectl logs -f -l app=nginx --all-containers=true\n  \n  # Display only the most recent 20 lines of output in pod nginx\n  kubectl logs --tail=20 nginx\n  \n  # Show all logs from pod nginx written in the last hour\n  kubectl logs --since=1h nginx\n  \n  # Show all logs with timestamps from pod nginx starting from August 30, 2024, at 06:00:00 UTC\n  kubectl logs nginx --since-time=2024-08-30T06:00:00Z --timestamps=true\n  \n  # Show logs from a kubelet with an expired serving certificate\n  kubectl logs --insecure-skip-tls-verify-backend nginx\n  \n  # Return snapshot logs from first container of a job named hello\n  kubectl logs job/hello\n  \n  # Return snapshot logs from container nginx-1 of a deployment named nginx\n  kubectl logs deployment/nginx -c nginx-1\n```",
+    "source_file": "_index.md",
+    "id": "66b92e95"
+  },
+  {
+    "title": "kubectl create namespace",
+    "text": "Create a namespace with the specified name.\n\n```\nkubectl create namespace NAME [--dry-run=server|client|none]\n```\n\n```\n  # Create a new namespace named my-namespace\n  kubectl create namespace my-namespace\n```",
+    "source_file": "kubectl_create_namespace.md",
+    "id": "e4221b52"
+  },
+  {
+    "title": "kubectl create token",
+    "text": "Request a service account token.\n\n```\nkubectl create token SERVICE_ACCOUNT_NAME\n```\n\n```\n  # Request a token to authenticate to the kube-apiserver as the service account \"myapp\" in the current namespace\n  kubectl create token myapp\n  \n  # Request a token for a service account in a custom namespace\n  kubectl create token myapp --namespace myns\n  \n  # Request a token with a custom expiration\n  kubectl create token myapp --duration 10m\n  \n  # Request a token with a custom audience\n  kubectl create token myapp --audience https://example.com\n  \n  # Request a token bound to an instance of a Secret object\n  kubectl create token myapp --bound-object-kind Secret --bound-object-name mysecret\n  \n  # Request a token bound to an instance of a Secret object with a specific UID\n  kubectl create token myapp --bound-object-kind Secret --bound-object-name mysecret --bound-object-uid 0d4691ed-659b-4935-a832-355f77ee47cc\n```",
+    "source_file": "kubectl_create_token.md",
+    "id": "a0890912"
+  },
+  {
+    "title": "kubectl create ingress",
+    "text": "Create an ingress with the specified name.\n\n```\nkubectl create ingress NAME --rule=host/path=service:port[,tls[=secret]] \n```\n\n```\n  # Create a single ingress called 'simple' that directs requests to foo.com/bar to svc\n  # svc1:8080 with a TLS secret \"my-cert\"\n  kubectl create ingress simple --rule=\"foo.com/bar=svc1:8080,tls=my-cert\"\n  \n  # Create a catch all ingress of \"/path\" pointing to service svc:port and Ingress Class as \"otheringress\"\n  kubectl create ingress catch-all --class=otheringress --rule=\"/path=svc:port\"\n  \n  # Create an ingress with two annotations: ingress.annotation1 and ingress.annotations2\n  kubectl create ingress annotated --class=default --rule=\"foo.com/bar=svc:port\" \\\n  --annotation ingress.annotation1=foo \\\n  --annotation ingress.annotation2=bla\n  \n  # Create an ingress with the same host and multiple paths\n  kubectl create ingress multipath --class=default \\\n  --rule=\"foo.com/=svc:port\" \\\n  --rule=\"foo.com/admin/=svcadmin:portadmin\"\n  \n  # Create an ingress with multiple hosts and the pathType as Prefix\n  kubectl create ingress ingress1 --class=default \\\n  --rule=\"foo.com/path*=svc:8080\" \\\n  --rule=\"bar.com/admin*=svc2:http\"\n  \n  # Create an ingress with TLS enabled using the default ingress certificate and different path types\n  kubectl create ingress ingtls --class=default \\\n  --rule=\"foo.com/=svc:https,tls\" \\\n  --rule=\"foo.com/path/subpath*=othersvc:8080\"\n  \n  # Create an ingress with TLS enabled using a specific secret and pathType as Prefix\n  kubectl create ingress ingsecret --class=default \\\n  --rule=\"foo.com/*=svc:8080,tls=secret1\"\n  \n  # Create an ingress with a default backend\n  kubectl create ingress ingdefault --class=default \\\n  --default-backend=defaultsvc:http \\\n  --rule=\"foo.com/*=svc:8080,tls=secret1\"\n```",
+    "source_file": "kubectl_create_ingress.md",
+    "id": "6ea305f1"
+  },
+  {
+    "title": "kubectl create deployment",
+    "text": "Create a deployment with the specified name.\n\n```\nkubectl create deployment NAME --image=image -- [COMMAND] [args...]\n```\n\n```\n  # Create a deployment named my-dep that runs the busybox image\n  kubectl create deployment my-dep --image=busybox\n  \n  # Create a deployment with a command\n  kubectl create deployment my-dep --image=busybox -- date\n  \n  # Create a deployment named my-dep that runs the nginx image with 3 replicas\n  kubectl create deployment my-dep --image=nginx --replicas=3\n  \n  # Create a deployment named my-dep that runs the busybox image and expose port 5701\n  kubectl create deployment my-dep --image=busybox --port=5701\n  \n  # Create a deployment named my-dep that runs multiple containers\n  kubectl create deployment my-dep --image=busybox:latest --image=ubuntu:latest --image=nginx\n```",
+    "source_file": "kubectl_create_deployment.md",
+    "id": "dd580d9f"
+  },
+  {
+    "title": "kubectl create service loadbalancer",
+    "text": "Create a LoadBalancer service with the specified name.\n\n```\nkubectl create service loadbalancer NAME [--tcp=port:targetPort] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new LoadBalancer service named my-lbs\n  kubectl create service loadbalancer my-lbs --tcp=5678:8080\n```",
+    "source_file": "kubectl_create_service_loadbalancer.md",
+    "id": "7646bf18"
+  },
+  {
+    "title": "kubectl create service externalname",
+    "text": "Create an ExternalName service with the specified name.\n\n ExternalName service references to an external DNS address instead of only pods, which will allow application authors to reference services that exist off platform, on other clusters, or locally.\n\n```\nkubectl create service externalname NAME --external-name external.name [--dry-run=server|client|none]\n```\n\n```\n  # Create a new ExternalName service named my-ns\n  kubectl create service externalname my-ns --external-name bar.com\n```",
+    "source_file": "kubectl_create_service_externalname.md",
+    "id": "950f6633"
+  },
+  {
+    "title": "kubectl create secret",
+    "text": "Create a secret with specified type.\n\n A docker-registry type secret is for accessing a container registry.\n\n A generic type secret indicate an Opaque secret type.\n\n A tls type secret holds TLS certificate and its associated key.\n\n```\nkubectl create secret (docker-registry | generic | tls)\n```",
+    "source_file": "kubectl_create_secret.md",
+    "id": "d71a7259"
+  },
+  {
+    "title": "kubectl create priorityclass",
+    "text": "Create a priority class with the specified name, value, globalDefault and description.\n\n```\nkubectl create priorityclass NAME --value=VALUE --global-default=BOOL [--dry-run=server|client|none]\n```\n\n```\n  # Create a priority class named high-priority\n  kubectl create priorityclass high-priority --value=1000 --description=\"high priority\"\n  \n  # Create a priority class named default-priority that is considered as the global default priority\n  kubectl create priorityclass default-priority --value=1000 --global-default=true --description=\"default priority\"\n  \n  # Create a priority class named high-priority that cannot preempt pods with lower priority\n  kubectl create priorityclass high-priority --value=1000 --description=\"high priority\" --preemption-policy=\"Never\"\n```",
+    "source_file": "kubectl_create_priorityclass.md",
+    "id": "7b55dce5"
+  },
+  {
+    "title": "kubectl create poddisruptionbudget",
+    "text": "Create a pod disruption budget with the specified name, selector, and desired minimum available pods.\n\n```\nkubectl create poddisruptionbudget NAME --selector=SELECTOR --min-available=N [--dry-run=server|client|none]\n```\n\n```\n  # Create a pod disruption budget named my-pdb that will select all pods with the app=rails label\n  # and require at least one of them being available at any point in time\n  kubectl create poddisruptionbudget my-pdb --selector=app=rails --min-available=1\n  \n  # Create a pod disruption budget named my-pdb that will select all pods with the app=nginx label\n  # and require at least half of the pods selected to be available at any point in time\n  kubectl create pdb my-pdb --selector=app=nginx --min-available=50%\n```",
+    "source_file": "kubectl_create_poddisruptionbudget.md",
+    "id": "29a13236"
+  },
+  {
+    "title": "kubectl create configmap",
+    "text": "Create a config map based on a file, directory, or specified literal value.\n\n A single config map may package one or more key/value pairs.\n\n When creating a config map based on a file, the key will default to the basename of the file, and the value will default to the file content.  If the basename is an invalid key, you may specify an alternate key.\n\n When creating a config map based on a directory, each file whose basename is a valid key in the directory will be packaged into the config map.  Any directory entries except regular files are ignored (e.g. subdirectories, symlinks, devices, pipes, etc).\n\n```\nkubectl create configmap NAME [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new config map named my-config based on folder bar\n  kubectl create configmap my-config --from-file=path/to/bar\n  \n  # Create a new config map named my-config with specified keys instead of file basenames on disk\n  kubectl create configmap my-config --from-file=key1=/path/to/bar/file1.txt --from-file=key2=/path/to/bar/file2.txt\n  \n  # Create a new config map named my-config with key1=config1 and key2=config2\n  kubectl create configmap my-config --from-literal=key1=config1 --from-literal=key2=config2\n  \n  # Create a new config map named my-config from the key=value pairs in the file\n  kubectl create configmap my-config --from-file=path/to/bar\n  \n  # Create a new config map named my-config from an env file\n  kubectl create configmap my-config --from-env-file=path/to/foo.env --from-env-file=path/to/bar.env\n```",
+    "source_file": "kubectl_create_configmap.md",
+    "id": "a7ff9e0c"
+  },
+  {
+    "title": "kubectl create service",
+    "text": "Create a service using a specified subcommand.\n\n```\nkubectl create service [flags]\n```",
+    "source_file": "kubectl_create_service.md",
+    "id": "8ef67423"
+  },
+  {
+    "title": "kubectl create clusterrolebinding",
+    "text": "Create a cluster role binding for a particular cluster role.\n\n```\nkubectl create clusterrolebinding NAME --clusterrole=NAME [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```\n\n```\n  # Create a cluster role binding for user1, user2, and group1 using the cluster-admin cluster role\n  kubectl create clusterrolebinding cluster-admin --clusterrole=cluster-admin --user=user1 --user=user2 --group=group1\n```",
+    "source_file": "kubectl_create_clusterrolebinding.md",
+    "id": "42a027ab"
+  },
+  {
+    "title": "kubectl create secret generic",
+    "text": "Create a secret based on a file, directory, or specified literal value.\n\n A single secret may package one or more key/value pairs.\n\n When creating a secret based on a file, the key will default to the basename of the file, and the value will default to the file content. If the basename is an invalid key or you wish to chose your own, you may specify an alternate key.\n\n When creating a secret based on a directory, each file whose basename is a valid key in the directory will be packaged into the secret. Any directory entries except regular files are ignored (e.g. subdirectories, symlinks, devices, pipes, etc).\n\n```\nkubectl create secret generic NAME [--type=string] [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new secret named my-secret with keys for each file in folder bar\n  kubectl create secret generic my-secret --from-file=path/to/bar\n  \n  # Create a new secret named my-secret with specified keys instead of names on disk\n  kubectl create secret generic my-secret --from-file=ssh-privatekey=path/to/id_rsa --from-file=ssh-publickey=path/to/id_rsa.pub\n  \n  # Create a new secret named my-secret with key1=supersecret and key2=topsecret\n  kubectl create secret generic my-secret --from-literal=key1=supersecret --from-literal=key2=topsecret\n  \n  # Create a new secret named my-secret using a combination of a file and a literal\n  kubectl create secret generic my-secret --from-file=ssh-privatekey=path/to/id_rsa --from-literal=passphrase=topsecret\n  \n  # Create a new secret named my-secret from env files\n  kubectl create secret generic my-secret --from-env-file=path/to/foo.env --from-env-file=path/to/bar.env\n```",
+    "source_file": "kubectl_create_secret_generic.md",
+    "id": "e6e242de"
+  },
+  {
+    "title": "kubectl create quota",
+    "text": "Create a resource quota with the specified name, hard limits, and optional scopes.\n\n```\nkubectl create quota NAME [--hard=key1=value1,key2=value2] [--scopes=Scope1,Scope2] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new resource quota named my-quota\n  kubectl create quota my-quota --hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10\n  \n  # Create a new resource quota named best-effort\n  kubectl create quota best-effort --hard=pods=100 --scopes=BestEffort\n```",
+    "source_file": "kubectl_create_quota.md",
+    "id": "f1163f14"
+  },
+  {
+    "title": "kubectl create secret tls",
+    "text": "Create a TLS secret from the given public/private key pair.\n\n The public/private key pair must exist beforehand. The public key certificate must be .PEM encoded and match the given private key.\n\n```\nkubectl create secret tls NAME --cert=path/to/cert/file --key=path/to/key/file [--dry-run=server|client|none]\n```\n\n```\n  # Create a new TLS secret named tls-secret with the given key pair\n  kubectl create secret tls tls-secret --cert=path/to/tls.crt --key=path/to/tls.key\n```",
+    "source_file": "kubectl_create_secret_tls.md",
+    "id": "cc3bf0be"
+  },
+  {
+    "title": "kubectl create cronjob",
+    "text": "Create a cron job with the specified name.\n\n```\nkubectl create cronjob NAME --image=image --schedule='0/5 * * * ?' -- [COMMAND] [args...] [flags]\n```\n\n```\n  # Create a cron job\n  kubectl create cronjob my-job --image=busybox --schedule=\"*/1 * * * *\"\n  \n  # Create a cron job with a command\n  kubectl create cronjob my-job --image=busybox --schedule=\"*/1 * * * *\" -- date\n```",
+    "source_file": "kubectl_create_cronjob.md",
+    "id": "9a989473"
+  },
+  {
+    "title": "kubectl create job",
+    "text": "Create a job with the specified name.\n\n```\nkubectl create job NAME --image=image [--from=cronjob/name] -- [COMMAND] [args...]\n```\n\n```\n  # Create a job\n  kubectl create job my-job --image=busybox\n  \n  # Create a job with a command\n  kubectl create job my-job --image=busybox -- date\n  \n  # Create a job from a cron job named \"a-cronjob\"\n  kubectl create job test-job --from=cronjob/a-cronjob\n```",
+    "source_file": "kubectl_create_job.md",
+    "id": "15a5b01e"
+  },
+  {
+    "title": "kubectl create service clusterip",
+    "text": "Create a ClusterIP service with the specified name.\n\n```\nkubectl create service clusterip NAME [--tcp=<port>:<targetPort>] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new ClusterIP service named my-cs\n  kubectl create service clusterip my-cs --tcp=5678:8080\n  \n  # Create a new ClusterIP service named my-cs (in headless mode)\n  kubectl create service clusterip my-cs --clusterip=\"None\"\n```",
+    "source_file": "kubectl_create_service_clusterip.md",
+    "id": "d40cfb15"
+  },
+  {
+    "title": "kubectl create role",
+    "text": "Create a role with single rule.\n\n```\nkubectl create role NAME --verb=verb --resource=resource.group/subresource [--resource-name=resourcename] [--dry-run=server|client|none]\n```\n\n```\n  # Create a role named \"pod-reader\" that allows user to perform \"get\", \"watch\" and \"list\" on pods\n  kubectl create role pod-reader --verb=get --verb=list --verb=watch --resource=pods\n  \n  # Create a role named \"pod-reader\" with ResourceName specified\n  kubectl create role pod-reader --verb=get --resource=pods --resource-name=readablepod --resource-name=anotherpod\n  \n  # Create a role named \"foo\" with API Group specified\n  kubectl create role foo --verb=get,list,watch --resource=rs.apps\n  \n  # Create a role named \"foo\" with SubResource specified\n  kubectl create role foo --verb=get,list,watch --resource=pods,pods/status\n```",
+    "source_file": "kubectl_create_role.md",
+    "id": "2ce03fe9"
+  },
+  {
+    "title": "kubectl create rolebinding",
+    "text": "Create a role binding for a particular role or cluster role.\n\n```\nkubectl create rolebinding NAME --clusterrole=NAME|--role=NAME [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none]\n```\n\n```\n  # Create a role binding for user1, user2, and group1 using the admin cluster role\n  kubectl create rolebinding admin --clusterrole=admin --user=user1 --user=user2 --group=group1\n  \n  # Create a role binding for service account monitoring:sa-dev using the admin role\n  kubectl create rolebinding admin-binding --role=admin --serviceaccount=monitoring:sa-dev\n```",
+    "source_file": "kubectl_create_rolebinding.md",
+    "id": "b2569f93"
+  },
+  {
+    "title": "kubectl create secret docker-registry",
+    "text": "Create a new secret for use with Docker registries.\n        \n        Dockercfg secrets are used to authenticate against Docker registries.\n        \n        When using the Docker command line to push images, you can authenticate to a given registry by running:\n        '$ docker login DOCKER_REGISTRY_SERVER --username=DOCKER_USER --password=DOCKER_PASSWORD --email=DOCKER_EMAIL'.\n        \n That produces a ~/.dockercfg file that is used by subsequent 'docker push' and 'docker pull' commands to authenticate to the registry. The email address is optional.\n\n        When creating applications, you may have a Docker registry that requires authentication.  In order for the\n        nodes to pull images on your behalf, they must have the credentials.  You can provide this information\n        by creating a dockercfg secret and attaching it to your service account.\n\n```\nkubectl create secret docker-registry NAME --docker-username=user --docker-password=password --docker-email=email [--docker-server=string] [--from-file=[key=]source] [--dry-run=server|client|none]\n```\n\n```\n  # If you do not already have a .dockercfg file, create a dockercfg secret directly\n  kubectl create secret docker-registry my-secret --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL\n  \n  # Create a new secret named my-secret from ~/.docker/config.json\n  kubectl create secret docker-registry my-secret --from-file=path/to/.docker/config.json\n```",
+    "source_file": "kubectl_create_secret_docker-registry.md",
+    "id": "64214de0"
+  },
+  {
+    "title": "kubectl create service nodeport",
+    "text": "Create a NodePort service with the specified name.\n\n```\nkubectl create service nodeport NAME [--tcp=port:targetPort] [--dry-run=server|client|none]\n```\n\n```\n  # Create a new NodePort service named my-ns\n  kubectl create service nodeport my-ns --tcp=5678:8080\n```",
+    "source_file": "kubectl_create_service_nodeport.md",
+    "id": "9f6949e2"
+  },
+  {
+    "title": "kubectl create serviceaccount",
+    "text": "Create a service account with the specified name.\n\n```\nkubectl create serviceaccount NAME [--dry-run=server|client|none]\n```\n\n```\n  # Create a new service account named my-service-account\n  kubectl create serviceaccount my-service-account\n```",
+    "source_file": "kubectl_create_serviceaccount.md",
+    "id": "8b2d0bc3"
+  },
+  {
+    "title": "kubectl create clusterrole",
+    "text": "Create a cluster role.\n\n```\nkubectl create clusterrole NAME --verb=verb --resource=resource.group [--resource-name=resourcename] [--dry-run=server|client|none]\n```\n\n```\n  # Create a cluster role named \"pod-reader\" that allows user to perform \"get\", \"watch\" and \"list\" on pods\n  kubectl create clusterrole pod-reader --verb=get,list,watch --resource=pods\n  \n  # Create a cluster role named \"pod-reader\" with ResourceName specified\n  kubectl create clusterrole pod-reader --verb=get --resource=pods --resource-name=readablepod --resource-name=anotherpod\n  \n  # Create a cluster role named \"foo\" with API Group specified\n  kubectl create clusterrole foo --verb=get,list,watch --resource=rs.apps\n  \n  # Create a cluster role named \"foo\" with SubResource specified\n  kubectl create clusterrole foo --verb=get,list,watch --resource=pods,pods/status\n  \n  # Create a cluster role name \"foo\" with NonResourceURL specified\n  kubectl create clusterrole \"foo\" --verb=get --non-resource-url=/logs/*\n  \n  # Create a cluster role name \"monitoring\" with AggregationRule specified\n  kubectl create clusterrole monitoring --aggregation-rule=\"rbac.example.com/aggregate-to-monitoring=true\"\n```",
+    "source_file": "kubectl_create_clusterrole.md",
+    "id": "809b0671"
+  },
+  {
+    "title": "kubectl create",
+    "text": "Create a resource from a file or from stdin.\n\n JSON and YAML formats are accepted.\n\n```\nkubectl create -f FILENAME\n```\n\n```\n  # Create a pod using the data in pod.json\n  kubectl create -f ./pod.json\n  \n  # Create a pod based on the JSON passed into stdin\n  cat pod.json | kubectl create -f -\n  \n  # Edit the data in registry.yaml in JSON then create the resource using the edited data\n  kubectl create -f registry.yaml --edit -o json\n```",
+    "source_file": "_index.md",
+    "id": "d4d4ea5a"
+  },
+  {
+    "title": "kubectl api-versions",
+    "text": "Print the supported API versions on the server, in the form of \"group/version\".\n\n```\nkubectl api-versions\n```\n\n```\n  # Print the supported API versions\n  kubectl api-versions\n```",
+    "source_file": "_index.md",
+    "id": "96acd4b2"
+  },
+  {
+    "title": "kubectl exec",
+    "text": "Execute a command in a container.\n\n```\nkubectl exec (POD | TYPE/NAME) [-c CONTAINER] [flags] -- COMMAND [args...]\n```\n\n```\n  # Get output from running the 'date' command from pod mypod, using the first container by default\n  kubectl exec mypod -- date\n  \n  # Get output from running the 'date' command in ruby-container from pod mypod\n  kubectl exec mypod -c ruby-container -- date\n  \n  # Switch to raw terminal mode; sends stdin to 'bash' in ruby-container from pod mypod\n  # and sends stdout/stderr from 'bash' back to the client\n  kubectl exec mypod -c ruby-container -i -t -- bash -il\n  \n  # List contents of /usr from the first container of pod mypod and sort by modification time\n  # If the command you want to execute in the pod has any flags in common (e.g. -i),\n  # you must use two dashes (--) to separate your command's flags/arguments\n  # Also note, do not surround your command and its flags/arguments with quotes\n  # unless that is how you would execute it normally (i.e., do ls -t /usr, not \"ls -t /usr\")\n  kubectl exec mypod -i -t -- ls -t /usr\n  \n  # Get output from running 'date' command from the first pod of the deployment mydeployment, using the first container by default\n  kubectl exec deploy/mydeployment -- date\n  \n  # Get output from running 'date' command from the first pod of the service myservice, using the first container by default\n  kubectl exec svc/myservice -- date\n```",
+    "source_file": "_index.md",
+    "id": "f8788db9"
+  },
+  {
+    "title": "kubectl label",
+    "text": "Update the labels on a resource.\n\n  *  A label key and value must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters each.\n  *  Optionally, the key can begin with a DNS subdomain prefix and a single '/', like example.com/my-app.\n  *  If --overwrite is true, then existing labels can be overwritten, otherwise attempting to overwrite a label will result in an error.\n  *  If --resource-version is specified, then updates will use this resource version, otherwise the existing resource-version will be used.\n\n```\nkubectl label [--overwrite] (-f FILENAME | TYPE NAME) KEY_1=VAL_1 ... KEY_N=VAL_N [--resource-version=version]\n```\n\n```\n  # Update pod 'foo' with the label 'unhealthy' and the value 'true'\n  kubectl label pods foo unhealthy=true\n  \n  # Update pod 'foo' with the label 'status' and the value 'unhealthy', overwriting any existing value\n  kubectl label --overwrite pods foo status=unhealthy\n  \n  # Update all pods in the namespace\n  kubectl label pods --all status=unhealthy\n  \n  # Update a pod identified by the type and name in \"pod.json\"\n  kubectl label -f pod.json status=unhealthy\n  \n  # Update pod 'foo' only if the resource is unchanged from version 1\n  kubectl label pods foo status=unhealthy --resource-version=1\n  \n  # Update pod 'foo' by removing a label named 'bar' if it exists\n  # Does not require the --overwrite flag\n  kubectl label pods foo bar-\n```",
+    "source_file": "_index.md",
+    "id": "53dea42b"
+  },
+  {
+    "title": "kubectl get",
+    "text": "Display one or many resources.\n\n Prints a table of the most important information about the specified resources. You can filter the list using a label selector and the --selector flag. If the desired resource type is namespaced you will only see results in the current namespace if you don't specify any namespace.\n\n By specifying the output as 'template' and providing a Go template as the value of the --template flag, you can filter the attributes of the fetched resources.\n\nUse \"kubectl api-resources\" for a complete list of supported resources.\n\n```\nkubectl get [(-o|--output=)json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-as-json|jsonpath-file|custom-columns|custom-columns-file|wide] (TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags]\n```\n\n```\n  # List all pods in ps output format\n  kubectl get pods\n  \n  # List all pods in ps output format with more information (such as node name)\n  kubectl get pods -o wide\n  \n  # List a single replication controller with specified NAME in ps output format\n  kubectl get replicationcontroller web\n  \n  # List deployments in JSON output format, in the \"v1\" version of the \"apps\" API group\n  kubectl get deployments.v1.apps -o json\n  \n  # List a single pod in JSON output format\n  kubectl get -o json pod web-pod-13je7\n  \n  # List a pod identified by type and name specified in \"pod.yaml\" in JSON output format\n  kubectl get -f pod.yaml -o json\n  \n  # List resources from a directory with kustomization.yaml - e.g. dir/kustomization.yaml\n  kubectl get -k dir/\n  \n  # Return only the phase value of the specified pod\n  kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}\n  \n  # List resource information in custom columns\n  kubectl get pod test-pod -o custom-columns=CONTAINER:.spec.containers[0].name,IMAGE:.spec.containers[0].image\n  \n  # List all replication controllers and services together in ps output format\n  kubectl get rc,services\n  \n  # List one or more resources by their type and names\n  kubectl get rc/web service/frontend pods/web-pod-13je7\n  \n  # List the 'status' subresource for a single pod\n  kubectl get pod web-pod-13je7 --subresource status\n  \n  # List all deployments in namespace 'backend'\n  kubectl get deployments.apps --namespace backend\n  \n  # List all pods existing in all namespaces\n  kubectl get pods --all-namespaces\n```",
+    "source_file": "_index.md",
+    "id": "97e3c70d"
+  },
+  {
+    "title": "kubectl delete",
+    "text": "Delete resources by file names, stdin, resources and names, or by resources and label selector.\n\n JSON and YAML formats are accepted. Only one type of argument may be specified: file names, resources and names, or resources and label selector.\n\n Some resources, such as pods, support graceful deletion. These resources define a default period before they are forcibly terminated (the grace period) but you may override that value with the --grace-period flag, or pass --now to set a grace-period of 1. Because these resources often represent entities in the cluster, deletion may not be acknowledged immediately. If the node hosting a pod is down or cannot reach the API server, termination may take significantly longer than the grace period. To force delete a resource, you must specify the --force flag. Note: only a subset of resources support graceful deletion. In absence of the support, the --grace-period flag is ignored.\n\n IMPORTANT: Force deleting pods does not wait for confirmation that the pod's processes have been terminated, which can leave those processes running until the node detects the deletion and completes graceful deletion. If your processes use shared storage or talk to a remote API and depend on the name of the pod to identify themselves, force deleting those pods may result in multiple processes running on different machines using the same identification which may lead to data corruption or inconsistency. Only force delete pods when you are sure the pod is terminated, or if your application can tolerate multiple copies of the same pod running at once. Also, if you force delete pods, the scheduler may place new pods on those nodes before the node has released those resources and causing those pods to be evicted immediately.\n\n Note that the delete command does NOT do resource version checks, so if someone submits an update to a resource right when you submit a delete, their update will be lost along with the rest of the resource.\n\n After a CustomResourceDefinition is deleted, invalidation of discovery cache may take up to 6 hours. If you don't want to wait, you might want to run \"kubectl api-resources\" to refresh the discovery cache.\n\n```\nkubectl delete ([-f FILENAME] | [-k DIRECTORY] | TYPE [(NAME | -l label | --all)])\n```\n\n```\n  # Delete a pod using the type and name specified in pod.json\n  kubectl delete -f ./pod.json\n  \n  # Delete resources from a directory containing kustomization.yaml - e.g. dir/kustomization.yaml\n  kubectl delete -k dir\n  \n  # Delete resources from all files that end with '.json'\n  kubectl delete -f '*.json'\n  \n  # Delete a pod based on the type and name in the JSON passed into stdin\n  cat pod.json | kubectl delete -f -\n  \n  # Delete pods and services with same names \"baz\" and \"foo\"\n  kubectl delete pod,service baz foo\n  \n  # Delete pods and services with label name=myLabel\n  kubectl delete pods,services -l name=myLabel\n  \n  # Delete a pod with minimal delay\n  kubectl delete pod foo --now\n  \n  # Force delete a pod on a dead node\n  kubectl delete pod foo --force\n  \n  # Delete all pods\n  kubectl delete pods --all\n  \n  # Delete all pods only if the user confirms the deletion\n  kubectl delete pods --all --interactive\n```",
+    "source_file": "_index.md",
+    "id": "3eb43484"
+  },
+  {
+    "title": "kubectl top pod",
+    "text": "Display resource (CPU/memory) usage of pods.\n\n The 'top pod' command allows you to see the resource consumption of pods.\n\n Due to the metrics pipeline delay, they may be unavailable for a few minutes since pod creation.\n\n```\nkubectl top pod [NAME | -l label]\n```\n\n```\n  # Show metrics for all pods in the default namespace\n  kubectl top pod\n  \n  # Show metrics for all pods in the given namespace\n  kubectl top pod --namespace=NAMESPACE\n  \n  # Show metrics for a given pod and its containers\n  kubectl top pod POD_NAME --containers\n  \n  # Show metrics for the pods defined by label name=myLabel\n  kubectl top pod -l name=myLabel\n```",
+    "source_file": "kubectl_top_pod.md",
+    "id": "24d99e73"
+  },
+  {
+    "title": "kubectl top node",
+    "text": "Display resource (CPU/memory) usage of nodes.\n\n The top-node command allows you to see the resource consumption of nodes.\n\n```\nkubectl top node [NAME | -l label]\n```\n\n```\n  # Show metrics for all nodes\n  kubectl top node\n  \n  # Show metrics for a given node\n  kubectl top node NODE_NAME\n```",
+    "source_file": "kubectl_top_node.md",
+    "id": "a2652109"
+  },
+  {
+    "title": "kubectl top",
+    "text": "Display resource (CPU/memory) usage.\n\n This command provides a view of recent resource consumption for nodes and pods. It fetches metrics from the Metrics Server, which aggregates this data from the kubelet on each node. The Metrics Server must be installed and running in the cluster for this command to work.\n\n The metrics shown are specifically optimized for Kubernetes autoscaling decisions, such as those made by the Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA). Because of this, the values may not match those from standard OS tools like 'top', as the metrics are designed to provide a stable signal for autoscalers rather than for pinpoint accuracy.\n\n When to use this command:\n\n  *  For on-the-fly spot-checks of resource usage (e.g. identify which pods are consuming the most resources at a glance, or get a quick sense of the load on your nodes)\n  *  Understand current resource consumption patterns\n  *  Validate the behavior of your HPA or VPA configurations by seeing the metrics they use for scaling decisions.\n\n It is not intended to be a replacement for full-featured monitoring solutions. Its primary design goal is to provide a low-overhead signal for autoscalers, not to be a perfectly accurate monitoring tool. For high-accuracy reporting, historical analysis, dashboarding, or alerting, you should use a dedicated monitoring solution.\n\n```\nkubectl top [flags]\n```",
+    "source_file": "_index.md",
+    "id": "47158b98"
+  },
+  {
+    "title": "kubectl scale",
+    "text": "Set a new size for a deployment, replica set, replication controller, or stateful set.\n\n Scale also allows users to specify one or more preconditions for the scale action.\n\n If --current-replicas or --resource-version is specified, it is validated before the scale is attempted, and it is guaranteed that the precondition holds true when the scale is sent to the server.\n\n```\nkubectl scale [--resource-version=version] [--current-replicas=count] --replicas=COUNT (-f FILENAME | TYPE NAME)\n```\n\n```\n  # Scale a replica set named 'foo' to 3\n  kubectl scale --replicas=3 rs/foo\n  \n  # Scale a resource identified by type and name specified in \"foo.yaml\" to 3\n  kubectl scale --replicas=3 -f foo.yaml\n  \n  # If the deployment named mysql's current size is 2, scale mysql to 3\n  kubectl scale --current-replicas=2 --replicas=3 deployment/mysql\n  \n  # Scale multiple replication controllers\n  kubectl scale --replicas=5 rc/example1 rc/example2 rc/example3\n  \n  # Scale stateful set named 'web' to 3\n  kubectl scale --replicas=3 statefulset/web\n```",
+    "source_file": "_index.md",
+    "id": "711c3179"
+  },
+  {
+    "title": "kubectl taint",
+    "text": "Update the taints on one or more nodes.\n\n  *  A taint consists of a key, value, and effect. As an argument here, it is expressed as key=value:effect.\n  *  The key must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 253 characters.\n  *  Optionally, the key can begin with a DNS subdomain prefix and a single '/', like example.com/my-app.\n  *  The value is optional. If given, it must begin with a letter or number, and may contain letters, numbers, hyphens, dots, and underscores, up to 63 characters.\n  *  The effect must be NoSchedule, PreferNoSchedule or NoExecute.\n  *  Currently taint can only apply to node.\n\n```\nkubectl taint NODE NAME KEY_1=VAL_1:TAINT_EFFECT_1 ... KEY_N=VAL_N:TAINT_EFFECT_N\n```\n\n```\n  # Update node 'foo' with a taint with key 'dedicated' and value 'special-user' and effect 'NoSchedule'\n  # If a taint with that key and effect already exists, its value is replaced as specified\n  kubectl taint nodes foo dedicated=special-user:NoSchedule\n  \n  # Remove from node 'foo' the taint with key 'dedicated' and effect 'NoSchedule' if one exists\n  kubectl taint nodes foo dedicated:NoSchedule-\n  \n  # Remove from node 'foo' all the taints with key 'dedicated'\n  kubectl taint nodes foo dedicated-\n  \n  # Add a taint with key 'dedicated' on nodes having label myLabel=X\n  kubectl taint node -l myLabel=X  dedicated=foo:PreferNoSchedule\n  \n  # Add to node 'foo' a taint with key 'bar' and no value\n  kubectl taint nodes foo bar:NoSchedule\n```",
+    "source_file": "_index.md",
+    "id": "03f1623c"
+  },
+  {
+    "title": "kubectl rollout undo",
+    "text": "Roll back to a previous rollout.\n\n```\nkubectl rollout undo (TYPE NAME | TYPE/NAME) [flags]\n```\n\n```\n  # Roll back to the previous deployment\n  kubectl rollout undo deployment/abc\n  \n  # Roll back to daemonset revision 3\n  kubectl rollout undo daemonset/abc --to-revision=3\n  \n  # Roll back to the previous deployment with dry-run\n  kubectl rollout undo --dry-run=server deployment/abc\n```",
+    "source_file": "kubectl_rollout_undo.md",
+    "id": "f5e66daa"
+  },
+  {
+    "title": "kubectl rollout resume",
+    "text": "Resume a paused resource.\n\n Paused resources will not be reconciled by a controller. By resuming a resource, we allow it to be reconciled again. Currently only deployments support being resumed.\n\n```\nkubectl rollout resume RESOURCE\n```\n\n```\n  # Resume an already paused deployment\n  kubectl rollout resume deployment/nginx\n```",
+    "source_file": "kubectl_rollout_resume.md",
+    "id": "78659d0e"
+  },
+  {
+    "title": "kubectl rollout restart",
+    "text": "Restart a resource.\n\n        Resource rollout will be restarted.\n\n```\nkubectl rollout restart RESOURCE\n```\n\n```\n  # Restart all deployments in the test-namespace namespace\n  kubectl rollout restart deployment -n test-namespace\n  \n  # Restart a deployment\n  kubectl rollout restart deployment/nginx\n  \n  # Restart a daemon set\n  kubectl rollout restart daemonset/abc\n  \n  # Restart deployments with the app=nginx label\n  kubectl rollout restart deployment --selector=app=nginx\n```",
+    "source_file": "kubectl_rollout_restart.md",
+    "id": "28644f68"
+  },
+  {
+    "title": "kubectl rollout status",
+    "text": "Show the status of the rollout.\n\n By default 'rollout status' will watch the status of the latest rollout until it's done. If you don't want to wait for the rollout to finish then you can use --watch=false. Note that if a new rollout starts in-between, then 'rollout status' will continue watching the latest revision. If you want to pin to a specific revision and abort if it is rolled over by another revision, use --revision=N where N is the revision you need to watch for.\n\n```\nkubectl rollout status (TYPE NAME | TYPE/NAME) [flags]\n```\n\n```\n  # Watch the rollout status of a deployment\n  kubectl rollout status deployment/nginx\n```",
+    "source_file": "kubectl_rollout_status.md",
+    "id": "84913dcf"
+  },
+  {
+    "title": "kubectl rollout pause",
+    "text": "Mark the provided resource as paused.\n\n Paused resources will not be reconciled by a controller. Use \"kubectl rollout resume\" to resume a paused resource. Currently only deployments support being paused.\n\n```\nkubectl rollout pause RESOURCE\n```\n\n```\n  # Mark the nginx deployment as paused\n  # Any current state of the deployment will continue its function; new updates\n  # to the deployment will not have an effect as long as the deployment is paused\n  kubectl rollout pause deployment/nginx\n```",
+    "source_file": "kubectl_rollout_pause.md",
+    "id": "a197ed1e"
+  },
+  {
+    "title": "kubectl rollout",
+    "text": "Manage the rollout of one or many resources.\n        \n Valid resource types include:\n\n  *  deployments\n  *  daemonsets\n  *  statefulsets\n\n```\nkubectl rollout SUBCOMMAND\n```\n\n```\n  # Rollback to the previous deployment\n  kubectl rollout undo deployment/abc\n  \n  # Check the rollout status of a daemonset\n  kubectl rollout status daemonset/foo\n  \n  # Restart a deployment\n  kubectl rollout restart deployment/abc\n  \n  # Restart deployments with the 'app=nginx' label\n  kubectl rollout restart deployment --selector=app=nginx\n```",
+    "source_file": "_index.md",
+    "id": "e7d7c16b"
+  },
+  {
+    "title": "kubectl rollout history",
+    "text": "View previous rollout revisions and configurations.\n\n```\nkubectl rollout history (TYPE NAME | TYPE/NAME) [flags]\n```\n\n```\n  # View the rollout history of a deployment\n  kubectl rollout history deployment/abc\n  \n  # View the details of daemonset revision 3\n  kubectl rollout history daemonset/abc --revision=3\n```",
+    "source_file": "kubectl_rollout_history.md",
+    "id": "cc9da943"
+  },
+  {
+    "title": "kubectl apply set-last-applied",
+    "text": "Set the latest last-applied-configuration annotations by setting it to match the contents of a file. This results in the last-applied-configuration being updated as though 'kubectl apply -f&lt;file&gt; ' was run, without updating any other parts of the object.\n\n```\nkubectl apply set-last-applied -f FILENAME\n```\n\n```\n  # Set the last-applied-configuration of a resource to match the contents of a file\n  kubectl apply set-last-applied -f deploy.yaml\n  \n  # Execute set-last-applied against each configuration file in a directory\n  kubectl apply set-last-applied -f path/\n  \n  # Set the last-applied-configuration of a resource to match the contents of a file; will create the annotation if it does not already exist\n  kubectl apply set-last-applied -f deploy.yaml --create-annotation=true\n```",
+    "source_file": "kubectl_apply_set-last-applied.md",
+    "id": "850acdc7"
+  },
+  {
+    "title": "kubectl apply edit-last-applied",
+    "text": "Edit the latest last-applied-configuration annotations of resources from the default editor.\n\n The edit-last-applied command allows you to directly edit any API resource you can retrieve via the command-line tools. It will open the editor defined by your KUBE_EDITOR, or EDITOR environment variables, or fall back to 'vi' for Linux or 'notepad' for Windows. You can edit multiple objects, although changes are applied one at a time. The command accepts file names as well as command-line arguments, although the files you point to must be previously saved versions of resources.\n\n The default format is YAML. To edit in JSON, specify \"-o json\".\n\n The flag --windows-line-endings can be used to force Windows line endings, otherwise the default for your operating system will be used.\n\n In the event an error occurs while updating, a temporary file will be created on disk that contains your unapplied changes. The most common error when updating a resource is another editor changing the resource on the server. When this occurs, you will have to apply your changes to the newer version of the resource, or update your temporary saved copy to include the latest resource version.\n\n```\nkubectl apply edit-last-applied (RESOURCE/NAME | -f FILENAME)\n```\n\n```\n  # Edit the last-applied-configuration annotations by type/name in YAML\n  kubectl apply edit-last-applied deployment/nginx\n  \n  # Edit the last-applied-configuration annotations by file in JSON\n  kubectl apply edit-last-applied -f deploy.yaml -o json\n```",
+    "source_file": "kubectl_apply_edit-last-applied.md",
+    "id": "f8072f1c"
+  },
+  {
+    "title": "kubectl apply view-last-applied",
+    "text": "View the latest last-applied-configuration annotations by type/name or file.\n\n The default output will be printed to stdout in YAML format. You can use the -o option to change the output format.\n\n```\nkubectl apply view-last-applied (TYPE [NAME | -l label] | TYPE/NAME | -f FILENAME)\n```\n\n```\n  # View the last-applied-configuration annotations by type/name in YAML\n  kubectl apply view-last-applied deployment/nginx\n  \n  # View the last-applied-configuration annotations by file in JSON\n  kubectl apply view-last-applied -f deploy.yaml -o json\n```",
+    "source_file": "kubectl_apply_view-last-applied.md",
+    "id": "0ed2d5e8"
+  },
+  {
+    "title": "kubectl apply",
+    "text": "Apply a configuration to a resource by file name or stdin. The resource name must be specified. This resource will be created if it doesn't exist yet. To use 'apply', always create the resource initially with either 'apply' or 'create --save-config'.\n\n JSON and YAML formats are accepted.\n\n Alpha Disclaimer: the --prune functionality is not yet complete. Do not use unless you are aware of what the current state is. See https://issues.k8s.io/34274.\n\n```\nkubectl apply (-f FILENAME | -k DIRECTORY)\n```\n\n```\n  # Apply the configuration in pod.json to a pod\n  kubectl apply -f ./pod.json\n  \n  # Apply resources from a directory containing kustomization.yaml - e.g. dir/kustomization.yaml\n  kubectl apply -k dir/\n  \n  # Apply the JSON passed into stdin to a pod\n  cat pod.json | kubectl apply -f -\n  \n  # Apply the configuration from all files that end with '.json'\n  kubectl apply -f '*.json'\n  \n  # Note: --prune is still in Alpha\n  # Apply the configuration in manifest.yaml that matches label app=nginx and delete all other resources that are not in the file and match label app=nginx\n  kubectl apply --prune -f manifest.yaml -l app=nginx\n  \n  # Apply the configuration in manifest.yaml and delete all the other config maps that are not in the file\n  kubectl apply --prune -f manifest.yaml --all --prune-allowlist=core/v1/ConfigMap\n```",
+    "source_file": "_index.md",
+    "id": "8666ad26"
+  }
+]

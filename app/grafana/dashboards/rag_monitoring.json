@@ -1,0 +1,605 @@
+{
+    "annotations": {
+      "list": []
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+        {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "thresholds": {
+                  "mode": "percentage",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "orange",
+                      "value": 70
+                    },
+                    {
+                      "color": "red",
+                      "value": 85
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 0,
+              "y": 0
+            },
+            "id": 1,
+            "options": {
+              "minVizHeight": 75,
+              "minVizWidth": 75,
+              "orientation": "auto",
+              "reduceOptions": {
+                "calcs": [
+                  "mean"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showThresholdLabels": false,
+              "showThresholdMarkers": true,
+              "sizing": "auto"
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "format": "table",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT AVG(response_time * 1000) as \"avg_response_time\" FROM conversations WHERE timestamp >= NOW() - INTERVAL '24 hours';",
+                "refId": "A",
+                "select": [
+                  [
+                    {
+                      "params": [
+                        "response_time"
+                      ],
+                      "type": "column"
+                    }
+                  ]
+                ],
+                "table": "conversations",
+                "timeColumn": "timestamp",
+                "where": [
+                  {
+                    "name": "$__timeFilter",
+                    "params": [],
+                    "type": "macro"
+                  }
+                ]
+              }
+            ],
+            "title": "Average Response Time (24h)",
+            "type": "gauge"
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "thresholds": {
+                  "mode": "percentage",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "orange",
+                      "value": 70
+                    },
+                    {
+                      "color": "red",
+                      "value": 85
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 6,
+              "y": 0
+            },
+            "id": 2,
+            "options": {
+              "minVizHeight": 75,
+              "minVizWidth": 75,
+              "orientation": "auto",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": true
+              },
+              "showThresholdLabels": false,
+              "showThresholdMarkers": true,
+              "sizing": "auto"
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "editorMode": "code",
+                "format": "table",
+                "group": [],
+                "metricColumn": "none",
+                "rawQuery": true,
+                "rawSql": "SELECT relevance, COUNT(*) as count FROM conversations WHERE timestamp >= NOW() - INTERVAL '24 hours' GROUP BY relevance;",
+                "refId": "A",
+                "sql": {
+                  "columns": [
+                    {
+                      "parameters": [],
+                      "type": "function"
+                    }
+                  ],
+                  "groupBy": [
+                    {
+                      "property": {
+                        "type": "string"
+                      },
+                      "type": "groupBy"
+                    }
+                  ],
+                  "limit": 50
+                }
+              }
+            ],
+            "title": "Answer Relevance Distribution (24h)",
+            "type": "gauge"
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "mappings": [],
+                "thresholds": {
+                  "mode": "percentage",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 20
+                    },
+                    {
+                      "color": "green",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 12,
+              "y": 0
+            },
+            "id": 3,
+            "options": {
+              "minVizHeight": 75,
+              "minVizWidth": 75,
+              "orientation": "auto",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": true
+              },
+              "showThresholdLabels": false,
+              "showThresholdMarkers": true,
+              "sizing": "auto"
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "format": "table",
+                "rawQuery": true,
+                "rawSql": "SELECT CASE WHEN feedback = 1 THEN 'Positive' ELSE 'Negative' END as feedback_type, COUNT(*) as count FROM feedback WHERE timestamp >= NOW() - INTERVAL '24 hours' GROUP BY feedback;",
+                "refId": "A"
+              }
+            ],
+            "title": "User Feedback (24h)",
+            "type": "gauge"
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    }
+                  ]
+                },
+                "unit": "currencyUSD"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 18,
+              "y": 0
+            },
+            "id": 4,
+            "options": {
+              "minVizHeight": 75,
+              "minVizWidth": 75,
+              "orientation": "auto",
+              "reduceOptions": {
+                "calcs": [
+                  "sum"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showThresholdLabels": false,
+              "showThresholdMarkers": true,
+              "sizing": "auto"
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "format": "table",
+                "rawQuery": true,
+                "rawSql": "SELECT SUM(openai_cost) as total_cost FROM conversations WHERE timestamp >= NOW() - INTERVAL '24 hours';",
+                "refId": "A"
+              }
+            ],
+            "title": "Total OpenAI Cost (24h)",
+            "type": "gauge"
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "question"
+                  },
+                  "properties": [
+                    {
+                      "id": "custom.width",
+                      "value": 300
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "answer"
+                  },
+                  "properties": [
+                    {
+                      "id": "custom.width",
+                      "value": 400
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 12,
+              "w": 24,
+              "x": 0,
+              "y": 8
+            },
+            "id": 5,
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true,
+              "sortBy": []
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "format": "table",
+                "rawQuery": true,
+                "rawSql": "SELECT timestamp, LEFT(question, 100) as question, LEFT(answer, 150) as answer, relevance, ROUND(response_time::numeric, 2) as response_time_sec, ROUND(openai_cost::numeric, 6) as cost FROM conversations ORDER BY timestamp DESC LIMIT 5;",
+                "refId": "A"
+              }
+            ],
+            "title": "Last 5 Conversations",
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 20
+            },
+            "id": 6,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "format": "time_series",
+                "rawQuery": true,
+                "rawSql": "SELECT timestamp as time, prompt_tokens, completion_tokens FROM conversations WHERE $__timeFilter(timestamp) ORDER BY timestamp;",
+                "refId": "A"
+              }
+            ],
+            "title": "Token Usage Over Time",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "PostgreSQL"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 20
+            },
+            "id": 7,
+            "options": {
+              "legend": {
+                "calcs": [
+                  "mean",
+                  "max"
+                ],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "12.2.0",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "postgres",
+                  "uid": "PostgreSQL"
+                },
+                "format": "time_series",
+                "rawQuery": true,
+                "rawSql": "SELECT timestamp as time, response_time FROM conversations WHERE $__timeFilter(timestamp) ORDER BY timestamp;",
+                "refId": "A"
+              }
+            ],
+            "title": "Response Time Over Time",
+            "type": "timeseries"
+        }
+    ],
+    "refresh": "30s",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": ["rag", "monitoring"],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "RAG System Monitoring",
+    "uid": "rag-monitoring",
+    "version": 0,
+    "weekStart": ""
+  }
