@@ -54,6 +54,10 @@ To ensure optimal retrieval quality, multiple methods were evaluated:
 | Hybrid (Keyword + KNN) | **0.9756** | **0.9772** |
 | Hybrid + Re-ranking | 0.9534 | 0.8778 |
 
+ Search evaluation notebooks: 
+ https://github.com/sindhurauppu/k8s-assistant/blob/main/notebooks/evaluate-search.ipynb
+ https://github.com/sindhurauppu/k8s-assistant/blob/main/notebooks/hybrid-search.ipynb
+
 ✅ **Best performing method:** **Hybrid (Keyword + KNN)**  
 This configuration is used in the final system for all user queries.
 
@@ -78,6 +82,9 @@ Two prompting techniques were tested for answer relevance classification (`RELEV
 |------------------|-----------|--------|-----|
 | Answer–Question–Answer | 109 | 38 | 3 |
 | Question–Answer | **102** | **42** | **6** |
+
+Evaluation notebook: 
+https://github.com/sindhurauppu/k8s-assistant/blob/main/notebooks/evaluate-rag.ipynb 
 
 ✅ **Chosen Technique:** *Question–Answer* prompt  
 This approach was integrated into the live system to automatically assess real user responses.
@@ -106,7 +113,34 @@ Executed automatically when containers spin up — no manual steps required.
 
 ---
 
-## 7. 📈 Monitoring & Feedback
+## 7. 🔁 Reproducibility
+
+- **Dataset:** Kubernetes official website repo (openly available).  
+- **Dependencies:** All versions pinned in `requirements.txt` and `docker-compose.yml`.  
+- **Environment:** Python 3.10+, Docker 24+.  
+- **Setup:** One-command deployment via Docker Compose.  
+- **Configuration:** All credentials via `.env` file.  
+
+This ensures the system can be reproduced end-to-end by any user.
+
+### Run locally:
+```bash
+git clone https://github.com/sindhurauppu/k8s-assistant.git
+cd app
+cp .env.example .env
+Update OPENAI_API_KEY and POSTGRES password in .env
+docker-compose up --build
+Wait until ingest container is completed and streamlit, grafana containers start.
+```
+
+### Code:
+The application code is in `app/` directory.
+
+- The Streamlit application code is in `app.py`
+- RAG flow is in `rag.py`, `index-documents.py` contains Elastic Search indexing code that will be run at the start of the system.
+- Postgres tables and db procedures are in `db.py`
+
+## 8. 📈 Monitoring & Feedback
 
 Real-time monitoring is implemented through **Grafana** with a **PostgreSQL data source**.  
 The dashboard includes five key panels:
@@ -121,7 +155,7 @@ All metrics are logged in PostgreSQL and updated dynamically.
 
 ---
 
-## 8. 🐳 Containerization
+## 9. 🐳 Containerization
 
 The entire system runs via **Docker Compose**, including:
 
@@ -139,29 +173,8 @@ POSTGRES_USER=postgres
 POSTGRES_DB=ragsystem
 ```
 
-### Run locally:
-```bash
-git clone https://github.com/sindhurauppu/k8s-assistant.git
-cd app
-cp .env.example .env
-Update OPENAI_API_KEY and POSTGRES password in .env
-docker-compose up --build
-Wait until ingest container is completed and streamlit, grafana containers start.
-```
-
 ---
 
-## 9. 🔁 Reproducibility
-
-- **Dataset:** Kubernetes official website repo (openly available).  
-- **Dependencies:** All versions pinned in `requirements.txt` and `docker-compose.yml`.  
-- **Environment:** Python 3.10+, Docker 24+.  
-- **Setup:** One-command deployment via Docker Compose.  
-- **Configuration:** All credentials via `.env` file.  
-
-This ensures the system can be reproduced end-to-end by any user.
-
----
 
 ## 10. 🌟 Best Practices Followed
 
