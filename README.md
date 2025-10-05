@@ -44,13 +44,14 @@ The application follows a standard **RAG architecture** combining both a **knowl
    - **Vector Search:** Elasticsearch KNN index using OpenAI's `text-embedding-3-large` embeddings.  
    - **Hybrid Search:** Combines keyword and vector scores for best retrieval.  
    - **Document Re-ranking:** Applied during evaluation to refine top-K results.
+   - **User Query Rewriting** Transforms user query into a refined version for RAG. 
 
 3. **Generation:**
    - Context from top 5 retrieved docs is passed to **OpenAI GPT-4o** for response generation.
 
 4. **User Interaction Flow:**
    ```
-   User Query → Retrieval (Keyword + KNN) → Top 5 Docs → GPT-4o → Answer → User Feedback
+   User Query → User Query Rewriting using LLM -> Retrieval (Keyword + KNN) → Top 5 Docs → GPT-4o → Answer → User Feedback
    ```
 
 ---
@@ -214,19 +215,14 @@ cp .env.example .env
 # - OPENAI_API_KEY=sk-your-key-here
 # - POSTGRES_PASSWORD=your_secure_password
 
-# 3. Create Grafana directories
-mkdir -p grafana/provisioning/datasources
-mkdir -p grafana/provisioning/dashboards
-mkdir -p grafana/dashboards
-
-# 4. Start all services
+# 3. Start all services
 docker compose up --build -d
 
-# 5. Monitor startup progress
+# 4. Monitor startup progress
 docker compose logs -f ingest  # Wait for "✓ Indexing completed successfully!"
 docker compose logs -f streamlit
 
-# 6. Access the application
+# 5. Access the application
 # - Streamlit UI: http://localhost:8501
 # - Grafana Dashboard: http://localhost:3000 (admin/admin)
 ```
